@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-xs-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 mx-auto text-center">
                 <h1 class="main-heading display-6">
-                    Affordable Original and Custom-Order Art to Fit Any Space
+                    Affordable Original and Custom-Order Art
                 </h1>
                 <h2 class="main-subheading display-4">
                     by local San Diego Artists
@@ -17,23 +17,22 @@
 {% endblock %}
 
 {% block content %}
+<main>
     <div class="container-fluid h-100">
         <div class="row">
-            <div class="col-12 col-md-10 offset-md-1 col-lg-9 order-lg-12 mx-auto my-auto text-center">
-                <img class="img-fluid mx-auto" src="{{ MEDIA_URL }}multicolored-abstract-painting.jpg" alt="colorful abstract painting">
-            <button class="btn btn-large" href="#">Shop Now!</button>
-                    
-                </div>
-                <div class="col-12 col-md-10 offset-md-1 col-lg-3 order-lg-1 mx-auto my-auto">
-                    <article class="text-center">
-                        <p class="text-center">Come see us at our next showing!</p>
-                        <img src="" class="thumbnail">
-                    </article>
-                </div>
-
+            <div class="col-12 col-lg-3"><button class="btn shop-now-button btn-large" href="#">Shop Now!</button></div>
+            <div class="col-12 col-lg-3">
+                <!--need to fix the src later to {{MEDIA_URL}}filename.jpg-->
+                <img class="img-fluid mx-auto" src="./media/multicolored-abstract-painting.jpg" alt="colorful abstract painting">
             </div>
+            <div class="col-12 col-lg-3">
+                 <!--need to fix the src later to {{MEDIA_URL}}filename.jpg-->
+                <img class="img-fluid mx-auto" src="./media/multicolored-abstract-painting.jpg" alt="colorful abstract painting">
+            </div>
+        </div>
+        <div class="row">
 
         </div>
-    </main>
-
+    </div>
+</main>
 {% endblock %}
