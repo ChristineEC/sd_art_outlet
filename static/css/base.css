@@ -1,0 +1,35 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: calc(100vh - 164px);
+    color: rgb(35, 35, 35);
+    font-family: "Josephin Sans", sans-serif;
+}
+
+/* Fonts */
+
+.logo-font {
+  font-family: "Original Surfer", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.original-surfer-regular {
+  font-family: "Original Surfer", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* <weight>: Use a value from 100 to 700 */
+/* <uniquifier>: Use a unique and descriptive class name */
+
+.josefin-sans-subheader {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* from Bulma */
