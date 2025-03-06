@@ -3,7 +3,6 @@ html {
 }
 
 body {
-    height: calc(100vh - 175px);
     color: rgb(35, 35, 35);
     font-family: "Josephin Sans", sans-serif;
     font-optical-sizing: auto;
@@ -11,13 +10,14 @@ body {
     font-style: normal;
 }
 
+
 /* Fonts */
 
 .logo-font {
   font-family: "Original Surfer", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .original-surfer-regular {
@@ -28,13 +28,14 @@ body {
 
 /* <weight>: Use a value from 100 to 700 */
 /* <uniquifier>: Use a unique and descriptive class name */
-
-.josefin-sans-subheader {
-  font-family: "Josefin Sans", sans-serif;
+h1, h2, h3 {
+    font-family: "Josefin Sans", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 500;
+  font-weight: 600;
   font-style: normal;
+  font-size: larger;
 }
+
 /* from Bulma */
 .icon {
     align-items: center;
@@ -49,7 +50,7 @@ body {
 }
 
 .shop-now-button {
-    background: black;
+    background: rgb(70, 12, 230);
     color: white;
 }
 
@@ -59,7 +60,7 @@ body {
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
-    background: black;
+    background: rgb(70, 12, 230);
     color:white;
 }
 
@@ -85,9 +86,11 @@ body {
         top: 0;
         right: 0;
         left: 0;
-        z-index: 1030;
     }
     .header-container {
-        padding-top: 175px;
+        padding-top: 100px;
+    }
+    .josephine-sans-subheader {
+        padding-top: 5rem;
     }
 }
