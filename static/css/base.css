@@ -67,6 +67,9 @@ h1, h2, h3 {
 .shop-now-button {
     background: rgb(70, 12, 230);
     color: white;
+    min-width: 256px;
+    min-height: 48px;
+    text-transform: uppercase;
 }
 
 .shop-now-button:hover,
@@ -88,6 +91,11 @@ h1, h2, h3 {
 }
 
 /* --Media Queries-- */
+@media (max-width: 992px) {
+    .header-container {
+        padding-top: 80px;
+    }
+}
 
 @media (min-width:1200px) {
     .container {
@@ -109,3 +117,4 @@ h1, h2, h3 {
         padding-top: 5rem;
     }
 }
+
