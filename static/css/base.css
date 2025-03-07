@@ -10,7 +10,6 @@ body {
     font-style: normal;
 }
 
-
 /* Fonts */
 
 .logo-font {
@@ -90,6 +89,14 @@ h1, h2, h3 {
     border: 1px solid black !important;
 }
 
+.bg-black {
+    background: #000 !important;
+}
+
+.text-white {
+    color: white !important;
+}
+
 /* --Media Queries-- */
 @media (max-width: 992px) {
     .header-container {
@@ -109,9 +116,10 @@ h1, h2, h3 {
         top: 0;
         right: 0;
         left: 0;
+        z-index: 999;
     }
     .header-container {
-        padding-top: 175px;
+        padding-top: 155px;
     }
     .josephine-sans-subheader {
         padding-top: 5rem;
