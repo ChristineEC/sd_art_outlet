@@ -10,6 +10,10 @@ body {
     font-style: normal;
 }
 
+.main-logo-link {
+    text-decoration: none;
+}
+
 /* Fonts */
 
 .logo-font {
@@ -100,7 +104,11 @@ h1, h2, h3 {
 /* --Media Queries-- */
 @media (max-width: 992px) {
     .header-container {
-        padding-top: 80px;
+        padding-top: 66px;
+    }
+
+    .navbar {
+        z-index: 10;
     }
 }
 
@@ -116,7 +124,7 @@ h1, h2, h3 {
         top: 0;
         right: 0;
         left: 0;
-        z-index: 999;
+        z-index: 9;
     }
     .header-container {
         padding-top: 155px;
