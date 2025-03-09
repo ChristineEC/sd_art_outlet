@@ -8,11 +8,10 @@ from .models import Medium, Artist, Artwork
 #         'artist',
 #         'medium',
 #         'dimensions',
-#         'note',
 #         'price',
 #         'image',
 #         'status',
-#         'made_for',
+#         'custom_made',
 #     )
 
 
