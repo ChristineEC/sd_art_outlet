@@ -14,7 +14,14 @@ body {
     text-decoration: none;
 }
 
+/* Images */
+
+
 /* Fonts */
+
+.artwork-title {
+    font-style: italic;
+}
 
 .logo-font {
   font-family: "Original Surfer", sans-serif;
@@ -127,7 +134,7 @@ h1, h2, h3 {
         z-index: 9;
     }
     .header-container {
-        padding-top: 155px;
+        padding-top: 145px;
     }
     .josephine-sans-subheader {
         padding-top: 5rem;
