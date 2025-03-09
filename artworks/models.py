@@ -1,10 +1,8 @@
 from django.db import models
 
 STATUS = (
-    (1, "For sale"),
-    (2, "Sold"),
-    (3, "Pending"),
-    (4, "On temporary hold"),
+    (1, "for_sale"),
+    (2, "sold"),
 )
 
 
@@ -36,11 +34,11 @@ class Artwork(models.Model):
     artist = models.ForeignKey('Artist', null=True, blank=True,
                                on_delete=models.SET_NULL)
     dimensions = models.CharField(max_length=254)
-    note = models.CharField(max_length=254, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     status = models.PositiveSmallIntegerField(choices=STATUS, default=3)
+    custom_made = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
