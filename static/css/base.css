@@ -12,6 +12,7 @@ body {
 
 .main-logo-link {
     text-decoration: none;
+    width: fit-content;
 }
 
 /* Images */
@@ -111,7 +112,7 @@ h1, h2, h3 {
 /* --Media Queries-- */
 @media (max-width: 992px) {
     .header-container {
-        padding-top: 66px;
+        padding-top: 80px;
     }
 
     .navbar {
@@ -128,6 +129,7 @@ h1, h2, h3 {
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
         position: fixed;
+        background-color: #fff;
         top: 0;
         right: 0;
         left: 0;

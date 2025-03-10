@@ -16,6 +16,8 @@
         <div class="row">
             <div class="col text-center mt-3">
                 <h2 class="logo-font">Welcome to our Art Gallery!</h2>
+                <h3 class="logo-font">We're adding new art &ndash; and new artists &ndash; all the time!</h3>
+                <h4 class="josephine-sans"> For more inspiration, check out our individual artist's pages, which include their past works as well</h4>
                 <hr class="w-50 mb-1"></hr>
             </div>
         </div>
@@ -24,8 +26,8 @@
                 <div class="row mt-1 mb-2"></div>
                 <div class="row">
                     {% for artwork in artworks %}
-                        <div class="col-sm-10 offset-sm-1 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card h-100 pb-3 border-0">
+                        <div class="col-sm-10 offset-sm-1 col-md-6 col-lg-4 col-xl-3 mb-5">
+                            <div class="card w-100 border-0">
                                 {% if artwork.image %}
                                 <a href="">
                                    <img class="card-img-top img-fluid" src="{{ artwork.image.url }}" alt="{{ artwork.title }}"> 
