@@ -41,7 +41,7 @@ class Artwork(models.Model):
     image = models.ImageField(null=True, blank=True)
     status = models.PositiveSmallIntegerField(choices=STATUS, default=1)
     custom_made = models.BooleanField(default=False)
-    alt_image = models.CharField(max_length=254, null=True, blank=True)
+    image_alt = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
         return self.title
