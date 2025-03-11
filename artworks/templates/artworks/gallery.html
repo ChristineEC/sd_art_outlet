@@ -30,11 +30,11 @@
                             <div class="card w-100 border-0">
                                 {% if artwork.image %}
                                 <a href="">
-                                   <img class="card-img-top img-fluid" src="{{ artwork.image.url }}" alt="{{ artwork.title }}"> 
+                                   <img class="card-img-top img-fluid" src="{{ artwork.image.url }}" alt="{{ artwork.image_alt }}"> 
                                 </a>
                                 {% else %}
                                 <a href="">
-                                   <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ artwork.title }}"> 
+                                   <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ artwork.image_alt }}"> 
                                 </a>
                                 {% endif %}
                                 <div class="card-body pb-0">
