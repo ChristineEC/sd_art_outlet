@@ -22,6 +22,7 @@ class Artist(models.Model):
     bio = models.TextField(null=True, blank=True)
     selfie_url = models.URLField(max_length=1024, null=True, blank=True)
     selfie = models.ImageField(null=True, blank=True)
+    image_alt = models.CharField(max_length=254, default="Image of the artist")
 
     def __str__(self):
         return self.name
