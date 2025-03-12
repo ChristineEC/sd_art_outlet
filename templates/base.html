@@ -38,29 +38,15 @@
   <body>
     <header class="container-fluid fixed-top mb-2">
       <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
-        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
+        <div class="col-12 col-lg-6 my-auto py-1 py-lg-0 text-center text-lg-left">
           <a href="{% url 'home' %}" class="nav-link main-logo-link">
             <h1 class="logo-font text-black my-0">
-              <img src="{{ MEDIA_URL }}sd_art_logo.png" alt="san_diego_art_outlet_logo" class="inline-block">
+              <img src="{{ MEDIA_URL }}sd_art_logo.png" alt="san_diego_art_outlet_logo" class="inline-block ">
               <strong>San Diego Art Outlet</strong>
             </h1>
           </a>
         </div>
-        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-          <form method="GET" action="">
-            <div class="input-group w-100">
-              <input class="form-control border border-black" type="text" name="q" placeholder="Search our gallery">
-              <div class="input-group-append">
-                <button class="form-control btn btn-black border border-black" type="submit">
-                  <span class="icon">
-                    <i class="fas fa-search"></i>
-                  </span>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+        <div class="col-12 col-lg-6 my-auto py-1 py-lg-0 text-right">
           <ul class="list-inline list-unstyled text-center text-lg-right my-0">
             <li class="list-inline-item dropdown">
               <a class="text-black fontnav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-explanded="false">

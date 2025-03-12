@@ -34,7 +34,7 @@ class Artwork(models.Model):
     medium = models.ForeignKey('Medium', null=True, blank=True,
                                on_delete=models.SET_NULL)
     artist = models.ForeignKey('Artist', null=True, blank=True,
-                               on_delete=models.SET_NULL)
+                               on_delete=models.SET_NULL, related_name="art")
     dimensions = models.CharField(max_length=254)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image_url = models.URLField(max_length=1024, null=True, blank=True)

@@ -1,18 +1,21 @@
  <div class="collapse navbar-collapse navbar-dark bg-dark" id="main-nav">
     <ul class="navbar-nav mx-auto py-0">
       <li class="nav-item active">
-        <a class="nav-link font-weight-bold text-white px-5" href="#" id="home-link">Home <span class="sr-only">(current)</span></a>
+        <!--Need to deal with the sr-only class appropriately. Not done yet-->
+        <a class="nav-link font-weight-bold text-white px-5" href="{% url 'home' %}" id="home-link">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle font-weight-bold text-white px-5" href="#" id="gallery-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle font-weight-bold text-white px-5" href="#" id="artworks-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Gallery
         </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Oil on Canvas</a>
-          <a class="dropdown-item" href="#">Acrylic on Canvas</a>
-          <a class="dropdown-item" href="#">Photography</a>
+        <div class="dropdown-menu border-0" aria-labelledby="artwork-links">
+          <a class="dropdown-item" href="{% url 'artworks' %}?medium=oiloncanvas,acryliconcanvas,watercolor">Paintings</a>
+          <a class="dropdown-item" href="{% url 'artworks' %}?medium=oiloncanvas">Oil on Canvas</a>
+          <a class="dropdown-item" href="{% url 'artworks' %}?medium=acryliconcanvas">Acrylic on Canvas</a>
+          <a class="dropdown-item" href="{% url 'artworks' %}?medium=watercolor">Watercolor</a>
+          <a class="dropdown-item" href="{% url 'artworks' %}?medium=photography">Photography</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">All Artworks</a>
+          <a class="dropdown-item" href="{% url 'artworks'%}?medium=oiloncanvas,acryliconcanvas,watercolor,photography">All Artworks</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -20,8 +23,10 @@
           Artists
         </a>
         <div class="dropdown-menu">
-          <!--artists to be looped through here and a tags added dynamically -->
-          <a class="dropdown-item font-weight-bold" href="#">Artist's Name here</a>
+          <a class="dropdown-item" href="#">Kayla Bliss</a>
+          <a class="dropdown-item" href="#">Michele Domingo</a>
+          <a class="dropdown-item" href="#">JoAnn Louise</a>
+          <a class="dropdown-item" href="#">Cris Sotomayor</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -36,7 +41,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link font-weight-bold text-white px-5" href="#" id="events-link" role="button">
-          Events
+          Collaboration Request
         </a>
       </li>
     </ul>
