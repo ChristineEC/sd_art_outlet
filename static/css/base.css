@@ -109,6 +109,10 @@ h1, h2 {
     color: white !important;
 }
 
+.text-upper {
+    text-transform: uppercase;
+}
+
 /* --Media Queries-- */
 @media (max-width: 992px) {
     .header-container {
