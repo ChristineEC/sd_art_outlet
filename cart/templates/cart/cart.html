@@ -24,45 +24,54 @@
             </div>
         </div>
         <div class="row">
-            <div class="col xs-12-12 col-md-8 offset-md-2 justify-content-center">
+            <div class="col justify-content-center">
                 {% if cart_items %}
                     <div class="table-responsive">
                         <table class="table table-sm table-borderless">
                             <thead>
                                 <tr>
-                                    <th class="text-center" scope="col">Artwork</th>
+                                    <th scope="col">Artwork</th>
                                     <th scope="col"></th>
                                     <th scope="col">Details</th>
+                                    <th scope="col"><span class="icon"><i class="fa-solid fa-pencil" aria-hidden="true"></i></span></th>
+                                    <th scope="col"></th>
                                     <th scope="col">Price</th>
                                 </tr>
                             </thead>
-                            <tbody>
                             {% for item in cart_items %}
                                 <tr>
                                     <td class="py-3 w-25">
-                                        <img class="img-thumbnail max-width=50px" src="{{ item.artwork.image.url }}">
+                                        <img class="img-fluid max-width=50px" src="{{ item.artwork.image.url }}">
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-1"><strong><em>{{ item.artwork.title }}</em></strong></p>
-                                        <p class="my-0"><small>Artist {{ item.artwork.artist }}</small></p>
+                                        <p class="my-0"><strong><em>{{ item.artwork.title }}</em></strong></p>
+                                        <p class="my-0"><small>{{ item.artwork.artist }}</small></p>
                                         
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0 pt-1"><small class='text-muted'>{{ item.artwork.medium.friendly_name }}</small></p>
-                                        <p class="my-0"><small class='text-muted'>{{ item.artwork.dimensions }}</small></p>
+                                        <small class='my-0 text-muted'>{{ item.artwork.medium.friendly_name }}</small>
+                                        <small class='my-0 text-muted'>{{ item.artwork.dimensions }}</small>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0 pt-1">${{ item.artwork.price }}</p>
+                                        <p class="my-0"><small><a href="#">Move to Wishlist</a></small></p>
+                                        
                                     </td>
+                                    <td class="py-3">
+                                        <p class="my-0"><small><a class="text-danger" href="#">Delete</a></small></p>
+                                    </td>
+                                    <td class="py-3">
+                                        <p class="my-0">${{ item.artwork.price }}</p>
+                                    </td>
+                                    
                                 </tr>
                             {% endfor %}
                                 <tr>
-                                    <td colspan="4" class="pt-3 text-right">
+                                    <td colspan="6" class="pt-3 text-right">
                                         <h4 class="mt-2"><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="4" class="pt-3 text-right">
+                                    <td colspan="6" class="pt-3 text-right">
                                         <a href="{% url 'artworks' %}" class="btn btn-secondary btn-lg">
                                             <span class="icon">
                                                 <i class="fas fa-chevron-left"></i>
@@ -77,7 +86,6 @@
                                         </a>
                                     </td>
                                 </tr>
-                            </tbody>
                         </table>
                     </div>
                 {% else %}
