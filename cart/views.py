@@ -24,7 +24,7 @@ def add_to_cart(request, item_id):
             f'{artwork.title} by {artwork.artist} is already in your cart!'
         )
     else:
-        cart[item_id] = 1
+        cart[item_id] = 'item'
 
     request.session['cart'] = cart
     return redirect(redirect_url)

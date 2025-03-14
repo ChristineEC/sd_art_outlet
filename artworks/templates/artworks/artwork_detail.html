@@ -26,7 +26,8 @@
                         </a>
                         {% endif %}
                 <div class="card-body">
-                    <a href="{{ artwork.image.url }}" class="mt-0 text-center">View full image</a>
+                    <!--Add a field to artwork model for proportional images and replace url here with that -->
+                    <a href="{{ artwork.image.url }}" target="_blank" class="mt-0 text-center">View full image</a>
                 </div>
                 <div class="card-footer bg-white pt-0 border-0">
                     <div class="row">
@@ -40,7 +41,7 @@
                                 {% csrf_token %}
                                 <div class="form-row">
                                     <div class="col-12">
-                                        <a href="{% url 'artworks' %}" class="btn btn-secondary my-2">Back to Gallery</a>
+                                        <a href="{% url 'artworks' %}" class="btn btn-info my-2">Back to Gallery</a>
                                         <span class="px-1"></span><input type="submit" class="btn btn-primary my-2" value="Add to Wishlist"></span>
                                         <span class="px-1"></span><input type="submit" class="btn btn-success font-weight-bold text-upper" value="Add to Cart"></span>
                                     </div>
