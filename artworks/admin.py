@@ -10,6 +10,7 @@ class ArtworkAdmin(admin.ModelAdmin):
         'dimensions',
         'price',
         'image',
+        'image_alt',
         'status',
         'custom_made',
     )
