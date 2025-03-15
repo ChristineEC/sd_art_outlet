@@ -5,10 +5,7 @@
     <div class="container header-container">
         <div class="row">
             <div class="col-xs-12 mx-auto text-center">
-                <h1 class="display-5">Did you find everything you were looking for?</h1>
-                <h2>Our artists are always happy to create custom pieces!</h2>
-                <h2>Fill out a custom request form, or start saving your ideas to a board. 
-                    We'd love to help you make your home a true sanctuary!</h2>
+                <h1 class="display-4 josephine-sans">Shopping Cart</h1>
             </div>
         </div>
     </div>
@@ -20,28 +17,34 @@
         <div class="row">
             <div class="col">
                 <hr>
-                <h1 class="josefin-sans-heavy text-center pb-5">Shopping Cart</h1>
+                <p class="my-1"><em>Did you find everything you were looking for?</em></h4>
+                <p class="my-0"><em>Our artists are always happy to create custom pieces! 
+                    Fill out a <a href="#">custom request form</a>, or start saving your 
+                    ideas to a <a href="#">board</a>. We'd love to help you make your home 
+                    a true sanctuary!</em>
+                </p>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                {% if cart_items %}
-                <h4 class="mt-3 text-right pr-1">
-                    <strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong>
-                </h4>
-                    <p class="float-right">
-                        <a href="{% url 'artworks' %}" class="btn btn-secondary btn-lg">
-                            <span class="icon">
-                                <i class="fas fa-chevron-left"></i>
+            <div class="row">
+                <div class="col">
+                    {% if cart_items %}
+                        <h4 class="mt-3 text-right pr-1">
+                            <strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong>
+                        </h4>
+                        <p class="float-right">
+                            <span class="p-2">
+                                <a href="{% url 'artworks' %}" class="btn btn-dark btn-lg">
+                                    <span class="icon"><i class="fas fa-chevron-left"></i></span>
+                                    Keep Shopping
+                                </a>
                             </span>
-                            <span>Keep Shopping</span>
-                        </a>
-                        <a href="" class="btn btn-primary btn-lg">
-                            <span>Secure Checkout</span>
-                            <span class="icon"><i class="fas fa-lock"></i></span>
-                        </a>
-                    </p>
-                {% endif %}
+                            <span class="p-2"><a href="" class="btn btn-primary btn-lg">
+                                <span>Secure Checkout</span>
+                                <span class="icon"><i class="fas fa-lock"></i></span>
+                                </a>
+                            </span>
+                        </p>
+                    {% endif %}
+                </div>
             </div>
         </div>
         <div class="row">
@@ -54,9 +57,7 @@
                                 <tr>
                                     <th scope="col">Artwork</th>
                                     <th scope="col">Details</th>
-                                    <th scope="col"></th>
-                                    <th scope="col"></th>
-                                    <th scope="col"></th>
+                                    <th scope="col"><i class="fa-solid fa-pencil"></i></th>
                                     <th scope="col">Price</th>
                                 </tr>
                             </thead>
@@ -67,42 +68,29 @@
                                             alt="{{ item.artwork.image_alt}}">
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0"><strong><em>{{ item.artwork.title }}</em></strong></p>
-                                        <p class="my-0"><small>{{ item.artwork.artist }}</small></p>
-                                        <p class="my-0"><small class='my-0 text-muted'>{{ item.artwork.medium.friendly_name }}</small></p>
-                                        <p class="my-0"><small class='my-0 text-muted'>{{ item.artwork.dimensions }}</small></p>
+                                        <p class="my-0 pl-2"><strong><em>{{ item.artwork.title }}</em></strong></p>
+                                        <p class="my-0 pl-2"><small>{{ item.artwork.artist }}</small></p>
+                                        <p class="my-0 pl-2"><small class='my-0 text-muted'>{{ item.artwork.medium.friendly_name }}</small></p>
+                                        <p class="my-0 pl-2"><small class='my-0 text-muted'>{{ item.artwork.dimensions }}</small></p>
                                     </td>
                                     <td class="py-3">
-                                        <form method="POST" action="">
-                                            {% csrf_token %}
-                                            <button class="pin-to-board btn-sm btn-warning"
+                                        <p class="my-1">
+                                            <a href="#" class="pin-to-board"
                                                 data-item_id="{{ item.item_id }}" id="pin-to-board_{{ item.item_id }}"> 
-                                                <i class="fa-solid fa-thumbtack"></i><small> Pin to Board (too!)</small>
-                                            </button>
-                                        </form>    
-                                    </td>
-                                    <td class="py-3">
-                                        <form method="POST" action="">
-                                            {% csrf_token %}
-                                            <button class="move-to-board btn-sm btn-secondary"
-                                                data-item_id="{{ item.item_id }}" id="move-to-board_{{ item.item_id }}"> 
-                                                <i class="fa-solid fa-clipboard"></i><small> Move to Board</small>
-                                            </button>
-                                        </form>
-                                    </td>
-                                    <td class="py-3">
-                                        <form method="POST" action="">
-                                            {% csrf_token %}
-                                            <button class="remove-from-cart btn-sm btn-danger"
+                                                <i class="fa-solid fa-thumbtack"></i><small> Pin to Board</small>
+                                           </a>
+                                        </p> 
+                                        <p class="my-3">
+                                            <a href="#" class="text-danger"
                                                 data-item_id="{{ item.item_id }}" id="remove-from-cart_{{ item.item_id }}">
                                                 <i class="fa-regular fa-trash-can"></i><small> Remove from Cart</small>
-                                            </button>
-                                        </form>
+                                            </a>
+                                        </p>   
+                                    </td>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">${{ item.artwork.price }}</p>
+                                        <p class="my-0"><strong>${{ item.artwork.price }}</strong></p>
                                     </td>
-                                    
                                 </tr>
                             {% endfor %}
                         </table>

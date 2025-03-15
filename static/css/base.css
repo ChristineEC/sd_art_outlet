@@ -54,13 +54,13 @@ body {
     font-style: normal;
 }
 
-h1, h2 {
-  font-family: "Josefin Sans", sans-serif;
+/* h1, h2 { */
+  /* font-family: "Josefin Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
-  font-size: larger;
-}
+  font-size: larger; */
+/* } */
 
 /* from Bulma */
 .icon {
