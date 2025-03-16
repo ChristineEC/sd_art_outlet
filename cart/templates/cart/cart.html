@@ -24,27 +24,27 @@
                     a true sanctuary!</em>
                 </p>
             </div>
-            <div class="row">
-                <div class="col">
-                    {% if cart_items %}
-                        <h4 class="mt-3 text-right pr-1">
-                            <strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong>
-                        </h4>
-                        <p class="float-right">
-                            <span class="p-2">
-                                <a href="{% url 'artworks' %}" class="btn btn-dark btn-lg">
-                                    <span class="icon"><i class="fas fa-chevron-left"></i></span>
-                                    Keep Shopping
-                                </a>
-                            </span>
-                            <span class="p-2"><a href="" class="btn btn-primary btn-lg">
-                                <span>Secure Checkout</span>
-                                <span class="icon"><i class="fas fa-lock"></i></span>
-                                </a>
-                            </span>
-                        </p>
-                    {% endif %}
-                </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% if cart_items %}
+                    <h4 class="mt-3 text-right pr-1">
+                        <strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong>
+                    </h4>
+                    <p class="float-right">
+                        <span class="p-2">
+                            <a href="{% url 'artworks' %}" class="btn btn-dark btn-lg my-1">
+                                <span class="icon"><i class="fas fa-chevron-left"></i></span>
+                                Keep Shopping
+                            </a>
+                        </span>
+                        <span class="p-2 mt-1"><a href="" class="btn btn-primary btn-lg my-1">
+                            <span>Secure Checkout</span>
+                            <span class="icon"><i class="fas fa-lock"></i></span>
+                            </a>
+                        </span>
+                    </p>
+                {% endif %}
             </div>
         </div>
         <div class="row">
@@ -52,48 +52,50 @@
         <hr>
             {% if cart_items %}
             <div class="table-responsive">
-                        <table class="table table-sm table-borderless">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Artwork</th>
-                                    <th scope="col">Details</th>
-                                    <th scope="col"><i class="fa-solid fa-pencil"></i></th>
-                                    <th scope="col">Price</th>
-                                </tr>
-                            </thead>
-                            {% for item in cart_items %}
-                                <tr>
-                                    <td class="py-3 w-25">
-                                        <img class="img-thumbnail img-fluid" src="{{ item.artwork.image.url }}"
-                                            alt="{{ item.artwork.image_alt}}">
-                                    </td>
-                                    <td class="py-3">
-                                        <p class="my-0 pl-2"><strong><em>{{ item.artwork.title }}</em></strong></p>
-                                        <p class="my-0 pl-2"><small>{{ item.artwork.artist }}</small></p>
-                                        <p class="my-0 pl-2"><small class='my-0 text-muted'>{{ item.artwork.medium.friendly_name }}</small></p>
-                                        <p class="my-0 pl-2"><small class='my-0 text-muted'>{{ item.artwork.dimensions }}</small></p>
-                                    </td>
-                                    <td class="py-3">
-                                        <p class="my-1">
-                                            <a href="#" class="pin-to-board"
-                                                data-item_id="{{ item.item_id }}" id="pin-to-board_{{ item.item_id }}"> 
-                                                <i class="fa-solid fa-thumbtack"></i><small> Pin to Board</small>
-                                           </a>
-                                        </p> 
-                                        <p class="my-3">
-                                            <a href="#" class="text-danger"
-                                                data-item_id="{{ item.item_id }}" id="remove-from-cart_{{ item.item_id }}">
-                                                <i class="fa-regular fa-trash-can"></i><small> Remove from Cart</small>
-                                            </a>
-                                        </p>   
-                                    </td>
-                                    </td>
-                                    <td class="py-3">
-                                        <p class="my-0"><strong>${{ item.artwork.price }}</strong></p>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                        </table>
+                <table class="table table-sm table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">Artwork</th>
+                            <th scope="col">Details</th>
+                            <th scope="col"><i class="fa-solid fa-pencil"></i></th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    {% for item in cart_items %}
+                        <tr>
+                            <td class="py-3 w-25">
+                                <img class="img-thumbnail img-fluid" src="{{ item.artwork.image.url }}"
+                                    alt="{{ item.artwork.image_alt}}">
+                            </td>
+                            <td class="py-3">
+                                <p class="my-0 pl-2"><strong><em>{{ item.artwork.title }}</em></strong></p>
+                                <p class="my-0 pl-2"><small>{{ item.artwork.artist }}</small></p>
+                                <p class="my-0 pl-2"><small class='my-0 text-muted'>{{ item.artwork.medium.friendly_name }}</small></p>
+                                <p class="my-0 pl-2"><small class='my-0 text-muted'>{{ item.artwork.dimensions }}</small></p>
+                            </td>
+                            <td class="py-3">
+                                <form class="form cart-to-wishlist-form" method="POST" action="">
+                                    {% csrf_token %}
+                                        <input type="hidden" value="Add to wishlist" class="text-info cart-to-wishlist btn d-none"
+                                            data-item_id="{{ item.item_id }}" id="cart-to-wishlist_{{ item.item_id }}">
+                                        
+                                        <!-- <input type="button" value="Remove from cart" class="text-danger remove-from-cart btn"
+                                            data-item_id="{{ item.item_id }}" id="remove-from-cart_{{ item.item_id }}"> -->
+                                </form>
+                                <a class="cart-to-wishlist text-info"><small><i class="fa-solid fa-plus text-info"></i> Add to wishlist</small></a>
+                                <br>
+                                <a class="remove-from-cart text-danger" id="remove-from-cart_{{ item.item_id}}"><i class="fa-solid fa-trash text-danger"></i><small> Remove from cart</small></a>
+                                <!-- <form class="form cart-to-wishlist-form" method="POST" action="">
+                                    {% csrf_token %}
+                                    
+                                </form>    -->
+                            </td> 
+                            <td class="py-3">
+                                <p class="my-0"><strong>${{ item.artwork.price }}</strong></p>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
             </div>
             {% else %}
                 <p class="lead mb-5">Your shopping cart is empty.</p>
@@ -109,3 +111,26 @@
     <hr>
 </main>
 {% endblock %}
+
+  {% block postload_js %}
+  {{ block.super }}
+
+  <script type="text/javascript">
+    // Add item to wishlist and reload on click
+    $('.cart-to-wishlist').click(function(e) {
+     var form = $(this).prev('.cart-to-wishlist-form');
+        form.submit();
+    })
+    // Remove item and reload on click
+    $('.remove-from-cart').click(function(e) {
+        var csrfToken = "{{ csrf_token }}"
+        var itemId = $(this).attr('id').split('remove-from-cart_')[1];
+        var url = `/cart/remove/${itemId}`;
+        var data = {'csrfmiddlewaretoken': csrfToken};
+        $.post(url, data)
+         .done(function() {
+            location.reload();
+        });
+    })
+  </script>
+  {% endblock %}

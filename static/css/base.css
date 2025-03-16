@@ -75,6 +75,11 @@ body {
     width: fit-content;
 }
 
+.remove-from-cart,
+.pin-to-board {
+    cursor: pointer;
+}
+
 .shop-now-button {
     background: rgb(70, 12, 230);
     color: white;
