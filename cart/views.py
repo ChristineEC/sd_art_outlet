@@ -18,13 +18,16 @@ def add_to_cart(request, item_id):
 
     """Check if item is in cart"""
     if item_id in list(cart.keys()):
-        messages.error(
+        messages.info(
             request,
             f'{artwork.title} by {artwork.artist} is already in your cart!'
         )
     else:
         quantity = 1
         cart[item_id] = quantity
+        messages.success(request,
+                         f'{artwork.title} has been added to your \
+                         shopping cart!')
 
     request.session['cart'] = cart
     return redirect(redirect_url)
