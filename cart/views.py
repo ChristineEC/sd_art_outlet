@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404, reverse, HttpResponse
 from django.contrib import messages
 from artworks.models import Artwork
 
@@ -27,7 +27,6 @@ def add_to_cart(request, item_id):
         cart[item_id] = quantity
 
     request.session['cart'] = cart
-    print(request.session['cart'])
     return redirect(redirect_url)
 
 
@@ -35,12 +34,14 @@ def remove_from_cart(request, item_id):
     """Remove the item from the cart"""
 
     try:
-        request.session.get('cart', {})
-        print(cart)
+        artwork = get_object_or_404(Artwork, pk=item_id)
+        cart = request.session.get("cart", {})
+        print ('request received')
         cart.pop(item_id)
-        
+
         request.session['cart'] = cart
         return HttpResponse(status=200)
-        
+
     except Exception as e:
+        print('there is a problem with this function')
         return HttpResponse(status=500)

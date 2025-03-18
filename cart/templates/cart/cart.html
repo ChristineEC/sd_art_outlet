@@ -74,21 +74,14 @@
                                 <p class="my-0 pl-2"><small class='my-0 text-muted'>{{ item.artwork.dimensions }}</small></p>
                             </td>
                             <td class="py-3">
-                                <form class="form cart-to-wishlist-form" method="POST" action="">
-                                    {% csrf_token %}
-                                        <input type="hidden" value="Add to wishlist" class="text-info cart-to-wishlist btn d-none"
-                                            data-item_id="{{ item.item_id }}" id="cart-to-wishlist_{{ item.item_id }}">
-                                        
-                                        <!-- <input type="button" value="Remove from cart" class="text-danger remove-from-cart btn"
-                                            data-item_id="{{ item.item_id }}" id="remove-from-cart_{{ item.item_id }}"> -->
-                                </form>
-                                <a class="cart-to-wishlist text-info"><small><i class="fa-solid fa-plus text-info"></i> Add to wishlist</small></a>
+                                {% csrf_token %}
+                                <a class="text-info cart-to-wishlist" id="cart-to-wishlist_{{ item.item_id }}">
+                                    <i class="icon fa-solid fa-plus"></i> Add to wishlist
+                                </a>
                                 <br>
-                                <a class="remove-from-cart text-danger" id="remove-from-cart_{{ item.item_id}}"><i class="fa-solid fa-trash text-danger"></i><small> Remove from cart</small></a>
-                                <!-- <form class="form cart-to-wishlist-form" method="POST" action="">
-                                    {% csrf_token %}
-                                    
-                                </form>    -->
+                                <a class="text-danger remove-from-cart" id="remove-from-cart_{{ item.item_id }}">
+                                    <i class="icon fa-solid fa-trash-can"></i> Remove from cart
+                                </a>
                             </td> 
                             <td class="py-3">
                                 <p class="my-0"><strong>${{ item.artwork.price }}</strong></p>
@@ -117,20 +110,18 @@
 
   <script type="text/javascript">
     // Add item to wishlist and reload on click
-    $('.cart-to-wishlist').click(function(e) {
-     var form = $(this).prev('.cart-to-wishlist-form');
-        form.submit();
-    })
+    // $('.cart-to-wishlist').click(function(e) {
+    // })
     // Remove item and reload on click
     $('.remove-from-cart').click(function(e) {
-        var csrfToken = "{{ csrf_token }}"
+        var csrfToken = "{{csrf_token }}";
         var itemId = $(this).attr('id').split('remove-from-cart_')[1];
-        var url = `/cart/remove/${itemId}`;
+        var url = `/cart/remove/${itemId}/`;
         var data = {'csrfmiddlewaretoken': csrfToken};
         $.post(url, data)
          .done(function() {
             location.reload();
-        });
+         })
     })
   </script>
   {% endblock %}
