@@ -39,7 +39,7 @@
                             </a>
                         </span>
                         <span class="p-2 mt-1">
-                            <a href="" class="btn btn-primary btn-lg my-1">
+                            <a href="{% url 'checkout' %}" class="btn btn-primary btn-lg my-1">
                             <span>Secure Checkout</span>
                             <span class="icon"><i class="fas fa-lock"></i></span>
                             </a>
@@ -65,9 +65,12 @@
                     {% for item in cart_items %}
                         <tr>
                             <td class="py-3 w-25">
-                                <img class="img-thumbnail img-fluid" src="{{ item.artwork.image.url }}"
-                                    alt="{{ item.artwork.image_alt}}">
-                            </td>
+                                {% if item.artwork.image %}
+                                    <img class="img-thumbnail img-fluid" src="{{ item.artwork.image.url }}" alt="{{ item.artwork.image_alt }}">
+                                {% else %}
+                                    <img class="img-thumbnail img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ artwork.title }}">
+                                {% endif %}
+                                </td>
                             <td class="py-3">
                                 <p class="my-0 pl-2"><strong><em>{{ item.artwork.title }}</em></strong></p>
                                 <p class="my-0 pl-2"><small>{{ item.artwork.artist }}</small></p>
