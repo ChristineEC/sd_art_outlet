@@ -122,14 +122,18 @@ body {
     position: fixed;
     top: 175px;
     right: 15px;
+    min-width: 300px;
     z-index: 999999999999999;
 }
 
 .custom-toast {
-    position: absolute;
-    top: 175px;
-    right: 0;
     overflow: visible;
+}
+
+.cart-notification-wrapper {
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* --Media Queries-- */

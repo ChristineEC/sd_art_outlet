@@ -17,10 +17,10 @@
         <div class="row">
             <div class="col">
                 <hr>
-                <p class="my-1"><em>Did you find everything you were looking for?</em></h4>
+                <p class="my-1"><em>Did you find everything you were looking for?</em></p>
                 <p class="my-0"><em>Our artists are always happy to create custom pieces! 
                     Fill out a <a href="#">custom request form</a>, or start saving your 
-                    ideas to a <a href="#">board</a>. We'd love to help you make your home 
+                    ideas to a <a href="#">wishlist</a>. We'd love to help you make your home 
                     a true sanctuary!</em>
                 </p>
             </div>
@@ -38,7 +38,8 @@
                                 Keep Shopping
                             </a>
                         </span>
-                        <span class="p-2 mt-1"><a href="" class="btn btn-primary btn-lg my-1">
+                        <span class="p-2 mt-1">
+                            <a href="" class="btn btn-primary btn-lg my-1">
                             <span>Secure Checkout</span>
                             <span class="icon"><i class="fas fa-lock"></i></span>
                             </a>
@@ -91,6 +92,7 @@
                 </table>
             </div>
             {% else %}
+            <div>
                 <p class="lead mb-5">Your shopping cart is empty.</p>
                 <a href="{% url 'artworks' %}" class="btn btn-primary btn-lg">
                     <span class="icon">

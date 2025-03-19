@@ -49,7 +49,7 @@
         <div class="col-12 col-lg-6 my-auto py-1 py-lg-0 text-right">
           <ul class="list-inline list-unstyled text-center text-lg-right my-0">
             <li class="list-inline-item dropdown">
-              <a class="text-black fontnav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-explanded="false">
+              <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="text-center">
                   <div><i class="fas fa-user fa-lg"></i></div>
                   <p class="my-0">My Account</p>
@@ -96,11 +96,8 @@
       </div>
     </header>
  
-  {% block page_header %}
-  {% endblock %}
-
-  {% if messages %}
-      <div class="message-container display-flex">
+    {% if messages %}
+      <div class="message-container">
         {% for message in messages %}
           {% with message.level as level %}
             {% if level == 40 %}
@@ -115,16 +112,19 @@
           {% endwith %}
         {% endfor %}
       </div>
-  {% endif %}
+    {% endif %}
 
-  {% block content %}
-  {% endblock %}
+    {% block page_header %}
+    {% endblock %}  
 
-  {% block postload_js %}
-  <script type="text/javascript">
-    $('.toast').toast('show');
-  </script>
-  {% endblock %}
+    {% block content %}
+    {% endblock %}
+
+    {% block postload_js %}
+    <script type="text/javascript">
+      $('.toast').toast('show');
+    </script>
+    {% endblock %}
 
   </body>
 </html>

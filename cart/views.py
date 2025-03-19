@@ -41,10 +41,12 @@ def remove_from_cart(request, item_id):
         cart = request.session.get("cart", {})
         print ('request received')
         cart.pop(item_id)
+        messages.success(request, f'Removed {artwork.title} from your cart!')
 
         request.session['cart'] = cart
         return HttpResponse(status=200)
 
     except Exception as e:
         print('there is a problem with this function')
+        messages.error(request, f'Error removing {artwork.title} from your cart!')
         return HttpResponse(status=500)
