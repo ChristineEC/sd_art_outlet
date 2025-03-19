@@ -4,28 +4,29 @@ from .models import Medium, Artist, Artwork
 
 class ArtworkAdmin(admin.ModelAdmin):
     list_display = (
-        'title',
-        'artist',
-        'medium',
-        'dimensions',
-        'price',
-        'image',
-        'image_alt',
-        'status',
-        'custom_made',
+        "title",
+        "artist",
+        "medium",
+        "dimensions",
+        "price",
+        "image",
+        "image_alt",
+        "status",
+        "custom_made",
     )
 
 
 class MediumAdmin(admin.ModelAdmin):
     list_display = (
-        'friendly_name',
-        'name',
+        "friendly_name",
+        "name",
     )
+
 
 class ArtistAdmin(admin.ModelAdmin):
     list_display = (
-        'name',
-        'selfie',
+        "name",
+        "selfie",
     )
 
 

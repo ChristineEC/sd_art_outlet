@@ -2,24 +2,63 @@
   <ul class="navbar-nav mx-auto py-0">
     <li class="nav-item active">
       <!--Need to deal with the sr-only class appropriately. Not done yet-->
-      <a class="nav-link font-weight-bold text-white px-5" href="{% url 'home' %}" id="home-link">Home <span class="sr-only">(current)</span></a>
+      <a
+        class="nav-link font-weight-bold text-white px-5"
+        href="{% url 'home' %}"
+        id="home-link"
+        >Home <span class="sr-only">(current)</span></a
+      >
     </li>
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle font-weight-bold text-white px-5" href="#" id="artworks-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a
+        class="nav-link dropdown-toggle font-weight-bold text-white px-5"
+        href="#"
+        id="artworks-link"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
         Gallery
       </a>
       <div class="dropdown-menu border-0" aria-labelledby="artwork-links">
-        <a class="dropdown-item" href="{% url 'artworks' %}?medium=oiloncanvas,acryliconcanvas,watercolor">Paintings</a>
-        <a class="dropdown-item" href="{% url 'artworks' %}?medium=oiloncanvas">Oil on Canvas</a>
-        <a class="dropdown-item" href="{% url 'artworks' %}?medium=acryliconcanvas">Acrylic on Canvas</a>
-        <a class="dropdown-item" href="{% url 'artworks' %}?medium=watercolor">Watercolor</a>
-        <a class="dropdown-item" href="{% url 'artworks' %}?medium=photography">Photography</a>
+        <a
+          class="dropdown-item"
+          href="{% url 'artworks' %}?medium=oiloncanvas,acryliconcanvas,watercolor"
+          >Paintings</a
+        >
+        <a class="dropdown-item" href="{% url 'artworks' %}?medium=oiloncanvas"
+          >Oil on Canvas</a
+        >
+        <a
+          class="dropdown-item"
+          href="{% url 'artworks' %}?medium=acryliconcanvas"
+          >Acrylic on Canvas</a
+        >
+        <a class="dropdown-item" href="{% url 'artworks' %}?medium=watercolor"
+          >Watercolor</a
+        >
+        <a class="dropdown-item" href="{% url 'artworks' %}?medium=photography"
+          >Photography</a
+        >
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="{% url 'artworks'%}?medium=oiloncanvas,acryliconcanvas,watercolor,photography">All Artworks</a>
+        <a
+          class="dropdown-item"
+          href="{% url 'artworks'%}?medium=oiloncanvas,acryliconcanvas,watercolor,photography"
+          >All Artworks</a
+        >
       </div>
     </li>
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle font-weight-bold text-white px-5" href="#" id="artists-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a
+        class="nav-link dropdown-toggle font-weight-bold text-white px-5"
+        href="#"
+        id="artists-link"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
         Artists
       </a>
       <div class="dropdown-menu">
@@ -30,7 +69,15 @@
       </div>
     </li>
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle font-weight-bold text-white px-5" href="#" id="custom-order-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a
+        class="nav-link dropdown-toggle font-weight-bold text-white px-5"
+        href="#"
+        id="custom-order-link"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
         Custom-Order
       </a>
       <div class="dropdown-menu">
@@ -40,7 +87,12 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link font-weight-bold text-white px-5" href="#" id="events-link" role="button">
+      <a
+        class="nav-link font-weight-bold text-white px-5"
+        href="#"
+        id="events-link"
+        role="button"
+      >
         Collaboration Request
       </a>
     </li>
