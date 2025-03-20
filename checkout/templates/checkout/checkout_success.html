@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" />
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+  <div class="row">
+    <div class="col"></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<main>
+  <div class="container">
+    <div class="row">
+        <div class="col mx-auto text-center">
+            <hr>
+            <h1 class="display-4 josephine-sans">Thank you!</h1>
+            <hr>
+            <p>Your order information is below.
+                A confirmation email has been sent to 
+                <strong>{{ order.email }}</strong>
+            </p>  
+        </div>
+    </div>
+    <div class="row">
+      <div class="col">
+
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-7 text-right">
+            <a href="{% url 'home' %}" class="btn my-2">
+                <span class="icon mr-2">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </span>
+                <span>Now check out our upcoming events!</span>
+            </a>
+        </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

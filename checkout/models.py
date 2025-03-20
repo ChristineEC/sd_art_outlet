@@ -34,11 +34,15 @@ class Order(models.Model):
     def update_total(self):
         """Update the grand total of the order each time
         a lineitem is added to the order"""
-        self.order_total = self.lineitems.aggregate(Sum())
+        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
+        self.grand_total = self.order_total
+        self.save()
 
     def save(self, *args, **kwargs):
-        """Override the orginal save method to set the order
-        number if it hasn't been set already"""
+        """
+        Override the orginal save method to set the order
+        number if it hasn't been set already
+        """
         if not self.order_number:
             self.order_number = self._generate_order_number()
         super().save(*args, **kwargs)
@@ -53,11 +57,19 @@ class OrderLineItem(models.Model):
                               related_name='lineitems')
     artwork = models.ForeignKey(Artwork, null=False, blank=False,
                                 on_delete=models.CASCADE)
-    quantity = models.IntegerField(null=False, blank=False, default=1)
+    quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(max_digits=7,
                                          decimal_places=2,
                                          null=False, blank=False,
                                          editable=False)
+
+    def save(self, *args, **kwargs):
+        """
+        Override the original save method to set the lineitem total
+        and update the order total
+        """
+        self.lineitem_total = self.artwork.price * self.quantity
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f'{self.artwork.title} on order number \

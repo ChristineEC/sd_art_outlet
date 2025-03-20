@@ -29,8 +29,7 @@ def add_to_cart(request, item_id):
             f"{artwork.title} by {artwork.artist} is already in your cart!",
         )
     else:
-        quantity = 1
-        cart[item_id] = quantity
+        cart[item_id] = 1
         messages.success(
             request,
             f"{artwork.title} has been added to your \
@@ -47,7 +46,6 @@ def remove_from_cart(request, item_id):
     try:
         artwork = get_object_or_404(Artwork, pk=item_id)
         cart = request.session.get("cart", {})
-        print("request received")
         cart.pop(item_id)
         messages.success(request, f"Removed {artwork.title} from your cart!")
 
