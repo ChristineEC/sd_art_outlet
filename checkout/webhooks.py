@@ -8,7 +8,6 @@ from checkout.webhook_handler import StripeWH_Handler
 import json
 import stripe
 
-
 @require_POST
 @csrf_exempt
 def webhook(request):
@@ -32,8 +31,6 @@ def webhook(request):
         return HttpResponse(content=e, status=400)
     except Exception as e:
         return HttpResponse(content=e, status=400)
-
-    return HttpResponse(status=200)
 
     handler = StripeWH_Handler(request)
 
