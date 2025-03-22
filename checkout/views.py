@@ -24,7 +24,7 @@ def cache_checkout_data(request):
         print('ok so far from cache_checkout_data function')
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, 'Sorry, your payment cannot be \
+        messages.error(request, f'Sorry, your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
 
@@ -62,17 +62,17 @@ def checkout(request):
                         )
                         order_line_item.save()
                 except Artwork.DoesNotExist:
-                    messages.error(request, (
-                        "One of the items in your cart wasn't found \
-                            in our database. Please call us for \
-                            assistance!")
-                    )
+                    messages.error(
+                        request, 
+                        f"One of the items in your cart wasn't found \
+                        in our database. Please call us for \
+                        assistance!")
                     order.delete()
                     return redirect(reverse('view_cart'))
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
-            messages.error(request, 'There was an error with your form. \
+            messages.error(request, f'There was an error with your form. \
                 Please double check your information.')
     else:
         cart = request.session.get("cart", {})
@@ -96,7 +96,7 @@ def checkout(request):
         order_form = OrderForm()
 
         if not stripe_public_key:
-            messages.warning(request, 'Stripe public key is missing. \
+            messages.warning(request, f'Stripe public key is missing. \
                 Did you forget to set it in your environment?')
 
         template = "checkout/checkout.html"
@@ -115,7 +115,7 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    messages.success(request, 'Order successfully processed! \
+    messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
 
