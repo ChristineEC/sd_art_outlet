@@ -21,7 +21,7 @@ def cache_checkout_data(request):
             'save_info': request.POST.get('save_info'),
             'username': request.user,
         })
-        print('ok so far from cache_checkout_data function')
+        print('ok so far from the `cache_checkout_data` function')
         return HttpResponse(status=200)
     except Exception as e:
         messages.error(request, f'Sorry, your payment cannot be \
