@@ -21,13 +21,20 @@ class OrderAdmin(admin.ModelAdmin):
               'email', 'phone_number', 'street_address1',
               'street_address2', 'town_or_city', 'state',
               'postcode', 'country', 'order_total',
-              'discount', 'grand_total',
+              'discount', 'grand_total', 'original_cart',
+              'stripe_pid',
               )
 
-    list_display = ('order_number', 'date', 'full_name',
-                    'order_total', 'discount',
-                    'grand_total',
-                    )
+    list_display = (
+        "order_number",
+        "date",
+        "full_name",
+        "order_total",
+        "discount",
+        "grand_total",
+        "original_cart",
+        "stripe_pid",
+    )
     ordering = ('-date',)
 
 
