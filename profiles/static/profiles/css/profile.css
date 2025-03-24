@@ -3,13 +3,12 @@
     overflow-y: auto;
 }
 
-
 .profile-update-form .form-control {
     color: #000,
 }
 
 .profile-update-form input::placeholder {
-    color: #808080;
+    color: #d3d3d3;
 }
 
 #id_default_country,
@@ -18,5 +17,5 @@
 }
 
 #id-default-country option:first-child {
-    color: #808080;
+    color: #d3d3d3;
 }
