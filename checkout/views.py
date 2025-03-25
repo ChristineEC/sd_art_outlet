@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404,
+    HttpResponse)
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -69,10 +71,12 @@ def checkout(request):
                         order_line_item.save()
                 except Artwork.DoesNotExist:
                     messages.error(
-                        request, (
-                        "One of the items in your "
-                        "cart wasn't found in our database. "
-                        "Please call us for assistance!")
+                        request,
+                        (
+                            "One of the items in your "
+                            "cart wasn't found in our database. "
+                            "Please call us for assistance!"
+                        ),
                     )
                     order.delete()
                     return redirect(reverse('view_cart'))
@@ -108,13 +112,13 @@ def checkout(request):
                 order_form = OrderForm(initial={
                     'full_name': profile.user.get_full_name(),
                     'email': profile.user.email,
-                    "phone_number": profile.default_phone_number,
-                    "street_address1": profile.default_street_address1,
-                    "street_address2": profile.default_street_address2,
-                    "town_or_city": profile.default_town_or_city,
-                    "state": profile.default_state,
-                    "postcode": profile.default_postcode,
-                    "country": profile.default_country,
+                    'phone_number': profile.default_phone_number,
+                    'street_address1': profile.default_street_address1,
+                    'street_address2': profile.default_street_address2,
+                    'town_or_city': profile.default_town_or_city,
+                    'state': profile.default_state,
+                    'postcode': profile.default_postcode,
+                    'country': profile.default_country,
                 })
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()
@@ -130,8 +134,8 @@ def checkout(request):
 
         template = "checkout/checkout.html"
         context = {
-            "order_form": order_form,
-            "stripe_public_key": stripe_public_key,
+            'order_form': order_form,
+            'stripe_public_key': stripe_public_key,
             'client_secret': intent.client_secret,
         }
 
@@ -152,13 +156,13 @@ def checkout_success(request, order_number):
 
         if save_info:
             profile_data = {
-                "default_phone_number": order.phone_number,
-                "default_street_address1": order.street_address1,
-                "default_street_address2": order.street_address2,
-                "default_town_or_city": order.town_or_city,
-                "default_state": order.state,
-                "default_postcode": order.postcode,
-                "default_country": order.country,
+                'default_phone_number': order.phone_number,
+                'default_street_address1': order.street_address1,
+                'default_street_address2': order.street_address2,
+                'default_town_or_city': order.town_or_city,
+                'default_state': order.state,
+                'default_postcode': order.postcode,
+                'default_country': order.country,
             }
             user_profile_form = UserProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():

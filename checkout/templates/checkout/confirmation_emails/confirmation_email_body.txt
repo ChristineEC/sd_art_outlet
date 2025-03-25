@@ -1,0 +1,36 @@
+Hello {{ order.full_name }}!
+
+Thank you for shopping with us!
+This is a confirmation of your order at San Diego Art Outlet. 
+
+Your order information is below:
+
+Order Number: {{ order.order_number }}
+Amount: ${{ order.grand_total }}
+
+IMPORTANT!
+As we deliver only within the United States, please verify that
+the shipping information that we have for you (below) is a 
+U.S. address. If it is not, we will be contacting you again to either arrange
+a time and place for you to pick up your item in San Diego or to help
+you cancel your order for a full refund. If you want your item
+to be shipped to a U.S. territory, we can do so for a fee.
+
+The shipping information you provided is as follows:
+Street Address: {{ order.street_address1 }}
+Street Address2: {{ order.street_address2 }}
+City: {{ order.town_or_city }}
+Post Code: {{ order.postcode }}
+State or Locality: {{ order.state }}
+Country: {{ order.country }}
+
+Your phone number: {{ order.phone_number }}
+
+If you have any questions, feel free to contact us at {{ contact_email }}.
+We will be happy to help you!
+
+Thanks again for your order!
+
+Sincerely,
+
+San Diego Art Outlet

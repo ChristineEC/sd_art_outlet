@@ -9,7 +9,7 @@ from django_countries.fields import CountryField
 from artworks.models import Artwork
 from profiles.models import UserProfile
 
- 
+
 class Order(models.Model):
     order_number = models.CharField(
                                     max_length=32,
