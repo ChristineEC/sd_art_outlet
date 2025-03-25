@@ -16,14 +16,14 @@
         <div class="row">
             <div class="col text-center">
                 <h1 class="logo-font py-1">
-                    Welcome to our Art Gallery
+                    Get to Know Our Current Artists
                 </h1>
                 <h3 class="josephine-sans">
                     We're adding new art &ndash; and new artists &ndash; all the time!
                 </h3>
                 <h5 class="josephine-sans">
-                     For more inspiration, check out our individual artist's pages,
-                      which include their past works as well!
+                     For inspiration, check out our individual artist's pages,
+                      showcasing their past, present and evolving work.
                 </h5>
                 <hr class="w-50 mb-1">
             </div>
@@ -32,24 +32,24 @@
             <div class="product-container col-10 offset-1">
                 <div class="row mt-1 mb-2"></div>
                 <div class="row">
-                    {% for artwork in artworks %}
+                    {% for artist in artists %}
                         <div class="col-sm-10 offset-sm-1 col-md-6 col-lg-4 col-xl-3 mb-5">
                             <div class="card w-100 border-0">
-                                {% if artwork.image %}
-                                <a href="{% url 'artwork_detail' artwork.id %}">
+                                {% if artist.selfie %}
+                                <a href="{% url 'artist' artist.id %}">
                                    <img class="card-img-top img-fluid"
-                                    src="{{ artwork.image.url }}" 
-                                    alt="{{ artwork.image_alt }}"> 
+                                    src="{{ artist.selfie.url }}" 
+                                    alt="{{ artist.image_alt }}"> 
                                 </a>
                                 {% else %}
-                                <a href="{% url 'artwork_detail' artwork.id %}">
+                                <a href="{% url 'artist' artist.id %}">
                                    <img class="card-img-top img-fluid"
                                    src="{{ MEDIA_URL }}noimage.png"
-                                   alt="{{ artwork.image_alt }}"> 
+                                   alt="{{ artist.image_alt }}"> 
                                 </a>
                                 {% endif %}
                                 <div class="card-body pb-0">
-                                    <p class="mb-0 artwork-title">{{ artwork.title }}</p>
+                                    <p class="mb-0 artwork-title">{{ artist.name }}</p>
                                 </div>
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">

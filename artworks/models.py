@@ -20,11 +20,11 @@ class Medium(models.Model):
 
 class Artist(models.Model):
     name = models.CharField(max_length=254)
+    mini_bio = models.CharField(max_length=250, null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
     selfie_url = models.URLField(max_length=1024, null=True, blank=True)
     selfie = models.ImageField(null=True, blank=True)
     image_alt = models.CharField(max_length=254, default="Image of the artist")
-
 
     def __str__(self):
         return self.name
