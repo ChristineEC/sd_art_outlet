@@ -18,35 +18,44 @@
 <main>
     <div class="container-fluid">
         <div class="row">
-            <div class="col d-flex justify-content-center">
-                <a href="{% url 'artworks' %}" class="btn shop-now-button btn-large my-2">
-                    Shop Now!
-                </a>
+            <div class="col d-flex justify-content-center align-center">
+                <a href="{% url 'artworks' %}"
+                    class="btn shop-now-button btn-large py-3">Shop Now!</a>
             </div>
         </div>
         <div class="row my-2 px-2">
             <div class="col-12 col-md-6 col-xl-3 my-1 d-flex justify-content-center">
-                <img class="img-fluid my-1" src="{{ MEDIA_URL }}multicolored-abstract-painting.jpg" alt="colorful abstract painting">
+                <img class="img-fluid my-1"
+                    src="{{ MEDIA_URL }}multicolored-abstract-painting.jpg"
+                    alt="colorful abstract painting">
             </div>
             <div class="col-12 col-md-6 col-xl-3 my-1 d-flex justify-content-center">
-                <img class="img-fluid my-1" src="{{ MEDIA_URL }}tropical-milkyway.jpg" alt="stunning photograph of the milkyway">
+                <img class="img-fluid my-1" src="{{ MEDIA_URL }}tropical-milkyway.jpg"
+                    alt="stunning photograph of the milkyway">
             </div>
              <div class="col-12 col-md-6 col-xl-3 d-flex my-1 justify-content-center">
-                <img class="img-fluid my-1" src="{{ MEDIA_URL }}urban-sky.jpg" alt="artistic photo of the urban sky">
+                <img class="img-fluid my-1" src="{{ MEDIA_URL }}urban-sky.jpg"
+                    alt="artistic photo of the urban sky">
             </div>
             <div class="col-12 col-md-6 col-xl-3 d-flex my-1 justify-content-center">
-                <img class="img-fluid my-1" src="{{ MEDIA_URL }}abstract-orange-painting.jpg" alt="artistic photo of the urban sky">
+                <img class="img-fluid my-1" src="{{ MEDIA_URL }}abstract-orange-painting.jpg"
+                    alt="artistic photo of the urban sky">
             </div>
         </div>
         <div class="row">
             <div class="col mt-5 d-flex justify-content-center">
-                <h2 class="josefin-sans-subheader">Explore our full gallery to discover the many styles and mediums we have to offer!</h3>
+                <h2 class="josefin-sans-subheader">
+                    Explore our full gallery to discover the many 
+                    styles and mediums we have to offer!</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
-                <button class="btn shop-now-button btn-large my-2 mx-auto" href="{% url 'artworks' %}" aria-label="link to shop all available art">
-                    Visit Gallery</button>
+                <button class="btn shop-now-button btn-large my-2 mx-auto"
+                    href="{% url 'artworks' %}"
+                    aria-label="link to shop all available art">
+                    Visit Gallery
+                </button>
             </div>
         </div>
         <div class="row">

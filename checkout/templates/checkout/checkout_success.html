@@ -65,17 +65,18 @@
           <div class="row">
             <div class="col-6">
               <small class="text-muted my-1">Delivering To:</small>
-              <p class="mb-0">{{ order.full_name }}</p>
-              <p class="mb-0"><small>{{ order.street_address1 }}</small></p>
+              <p class="my-0">{{ order.full_name }}</p>
+              <p class="my-0"><small>{{ order.street_address1 }}</small></p>
               {% if order.street_address2 %}
-                <p class="mb-0"><small>{{ order.street_address2 }}</small></p>
+                <p class="my-0"><small>{{ order.street_address2 }}</small></p>
               {% endif %}
-              <p class="mb-0"><small>{{ order.town_or_city }}</small></p>
+              <p class="my-0">
+                <small>{{ order.town_or_city }}</small>
               {% if order.state %}
-                <p class="mb-0"><small>{{ order.state }}</small></p>
+                <p class="my-0"><small>{{ order.state }}</small></p>
               {% endif %}
-              <p class="mb-0"><small>{{ order.postcode }} {{ order.country }}</small></p>
-              <p class="mb-1"><small>Phone: {{ order.phone_number }}</small></p>
+              <p class="my-0"><small>{{ order.postcode }} {{ order.country }}</small></p>
+              <p class="my-0"><small>Phone: {{ order.phone_number }}</small></p>
             </div>
             <div class="col-6">
               <p class="text-muted mt-2 mb-1"><small>Billing Info:</small></p>
@@ -90,23 +91,21 @@
           {% if from_profile %}
           <div class="col text-right mb-0">
             <a href="{% url 'profile' %}" class="btn btn-primary my-2">
-              <span class="icon mr-2">
+              <span class="icon mr-1">
                 <i class="fas fa-angle-left"></i>
               </span>
-              <span>Back to Profile</span>
+              <span class="mr-2">Back to Profile</span>
             </a>
           </div>
           {% else %}
-          <div class="col-8 text-right my-3">
-            <p><strong>Now, check out our upcoming events!</strong></p>
-          </div>
-          <div class="col-4 text-left align-center">
+          <div class="col text-center my-3 mx-auto">
+            <!-- <p><strong>Now, check out our upcoming events!</strong></p> -->
             <a href="{% url 'home' %}" class="btn btn-primary my-2">
-              <span class="icon mr-2">
+              <span class="icon">
                 <i class="fa-solid fa-calendar-days"></i>
               </span>
               <!-- Revise depending on whether the events model is used -->
-              <span>Events</span>
+              <span>Check out our upcoming events!</span>
             </a>
           </div>
           {% endif %}
