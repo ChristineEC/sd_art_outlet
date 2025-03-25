@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+  <div class="row">
+    <div class="col mx-auto text-center">
+      <h1 class="display-4 josephine-sans">Artworks Management</h1>
+      <h2 class="display-5 josephine-sans">Add an Artwork</h2>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 mx-auto">
+            <form method="POST" action ="{% url 'add_artwork' %}" class="form mb-2" enctype="multipart/form-data">
+                {{ form|crispy }}
+                <div class="text-center">
+                    <a href="{% url 'artworks' %}" class="btn btn-warning text-uppercase font-weight-bold px-3">Cancel</a>
+                    <button class="btn btn-primary text-uppercase font-weight-bold
+                                text-right mx-3 px-3" type="submit">Add Art
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Artwork, Medium, Artist
+from .forms import ArtworkForm
 
 
 def artwork_for_sale(request):
@@ -48,3 +49,14 @@ def artist_page(request, artist_id):
     context = {"artists", artists}
 
     return render(request, "artworks/artists/artist.html", context)
+
+
+def add_artwork(request):
+    """Add an artwork from the front end"""
+    form = ArtworkForm()
+    template = 'artworks/add_artwork.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)

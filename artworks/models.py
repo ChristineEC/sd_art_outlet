@@ -25,7 +25,11 @@ class Artist(models.Model):
     selfie = models.ImageField(null=True, blank=True)
     image_alt = models.CharField(max_length=254, default="Image of the artist")
 
+
     def __str__(self):
+        return self.name
+
+    def get_artist_name(self):
         return self.name
 
 
