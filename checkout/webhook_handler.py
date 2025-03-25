@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from . models import Order, OrderLineItem
 from artworks.models import Artwork
+from profiles.models import UserProfile
 
 import json
 import time
@@ -39,27 +40,43 @@ class StripeWH_Handler:
         shipping_details = intent.shipping
         grand_total = round(stripe_charge.amount / 100, 2)
 
+        # Clean data in the shipping_details
         for field, value in shipping_details.address.items():
             if value == '':
                 shipping_details.address[field] = None
+
+        # Update profile information if save_info was checked
+        profile = None
+        username = intent.metadata.username
+        if username != 'AnonymousUser':
+            if save_info:
+                profile = UserProfile.objects.get(user__username=username)
+                profile.default_phone_number = shipping_details.phone,
+                profile.default_street_address1 = shipping_details.address.line1,
+                profile.default_street_address2 = shipping_details.address.line2,
+                profile.default_town_or_city = shipping_details.address.city,
+                profile.default_state = shipping_details.address.state,
+                profile.default_postcode = shipping_details.address.postal_code,
+                profile.default_country = shipping_details.address.country,
+                profile.save()
 
         order_exists = False
         attempt = 1
         while attempt <= 5:
             try:
                 order = Order.objects.get(
-                    full_name__iexact=shipping_details.name,
-                    email__iexact=billing_details.email,
-                    phone_number__iexact=shipping_details.phone,
-                    street_address1__iexact=shipping_details.address.line1,
-                    street_address2__iexact=shipping_details.address.line2,
-                    town_or_city__iexact=shipping_details.address.city,
-                    state__iexact=shipping_details.address.state,
-                    postcode__iexact=shipping_details.address.postal_code,
-                    country__iexact=shipping_details.address.country,
-                    grand_total=grand_total,
-                    original_cart=cart,
-                    stripe_pid=pid,
+                    full_name__iexact = shipping_details.name,
+                    email__iexact = billing_details.email,
+                    phone_number__iexact = shipping_details.phone,
+                    street_address1__iexact = shipping_details.address.line1,
+                    street_address2__iexact = shipping_details.address.line2,
+                    town_or_city__iexact = shipping_details.address.city,
+                    state__iexact = shipping_details.address.state,
+                    postcode__iexact = shipping_details.address.postal_code,
+                    country__iexact = shipping_details.address.country,
+                    grand_total = grand_total,
+                    original_cart = cart,
+                    stripe_pid = pid,
                 )
                 order_exists = True
                 break
@@ -77,17 +94,18 @@ class StripeWH_Handler:
             order = None
             try:
                 order = Order.objects.create(
-                    full_name=shipping_details.name,
-                    email=billing_details.email,
-                    phone_number=shipping_details.phone,
-                    street_address1=shipping_details.address.line1,
-                    street_address2=shipping_details.address.line2,
-                    town_or_city=shipping_details.address.city,
-                    state=shipping_details.address.state,
-                    postcode=shipping_details.address.postal_code,
-                    country=shipping_details.address.country,
-                    original_cart=cart,
-                    stripe_pid=pid,
+                    full_name = shipping_details.name,
+                    user_profile = profile,
+                    email = billing_details.email,
+                    phone_number = shipping_details.phone,
+                    street_address1 = shipping_details.address.line1,
+                    street_address2 = shipping_details.address.line2,
+                    town_or_city = shipping_details.address.city,
+                    state = shipping_details.address.state,
+                    postcode = shipping_details.address.postal_code,
+                    country = shipping_details.address.country,
+                    original_cart = cart,
+                    stripe_pid = pid,
                 )
                 for item_id, item_data in json.loads(cart).items():
                     artwork = Artwork.objects.get(id=item_id)
