@@ -48,7 +48,7 @@ def add_artwork(request):
             if not request.FILES:
                 artwork = form.save(commit=False)
                 artwork.status = 3
-                form.save()
+                artwork = form.save()
                 messages.success(request,
                     ('Your artwork has been saved with a status of pending. '
                      'You can change the status to "for-sale" or "sold" or "past work" '
@@ -56,12 +56,11 @@ def add_artwork(request):
                      'This is to prevent artworks appearing on the site with no image! '
                      'The object can be accessed from your artist page.'
                     ))
-                return redirect(reverse('add_artwork'))
+                return redirect(reverse('artwork_detail', args=[artwork.id]))
             else:
-                form.save()
-                print('the artwork has an image')
+                artwork = form.save()
                 messages.success(request, 'Successfully added artwork!')
-                return redirect(reverse('add_artwork'))
+                return redirect(reverse('artwork_detail', args=[artwork.id]))
         else:
             messages.error(request, (
                 'Failed to add product. Please ensure the form is valid'))
@@ -82,7 +81,7 @@ def update_artwork(request, artwork_id):
     if request.method == 'POST':
         form = ArtworkForm(request.POST, request.FILES, instance=artwork)
         if form.is_valid:
-            form.save()
+            artwork = form.save()
             messages.success(request, f'{artwork.title} has been updated')
             return redirect(reverse('artwork_detail', args=[artwork.id]))
         else:
@@ -100,6 +99,14 @@ def update_artwork(request, artwork_id):
     }
 
     return render(request, template, context)
+
+
+def delete_artwork(request, artwork_id):
+    """Delete an artwork from the shop and gallery"""
+    artwork = get_object_or_404(Artwork, pk=artwork_id)
+    artwork.delete()
+    messages.success(request, 'Artwork deleted!')
+    return redirect(reverse('artworks'))
 
 
 def artist_page(request, artist_id):
