@@ -17,7 +17,7 @@
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false">
-        Gallery
+        Shop
       </a>
       <div class="dropdown-menu border-0" aria-labelledby="artwork-links">
         <a class="dropdown-item"
@@ -39,7 +39,40 @@
         </a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item"
-          href="{% url 'artworks'%}">All Artworks</a>
+          href="{% url 'artworks'%}">All Available Art</a>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle font-weight-bold text-white px-5"
+        href="#"
+        id="artworks-link"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false">
+        Full Gallery
+      </a>
+      <div class="dropdown-menu border-0 border-black" aria-labelledby="artwork-links">
+        <a class="dropdown-item"
+          href="{% url 'full_gallery' %}?medium=oiloncanvas,acryliconcanvas,watercolor">
+          Paintings
+        </a>
+        <a class="dropdown-item" href="{% url 'full_gallery' %}?medium=oiloncanvas">
+          Oil on Canvas
+        </a>
+        <a class="dropdown-item"
+          href="{% url 'full_gallery' %}?medium=acryliconcanvas">
+          Acrylic on Canvas
+        </a>
+        <a class="dropdown-item" href="{% url 'full_gallery' %}?medium=watercolor">
+          Watercolor
+        </a>
+        <a class="dropdown-item" href="{% url 'full_gallery' %}?medium=photography">
+          Photography
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item"
+          href="{% url 'full_gallery' %}">Full Gallery</a>
       </div>
     </li>
     <li class="nav-item dropdown">
@@ -52,40 +85,35 @@
         aria-haspopup="true"
         aria-expanded="false"
       >
-        Artists
+        Our Artists
       </a>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="#">Kayla Bliss</a>
         <a class="dropdown-item" href="#">Michele Domingo</a>
         <a class="dropdown-item" href="#">JoAnn Louise</a>
         <a class="dropdown-item" href="#">Cris Sotomayor</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item"
+          href="{% url 'all_artists' %}">All Artists</a>
       </div>
     </li>
     <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle font-weight-bold text-white px-5"
+      <a class="nav-link dropdown-toggle font-weight-bold text-white px-5"
         href="#"
         id="custom-order-link"
         role="button"
         data-toggle="dropdown"
         aria-haspopup="true"
-        aria-expanded="false"
-      >
-        Custom-Order
+        aria-expanded="false">Custom-Order
       </a>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="#">Custom-Order Inquiry Form</a>
         <a class="dropdown-item" href="#">Consultation Request</a>
-        <a class="dropdown-item" href="#">Frequently Asked Questions</a>
       </div>
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link font-weight-bold text-white px-5"
-        href="#"
-        id="events-link"
-        role="button">
-        Collaboration Request
+      <a class="nav-link font-weight-bold text-white px-5"
+        href="#" id="events-link" role="button">Work with Us!
       </a>
     </li>
   </ul>

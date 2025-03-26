@@ -24,6 +24,27 @@ def artwork_for_sale(request):
         "current_mediums": mediums,
     }
 
+    return render(request, "artworks/shop.html", context)
+
+def full_gallery(request):
+    """A view to display all artworks for sale
+    (excludes those already sold),
+    including sorting by medium"""
+
+    artworks = Artwork.objects.all()
+    mediums = None
+
+    if request.GET:
+        if "medium" in request.GET:
+            mediums = request.GET["medium"].split(",")
+            artworks = artworks.filter(medium__name__in=mediums)
+            mediums = Medium.objects.filter(name__in=mediums)
+
+    context = {
+        "artworks": artworks,
+        "current_mediums": mediums,
+    }
+
     return render(request, "artworks/gallery.html", context)
 
 
