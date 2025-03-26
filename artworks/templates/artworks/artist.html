@@ -79,19 +79,26 @@
                         <div class="card-footer bg-white pt-0 border-0 text-left">
                             <div class="row">
                                 <div class="col">
-                                {% if artwork.status == 1 %}
-                                    <p class="lead mb-0 text-left font-weight-bold">
-                                    ${{ artwork.price }}
-                                    </p>
-                                {% elif artwork.status == 2 %}
-                                    <p class="lead mb-0 text-left font-weight-bold">
-                                        SOLD
-                                    </p>
-                                {% endif %}
+                                    {% if artwork.status == 1 %}
+                                        <p class="lead mb-0 text-left font-weight-bold">
+                                        ${{ artwork.price }}
+                                        </p>
+                                    {% else %}
+                                        <p class="lead mb-0 text-left font-weight-bold">
+                                            SOLD
+                                        </p>
+                                    {% endif %}
                                     <small class="text-muted">
                                         <i class="fa-solid fa-hashtag"></i>
                                         {{ artwork.medium.friendly_name }}
-                                    </small><br>
+                                    </small>
+                                    {% if request.user.is_superuser or request.user == artist %}
+                                        <br>
+                                        <small class="ml-3">
+                                            <a href="{% url 'update_artwork' artwork.id %}">Update Artwork</a> | 
+                                            <a class="text-danger" href="{% url 'delete_artwork' artwork.id %}">Delete</a>
+                                        </small>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -99,36 +106,40 @@
                 {% else %}
                     {% if request.user == artist or request.user.is_superuser %}
                         <div class="col-sm-10 offset-sm-1 col-md-6 col-lg-4 col-xl-3 mb-5">
-                        <div class="card w-100 border-0">
-                            {% if artwork.image %}
-                                <a href="{% url 'artwork_detail' artwork.id %}">
-                                    <img class="card-img-top img-fluid"
-                                    src="{{ artwork.image.url }}" 
-                                    alt="{{ artwork.image_alt }}"> 
-                                </a>
-                            {% else %}
-                                <a href="{% url 'artwork_detail' artwork.id %}">
-                                    <img class="card-img-top img-fluid"
-                                    src="{{ MEDIA_URL }}noimage.png"
-                                    alt="{{ artwork.image_alt }}"> 
-                                </a>
-                            {% endif %}
-                        <div class="card-body pb-0">
-                            <p class="mb-0 artwork-title">{{ artwork.title }}</p>
-                        </div>
-                        <div class="card-footer bg-white pt-0 border-0 text-left">
-                            <div class="row">
-                                <div class="col">
-                                    <p class="lead mb-0 text-left font-weight-bold">
-                                    ${{ artwork.price }}
-                                    </p>
-                                    <small class="text-muted">
-                                        <i class="fa-solid fa-hashtag"></i>
-                                        {{ artwork.medium.friendly_name }}
-                                    </small><br>
-                                    <p class="lead mb-0 text-left font-weight-bold">
-                                        status: PENDING
-                                    </p>
+                            <div class="card w-100 border-0">
+                                {% if artwork.image %}
+                                    <a href="{% url 'artwork_detail' artwork.id %}">
+                                        <img class="card-img-top img-fluid"
+                                        src="{{ artwork.image.url }}" 
+                                        alt="{{ artwork.image_alt }}"> 
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'artwork_detail' artwork.id %}">
+                                        <img class="card-img-top img-fluid"
+                                        src="{{ MEDIA_URL }}noimage.png"
+                                        alt="{{ artwork.image_alt }}"> 
+                                    </a>
+                                {% endif %}
+                            <div class="card-body pb-0">
+                                <p class="mb-0 artwork-title">{{ artwork.title }}</p>
+                            </div>
+                            <div class="card-footer bg-white pt-0 border-0 text-left">
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="lead mb-0 text-left font-weight-bold">
+                                        ${{ artwork.price }}
+                                        </p>
+                                        <small class="text-muted">
+                                            <i class="fa-solid fa-hashtag"></i>
+                                            {{ artwork.medium.friendly_name }}
+                                        </small><br>
+                                        <p class="lead mb-0 text-left font-weight-bold">
+                                            status: PENDING
+                                        </p>
+                                        <small class="ml-3">
+                                            <a href="{% url 'update_artwork' artwork.id %}">Update Artwork</a> | 
+                                            <a class="text-danger" href="{% url 'delete_artwork' artwork.id %}">Delete</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
