@@ -41,12 +41,13 @@ def artwork_detail(request, artwork_id):
 def artist_page(request, artist_id):
     """A view to display an individual artist's page"""
 
-    if request.GET:
-        artist = get_object_or_404(Artist, pk=artist_id)
+    artist = get_object_or_404(Artist, pk=artist_id)
+    artworks = Artwork.objects.filter(artist=artist)
+    template = 'artworks/artist.html'
 
-    context = {"artist", artist}
+    context = {"artist": artist, 'artworks': artworks}
 
-    return render(request, "artworks/artists/artist.html", context)
+    return render(request, template, context)
 
 
 def add_artwork(request):

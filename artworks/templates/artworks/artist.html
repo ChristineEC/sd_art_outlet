@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="artist-container col-10 offset-1">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                {% if artist.image %}
+                    <a href="{{ artwork.image.url }}">
+                        <img class="img img-fluid artist-image" src="{{ artist.selfie.url }}" alt="{{ artist.image_alt }}"> 
+                    </a>
+                {% else %}
+                    <a href="">
+                        <img class="img img-fluid artist-image" src="{{ MEDIA_URL }}noimage.png" alt="Missing an image of the artist"> 
+                    </a>
+                {% endif %}
+            <div class="col-12 col-md-6">
+                <div class="row">
+                    <div class="col">
+                        <p>{{ artist.name }}</p>
+                        <hr>
+                        <article>{{ artist.bio }}</article>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="row">
+            {% for artwork in artworks %}
+                <div class="col-sm-10 offset-sm-1 col-md-6 col-lg-4 col-xl-3 mb-5">
+                    <div class="card w-100 border-0">
+                        {% if artwork.image %}
+                            <a href="{% url 'artwork_detail' artwork.id %}">
+                                <img class="card-img-top img-fluid"
+                                src="{{ artwork.image.url }}" 
+                                alt="{{ artwork.image_alt }}"> 
+                            </a>
+                        {% else %}
+                            <a href="{% url 'artwork_detail' artwork.id %}">
+                                <img class="card-img-top img-fluid"
+                                src="{{ MEDIA_URL }}noimage.png"
+                                alt="{{ artwork.image_alt }}"> 
+                            </a>
+                        {% endif %}
+                    <div class="card-body pb-0">
+                        <p class="mb-0 artwork-title">{{ artwork.title }}</p>
+                    </div>
+                    <div class="card-footer bg-white pt-0 border-0 text-left">
+                        <div class="row">
+                            <div class="col">
+                            {% if artwork.status == 1 %}
+                                <p class="lead mb-0 text-left font-weight-bold">
+                                  ${{ artwork.price }}
+                                </p>
+                            {% else %}
+                                <p class="lead mb-0 text-left font-weight-bold">
+                                    SOLD
+                                </p>
+                            {% endif %}
+                                <small class="text-muted">
+                                    <i class="fa-solid fa-hashtag"></i>
+                                    {{ artwork.medium.friendly_name }}
+                                </small><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
