@@ -1,11 +1,24 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'artworks/css/artworks.css' %}" />
+{% endblock %}
+
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
-            <div class="col">
+            <div class="col text-center">
+                <h1 class="display-4 josephine-sans">
+                    The Artist's Page
+                </h1>
             </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h2 class="display-6 josephine-sans my-2">{{ artist }}</h2>
+            </div>
+                
         </div>
     </div>
 {% endblock %}
@@ -14,8 +27,8 @@
     <div class="artist-container col-10 offset-1">
         <div class="row">
             <div class="col-12 col-md-6">
-                {% if artist.image %}
-                    <a href="{{ artwork.image.url }}">
+                {% if artist.selfie %}
+                    <a href="{{ artwork.selfie.url }}">
                         <img class="img img-fluid artist-image" src="{{ artist.selfie.url }}" alt="{{ artist.image_alt }}"> 
                     </a>
                 {% else %}
@@ -23,14 +36,23 @@
                         <img class="img img-fluid artist-image" src="{{ MEDIA_URL }}noimage.png" alt="Missing an image of the artist"> 
                     </a>
                 {% endif %}
+            </div>
             <div class="col-12 col-md-6">
                 <div class="row">
                     <div class="col">
-                        <p>{{ artist.name }}</p>
-                        <hr>
-                        <article>{{ artist.bio }}</article>
+                        <p><strong>{{ artist.name }}</strong></p>
                     </div>
-                </div> 
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <article>{{ artist.bio }}</article>        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr>
             </div>
         </div>
         <div class="row">
