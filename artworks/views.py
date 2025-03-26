@@ -1,4 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, reverse, redirect, get_object_or_404
+from django.contrib import messages
+
 from .models import Artwork, Medium, Artist
 from .forms import ArtworkForm
 
@@ -38,6 +40,42 @@ def artwork_detail(request, artwork_id):
     return render(request, "artworks/artwork_detail.html", context)
 
 
+def add_artwork(request):
+    """Add an artwork from the front end"""
+    if request.method == 'POST':
+        form = ArtworkForm(request.POST, request.FILES)
+        if form.is_valid():
+            if not request.FILES:
+                artwork = form.save(commit=False)
+                artwork.status = 3
+                form.save()
+                messages.success(request,
+                    ('Your artwork has been saved with a status of pending. '
+                     'You can change the status to "for-sale" or "sold" or "past work" '
+                     'when you attach an image file. '
+                     'This is to prevent artworks appearing on the site with no image! '
+                     'The object can be accessed from your artist page.'
+                    ))
+                return redirect(reverse('add_artwork'))
+            else:
+                form.save()
+                print('the artwork has an image')
+                messages.success(request, 'Successfully added artwork!')
+                return redirect(reverse('add_artwork'))
+        else:
+            messages.error(request, (
+                'Failed to add product. Please ensure the form is valid'))
+    else:
+        form = ArtworkForm()
+
+    template = 'artworks/add_artwork.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+
+
 def artist_page(request, artist_id):
     """A view to display an individual artist's page"""
 
@@ -46,17 +84,6 @@ def artist_page(request, artist_id):
     template = 'artworks/artist.html'
 
     context = {"artist": artist, 'artworks': artworks}
-
-    return render(request, template, context)
-
-
-def add_artwork(request):
-    """Add an artwork from the front end"""
-    form = ArtworkForm()
-    template = 'artworks/add_artwork.html'
-    context = {
-        'form': form,
-    }
 
     return render(request, template, context)
 
