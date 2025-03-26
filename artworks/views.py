@@ -76,6 +76,32 @@ def add_artwork(request):
     return render(request, template, context)
 
 
+def update_artwork(request, artwork_id):
+    """Update an artwork"""
+    artwork = get_object_or_404(Artwork, pk=artwork_id)
+    if request.method == 'POST':
+        form = ArtworkForm(request.POST, request.FILES, instance=artwork)
+        if form.is_valid:
+            form.save()
+            messages.success(request, f'{artwork.title} has been updated')
+            return redirect(reverse('artwork_detail', args=[artwork.id]))
+        else:
+            messages.error(request, (
+                    'Failed to update the artwork. '
+                    'Please ensure the form is valid.'))
+    else:
+        form = ArtworkForm(instance=artwork)
+        messages.info(request, f'Your are updating {artwork.title}')
+
+    template = 'artworks/update_artwork.html'
+    context = {
+        'form': form,
+        'artwork': artwork,
+    }
+
+    return render(request, template, context)
+
+
 def artist_page(request, artist_id):
     """A view to display an individual artist's page"""
 
