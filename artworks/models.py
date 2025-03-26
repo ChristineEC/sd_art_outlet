@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 STATUS = (
     (1, "for_sale"),
     (2, "sold"),
+    (3, "pending"),
 )
 
 
