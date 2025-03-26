@@ -10,43 +10,36 @@
       >
     </li>
     <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle font-weight-bold text-white px-5"
+      <a class="nav-link dropdown-toggle font-weight-bold text-white px-5"
         href="#"
         id="artworks-link"
         role="button"
         data-toggle="dropdown"
         aria-haspopup="true"
-        aria-expanded="false"
-      >
+        aria-expanded="false">
         Gallery
       </a>
       <div class="dropdown-menu border-0" aria-labelledby="artwork-links">
-        <a
-          class="dropdown-item"
-          href="{% url 'artworks' %}?medium=oiloncanvas,acryliconcanvas,watercolor"
-          >Paintings</a
-        >
-        <a class="dropdown-item" href="{% url 'artworks' %}?medium=oiloncanvas"
-          >Oil on Canvas</a
-        >
-        <a
-          class="dropdown-item"
-          href="{% url 'artworks' %}?medium=acryliconcanvas"
-          >Acrylic on Canvas</a
-        >
-        <a class="dropdown-item" href="{% url 'artworks' %}?medium=watercolor"
-          >Watercolor</a
-        >
-        <a class="dropdown-item" href="{% url 'artworks' %}?medium=photography"
-          >Photography</a
-        >
+        <a class="dropdown-item"
+          href="{% url 'artworks' %}?medium=oiloncanvas,acryliconcanvas,watercolor">
+          Paintings
+        </a>
+        <a class="dropdown-item" href="{% url 'artworks' %}?medium=oiloncanvas">
+          Oil on Canvas
+        </a>
+        <a class="dropdown-item"
+          href="{% url 'artworks' %}?medium=acryliconcanvas">
+          Acrylic on Canvas
+        </a>
+        <a class="dropdown-item" href="{% url 'artworks' %}?medium=watercolor">
+          Watercolor
+        </a>
+        <a class="dropdown-item" href="{% url 'artworks' %}?medium=photography">
+          Photography
+        </a>
         <div class="dropdown-divider"></div>
-        <a
-          class="dropdown-item"
-          href="{% url 'artworks'%}?medium=oiloncanvas,acryliconcanvas,watercolor,photography"
-          >All Artworks</a
-        >
+        <a class="dropdown-item"
+          href="{% url 'artworks'%}">All Artworks</a>
       </div>
     </li>
     <li class="nav-item dropdown">
@@ -91,8 +84,7 @@
         class="nav-link font-weight-bold text-white px-5"
         href="#"
         id="events-link"
-        role="button"
-      >
+        role="button">
         Collaboration Request
       </a>
     </li>

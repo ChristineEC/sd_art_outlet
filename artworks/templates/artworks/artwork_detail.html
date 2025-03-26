@@ -20,11 +20,12 @@
                         <a href="{{ artwork.image.url }}">
                             <img class="card-img-top img-fluid" src="{{ artwork.image.url }}" alt="{{ artwork.image_alt }}"> 
                         </a>
-                        {% else %}
+                    {% else %}
+                    <!-- include a custom 500 error here, as no items without images should appear on the public site -->
                         <a href="">
                             <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ artwork.image_alt }}"> 
                         </a>
-                        {% endif %}
+                    {% endif %}
                 <div class="card-body">
                     <!--Add a field to artwork model for proportional images and replace url here with that -->
                     <a href="{{ artwork.image.url }}" target="_blank" class="mt-0 text-center">View full image</a>
