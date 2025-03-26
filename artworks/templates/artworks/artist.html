@@ -26,18 +26,15 @@
 {% block content %}
     <div class="artist-container col-10 offset-1">
         <div class="row">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-4 justify-content-center">
                 {% if artist.selfie %}
-                    <a href="{{ artwork.selfie.url }}">
-                        <img class="img img-fluid artist-image" src="{{ artist.selfie.url }}" alt="{{ artist.image_alt }}"> 
-                    </a>
+                    <img class="img img-fluid artist-image" src="{{ artist.selfie.url }}" alt="{{ artist.image_alt }}"> 
                 {% else %}
-                    <a href="">
-                        <img class="img img-fluid artist-image" src="{{ MEDIA_URL }}noimage.png" alt="Missing an image of the artist"> 
-                    </a>
+                    <img class="img img-fluid artist-image" src="{{ MEDIA_URL }}noimage.png" alt="Missing an image of the artist"> 
+
                 {% endif %}
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8 px-5">
                 <div class="row">
                     <div class="col">
                         <p><strong>{{ artist.name }}</strong></p>
@@ -73,6 +70,7 @@
                                     alt="{{ artwork.image_alt }}"> 
                                 </a>
                             {% endif %}
+                        </div>
                         <div class="card-body pb-0">
                             <p class="mb-0 artwork-title">{{ artwork.title }}</p>
                         </div>
@@ -85,14 +83,15 @@
                                         </p>
                                     {% else %}
                                         <p class="lead mb-0 text-left font-weight-bold">
-                                            SOLD
+                                            <del>${{ artwork.price }}</del>
+                                            <span class="text-danger">SOLD</span>
                                         </p>
                                     {% endif %}
                                     <small class="text-muted">
                                         <i class="fa-solid fa-hashtag"></i>
                                         {{ artwork.medium.friendly_name }}
                                     </small>
-                                    {% if request.user.is_superuser or request.user == artist %}
+                                    {% if request.user.is_superuser or request.user == artwork.artist.user %}
                                         <br>
                                         <small class="ml-3">
                                             <a href="{% url 'update_artwork' artwork.id %}">Update Artwork</a> | 
@@ -103,8 +102,9 @@
                             </div>
                         </div>
                     </div>
-                {% else %}
-                    {% if request.user == artist or request.user.is_superuser %}
+                {% endif %}
+                {% if request.user.is_superuser or request.user == artwork.artist.user %}
+                    {% if artwork.status == 3 %}
                         <div class="col-sm-10 offset-sm-1 col-md-6 col-lg-4 col-xl-3 mb-5">
                             <div class="card w-100 border-0">
                                 {% if artwork.image %}
@@ -116,10 +116,11 @@
                                 {% else %}
                                     <a href="{% url 'artwork_detail' artwork.id %}">
                                         <img class="card-img-top img-fluid"
-                                        src="{{ MEDIA_URL }}noimage.png"
-                                        alt="{{ artwork.image_alt }}"> 
+                                            src="{{ MEDIA_URL }}noimage.png"
+                                            alt="{{ artwork.image_alt }}"> 
                                     </a>
                                 {% endif %}
+                            </div>
                             <div class="card-body pb-0">
                                 <p class="mb-0 artwork-title">{{ artwork.title }}</p>
                             </div>
@@ -127,7 +128,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <p class="lead mb-0 text-left font-weight-bold">
-                                        ${{ artwork.price }}
+                                            ${{ artwork.price }}
                                         </p>
                                         <small class="text-muted">
                                             <i class="fa-solid fa-hashtag"></i>
@@ -135,19 +136,19 @@
                                         </small><br>
                                         <p class="lead mb-0 text-left font-weight-bold">
                                             status: PENDING
-                                        </p>
+                                            </p>
                                         <small class="ml-3">
                                             <a href="{% url 'update_artwork' artwork.id %}">Update Artwork</a> | 
                                             <a class="text-danger" href="{% url 'delete_artwork' artwork.id %}">Delete</a>
+                                        </small>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     {% endif %}
                 {% endif %}
+            {% endfor %}       
             </div>
-            {% endfor %}
         </div>
     </div>
 {% endblock %}
