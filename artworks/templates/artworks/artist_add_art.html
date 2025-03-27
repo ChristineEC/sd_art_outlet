@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+  <div class="row">
+    <div class="col mx-auto text-center">
+      <h1 class="display-4 josephine-sans">Add an Artwork</h1>
+      <h2 class="display-5 josephine-sans">With You as the Artist!</h2>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 mx-auto">
+            <form method="POST" id=artist-add-art-form 
+                action ="#" class="form mb-2" 
+                enctype="multipart/form-data">
+              {% csrf_token %}  
+              {{ form|crispy }}
+                <div class="text-center">
+                    <a id="back-to-artist-page" 
+                        class="back-to-artist-page btn btn-warning 
+                            font-weight-bold text-uppercase px-4"
+                         href="#"
+                        aria-lable="cancel and go back to artist page">Cancel
+                    </a>
+                    <button class="btn btn-success text-uppercase font-weight-bold
+                                text-right mx-3 px-3" type="submit">Add Artwork
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block postload_js %}
+  {{ block.super }}
+  <script src="{% static 'artworks/js/artist.js' %}"></script>
+{% endblock %}

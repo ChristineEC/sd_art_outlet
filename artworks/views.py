@@ -63,34 +63,40 @@ def artwork_detail(request, artwork_id):
 
 def add_artwork(request):
     """Add an artwork from the front end"""
-    if request.method == 'POST':
+    if request.method == "POST":
         form = ArtworkForm(request.POST, request.FILES)
         if form.is_valid():
             if not request.FILES:
                 artwork = form.save(commit=False)
                 artwork.status = 3
                 artwork = form.save()
-                messages.success(request,
-                    ('Your artwork has been saved with a status of pending. '
-                     'You can change the status to "for-sale" or "sold" or "past work" '
-                     'when you attach an image file. '
-                     'This is to prevent artworks appearing on the site with no image! '
-                     'The object can be accessed from your artist page.'
-                    ))
-                return redirect(reverse('artwork_detail', args=[artwork.id]))
+                messages.success(
+                    request,
+                    (
+                        'Artwork saved with status "pending" because '
+                        "no image was attached. You can access the object from "
+                        "the artist page to update it with an image and change "
+                        "the status so it can appear publicly."
+                    ),
+                )
+                return redirect(reverse("artwork_detail", args=[artwork.id]))
             else:
                 artwork = form.save()
-                messages.success(request, 'Successfully added artwork!')
-                return redirect(reverse('artwork_detail', args=[artwork.id]))
+                messages.success(request, "Successfully added artwork!")
+                return redirect(reverse("artwork_detail", args=[artwork.id]))
         else:
-            messages.error(request, (
-                'Failed to add product. Please ensure the form is valid'))
+            messages.error(
+                request,
+                (
+                    "Failed to add artwork. Please ensure the form is valid"
+                )
+            )
     else:
         form = ArtworkForm()
 
-    template = 'artworks/add_artwork.html'
+    template = "artworks/add_artwork.html"
     context = {
-        'form': form,
+        "form": form,
     }
 
     return render(request, template, context)
@@ -130,9 +136,22 @@ def delete_artwork(request, artwork_id):
     return redirect(reverse('artworks'))
 
 
-def artist_page(request, artist_id):
-    """A view to display an individual artist's page"""
+# -------------------------------Artist section
+def all_artists(request):
+    """
+    View to display all current artists"
+    """
+    artists = Artist.objects.all()
+    template = 'artworks/artists.html'
+    context = {"artists": artists}
 
+    return render(request, template, context)
+
+
+def artist_page(request, artist_id):
+    """
+    A view to display an individual artist's page
+    """
     artist = get_object_or_404(Artist, pk=artist_id)
     artworks = Artwork.objects.filter(artist=artist)
     template = 'artworks/artist.html'
@@ -141,13 +160,43 @@ def artist_page(request, artist_id):
 
     return render(request, template, context)
 
+def artist_add_art(request, artist_id):
+    """View to allow artists to add an artwork as artist"""
+    if request.method == "GET":
+        artist = get_object_or_404(Artist, pk=artist_id)
+        form = ArtworkForm()
+    if request.method == "POST":
+        print(artist_id)
+        artist = get_object_or_404(Artist, pk=artist_id)
+        form = ArtworkForm(request.POST, request.FILES)
+        if form.is_valid():
+            artwork = form.save(commit=False)
+            artwork.artist = artist
+            artwork.status = 3
+            artwork = form.save()
+            messages.success(
+                request,
+                (
+                    "Your artwork has been saved with a status of "
+                    "'pending' to allow you to review its online "
+                    "appearance before publishing. Once you are "
+                    "satisfied with its appearance, you can "
+                    "update the object's status from this page "
+                )
+            )
+            return redirect(reverse("artist_page", args=[artist.id]))
+        else:
+            messages.error(
+                request,
+                ("Failed to add artwork. Please ensure the form is valid")
+            )
+    else:
+        form = ArtworkForm()
 
-def all_artists(request):
-    """
-    View to display all current artists"
-    """
-    artists = Artist.objects.all()
-    template = 'artworks/artists.html'
-    context = {"artists": artists}
+    template = "artworks/artist_add_art.html"
+    context = {
+        "form": form,
+        "artist": artist,
+    }
 
     return render(request, template, context)

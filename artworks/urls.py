@@ -7,6 +7,8 @@ urlpatterns = [
     path('add/', views.add_artwork, name='add_artwork'),
     path('artists/', views.all_artists, name='all_artists'),
     path('artist/<int:artist_id>/', views.artist_page, name="artist_page"),
+    path('artist_add_art/<int:artist_id>/',
+         views.artist_add_art, name='artist_add_art'),
     path('delete/<int:artwork_id>/', views.delete_artwork,
          name='delete_artwork'),
     path('gallery/', views.full_gallery, name='full_gallery'),
