@@ -1,11 +1,11 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 from django.contrib import messages
 from .models import ContactUs
 from .forms import ContactUsForm
 
 
-def contact_us_message(request):
+def contact_us(request):
     """
     Enables a site visitor to send a 
     message to the business without
@@ -20,20 +20,24 @@ def contact_us_message(request):
             form.save()
             messages.success(
                 request,
-                ('Thank you for your message, {name}! '
-                'We will reply as soon as we can to '
-                '{email}. Our records show that you entered '
-                '{phone} as your phone number. We hope '
-                'you have a wonderful day! '
+                (
+                    'Thank you for your message, {name}! '
+                    'We will reply as soon as we can to '
+                    '{email}. Our records show that you entered '
+                    '{phone} as your phone number. We hope '
+                    'you have a wonderful day! '
+                )
             )
-            HttpResponseRedirect('home.index.html')
+            HttpResponseRedirect(reverse('home/index.html'))
         else:
             messages.error(
                            request,
-                           ('There seems to be a problem with '
-                           'your form. Please ensure you have '
-                           'filled in the required fields!'
-                          )
+                           (
+                            'There seems to be a problem with '
+                            'your form. Please ensure you have '
+                            'filled in the required fields!'
+                           )
+            )
     else:
         form = ContactUsForm
 

@@ -15,17 +15,22 @@
   <div class="dropdown-menu border-0" aria-labelledby="user-options">
     {% if request.user.is_authenticated %} 
       {% if request.user.is_superuser %}
-        <a href="{% url 'add_artwork' %}" class="dropdown-item">Product Management</a>
+        <a href="{% url 'add_artwork' %}" 
+          class="dropdown-item" aria-label="link-to-artworks-management">
+           Artworks Management
+          </a>
       {% endif %}
-      <a href="#" class="dropdown-item text-black">My Profile</a>
-      <a href="{% url 'account_logout' %}" class="dropdown-item text-black">
-        Logout
+      <a href="#" class="dropdown-item text-black"
+        aria-label="link-to-profile">My Profile</a>
+      <a href="{% url 'account_logout' %}" aria-label="link-to-logout"
+        class="dropdown-item text-black">Logout
       </a>
     {% else %}
-      <a href="{% url 'account_signup' %}" class="dropdown-item text-black"
-        >Register
+      <a href="{% url 'account_signup' %}" aria-label="link-to-register"
+        class="dropdown-item text-black">Register
       </a>
-      <a href="{% url 'account_login' %}" class="dropdown-item text-black">
+      <a href="{% url 'account_login' %}" aria-label="link-to-login"
+        class="dropdown-item text-black">
         Login
       </a>
     {% endif %}
@@ -34,6 +39,7 @@
 <li class="list-inline-item">
   <a
     class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link d-block d-lg-none"
+    aria-label="link-to-cart"
     href="{% url 'view_cart' %}">
     <div class="text-center">
       <div><i class="fas fa-cart-shopping fa-lg"></i></div>
