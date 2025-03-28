@@ -14,6 +14,7 @@
         href="#"
         id="artworks-link"
         role="button"
+        aria-label="dropdown-link-artwork-categories-in-shop"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false">
@@ -21,24 +22,29 @@
       </a>
       <div class="dropdown-menu border-0" aria-labelledby="artwork-links">
         <a class="dropdown-item"
+          aria-label="link-to-paintings"
           href="{% url 'artworks' %}?medium=oiloncanvas,acryliconcanvas,watercolor">
           Paintings
         </a>
-        <a class="dropdown-item" href="{% url 'artworks' %}?medium=oiloncanvas">
+        <a class="dropdown-item" aria-label="link-to-oil-on-canvas-paintings"
+        href="{% url 'artworks' %}?medium=oiloncanvas">
           Oil on Canvas
         </a>
-        <a class="dropdown-item"
+        <a class="dropdown-item" aria-label="link-to-acrylic-on-canvas-paintings"
           href="{% url 'artworks' %}?medium=acryliconcanvas">
           Acrylic on Canvas
         </a>
-        <a class="dropdown-item" href="{% url 'artworks' %}?medium=watercolor">
+        <a class="dropdown-item" aria-label="link-to-watercolor-paintings"
+        href="{% url 'artworks' %}?medium=watercolor">
           Watercolor
         </a>
-        <a class="dropdown-item" href="{% url 'artworks' %}?medium=photography">
+        <a class="dropdown-item" aria-label="link-to-photography"
+        href="{% url 'artworks' %}?medium=photography">
           Photography
         </a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item"
+          aria-label="link-to-all-art-in-shop"
           href="{% url 'artworks'%}">All Available Art</a>
       </div>
     </li>
@@ -47,56 +53,59 @@
         href="#"
         id="artworks-link"
         role="button"
+        aria-label="link-to-art-and-categories-in-full-gallery"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false">
         Full Gallery
       </a>
       <div class="dropdown-menu border-0 border-black" aria-labelledby="artwork-links">
-        <a class="dropdown-item"
+        <a class="dropdown-item" aria-label="link-to-paintings-in-gallery"
           href="{% url 'full_gallery' %}?medium=oiloncanvas,acryliconcanvas,watercolor">
           Paintings
         </a>
-        <a class="dropdown-item" href="{% url 'full_gallery' %}?medium=oiloncanvas">
+        <a class="dropdown-item" aria-label="link-to-oil-on-canvas-paintings-in-gallery"
+          href="{% url 'full_gallery' %}?medium=oiloncanvas">
           Oil on Canvas
         </a>
-        <a class="dropdown-item"
+        <a class="dropdown-item" aria-label="link-to-acrylic-paintings-in-gallery"
           href="{% url 'full_gallery' %}?medium=acryliconcanvas">
           Acrylic on Canvas
         </a>
         <a class="dropdown-item" href="{% url 'full_gallery' %}?medium=watercolor">
           Watercolor
         </a>
-        <a class="dropdown-item" href="{% url 'full_gallery' %}?medium=photography">
+        <a class="dropdown-item" aria-label="link-to-watercolor-paintings-in-gallery"
+          href="{% url 'full_gallery' %}?medium=photography">
           Photography
         </a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item"
+        <a class="dropdown-item" aria-label="link-to-full-gallery"
           href="{% url 'full_gallery' %}">Full Gallery</a>
       </div>
     </li>
     <li class="nav-item">
       <a class="nav-link font-weight-bold text-white px-5"
+        aria-label="link-to-our-artists"
         href="{% url 'all_artists' %}" id="events-link" role="button">Our Artists
       </a>
     </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle font-weight-bold text-white px-5"
-        href="#"
-        id="custom-order-link"
-        role="button"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false">Custom-Order
+    <li class="nav-item">
+      <a class="nav-link font-weight-bold text-white px-5"
+        href="" id="custom-order-inquiry-link" aria-label="custom-order-inquiry-link"
+        role="button">Custom Order Inquiry
       </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Custom-Order Inquiry Form</a>
-        <a class="dropdown-item" href="#">Consultation Request</a>
-      </div>
     </li>
     <li class="nav-item">
       <a class="nav-link font-weight-bold text-white px-5"
-        href="#" id="events-link" role="button">Work with Us!
+        aria-label="link-to-contact-us"
+        href="{% url 'contact_us' %}" id="contact-us" role="button">Contact Us
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link font-weight-bold text-white px-5"
+        aria-label="link-to-newsletter"
+        href="" id="events-link" role="button">Newsletter
       </a>
     </li>
   </ul>
