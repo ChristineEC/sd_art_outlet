@@ -1,8 +1,10 @@
-<div class="toast custom-toast bg-white" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+<div class="toast custom-toast bg-white" role="alert"
+  aria-live="assertive" aria-atomic="true" data-autohide="false">
   <div class="toast-header">
     <span class="icon"><i class="fa-solid fa-check"></i></span>
     <strong class="mr-auto text-success"> Success!</strong>
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+    <button type="button" class="ml-2 mb-1 close"
+      data-dismiss="toast" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -13,7 +15,9 @@
       </div>
     </div>
     {% if grand_total and not on_profile_page %}
-    <p class="py-1">Your Cart: {{ artwork_count }} item(s)</p>
+    <p class="py-1">
+      Your Cart: {{ artwork_count }} item(s)
+    </p>
     <div class="cart-notification-wrapper">
         {% for item in cart_items %}
           <div class="row">
@@ -38,9 +42,16 @@
           <hr>
           <div class="row">
             <div class="col">
-              <strong><p class="mt-2 mb-0">Total: ${{ grand_total|floatformat:2 }}</p></strong>
-              <p class="text-muted small mb-1">Includes delivery within the U.S.</p>
-              <a href="{% url 'view_cart' %}" class="btn btn-block btn-primary">
+              <strong>
+                <p class="mt-2 mb-0">
+                Total: ${{ grand_total|floatformat:2 }}
+                </p>
+              </strong>
+              <p class="text-muted small mb-1">
+                Includes tax and delivery within the U.S.
+              </p>
+              <a href="{% url 'view_cart' %}"
+                class="btn btn-block btn-primary">
                 <span>Go to Secure Checkout</span>
                 <span class="icon">
                   <i class="fas fa-lock"></i>

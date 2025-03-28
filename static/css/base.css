@@ -15,6 +15,11 @@ body {
     width: fit-content;
 }
 
+#main-nav {
+    background-color: rgb(70, 12, 230);
+    color:#fff;
+}
+
 /* Images */
 
 
