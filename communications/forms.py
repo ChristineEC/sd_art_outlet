@@ -1,4 +1,5 @@
 from django import forms
+from crispy_forms.helper import FormHelper
 from .models import ContactUs
 
 
@@ -10,9 +11,34 @@ class ContactUsForm(forms.ModelForm):
     class Meta:
         model = ContactUs
         fields = (
-            'name',
-            'email',
-            'phone',
-            'subject',
-            'message',
+            "name",
+            "email",
+            "phone",
+            "subject",
+            "message",
         )
+
+    def __init__(self, *args, **kwargs):
+        """Add placeholders, remove auto-generated
+        labels, and set autofocus on the first field"""
+
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        placeholders = {
+            "name": "Name",
+            "email": "Email",
+            "phone": "Phone Number",
+            "subject": "Subject",
+            "message": "Message",
+        }
+
+        self.fields["name"].widget.attrs["autofocus"] = True
+        for field in self.fields:
+            if self.fields[field].required:
+                placeholder = f"{placeholders[field]} *"
+            else:
+                placeholder = placeholders[field]
+            self.fields[field].widget.attrs["placeholder"] = placeholder
+        self.fields[field].widget.attrs["class"] = "contact-form-input"
+        self.helper.form_show_labels = False
+        

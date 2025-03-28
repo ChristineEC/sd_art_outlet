@@ -29,4 +29,4 @@ class ArtworkForm(forms.ModelForm):
         self.fields['medium'].choices = friendly_names
         self.fields['artist'].choices = artist_names
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = "border-black rounded-0"
+            field.widget.attrs['class'] = "border-black"
