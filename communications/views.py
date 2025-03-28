@@ -21,14 +21,12 @@ def contact_us(request):
             messages.success(
                 request,
                 (
-                    'Thank you for your message, {name}! '
-                    'We will reply as soon as we can to '
-                    '{email}. Our records show that you entered '
-                    '{phone} as your phone number. We hope '
-                    'you have a wonderful day! '
+                    'Thank you for your message! '
+                    'We will reply as soon as we can. '
+                    'Wishing you a lovely day!'
                 )
             )
-            HttpResponseRedirect(reverse('home/index.html'))
+            HttpResponseRedirect(reverse('home'))
         else:
             messages.error(
                            request,
