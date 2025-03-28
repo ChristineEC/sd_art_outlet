@@ -52,8 +52,7 @@ def remove_from_cart(request, item_id):
         request.session["cart"] = cart
         return HttpResponse(status=200)
 
-    except Exception as e:
-        print("there is a problem with this function")
+    except Exception:
         messages.error(
             request, f"Error removing {artwork.title} from your cart!"
         )

@@ -1,15 +1,17 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from .models import Artwork, Medium, Artist
 from .forms import ArtworkForm
 
 
 def artwork_for_sale(request):
-    """A view to display all artworks for sale
-    (excludes those already sold),
-    including sorting by medium"""
-
+    """
+    A view to display all artworks for sale
+    (excludes those already sold or pending),
+    including sorting by medium
+    """
     artworks = Artwork.objects.filter(status=1)
     mediums = None
 
@@ -26,11 +28,13 @@ def artwork_for_sale(request):
 
     return render(request, "artworks/shop.html", context)
 
-def full_gallery(request):
-    """A view to display all artworks for sale
-    (excludes those already sold),
-    including sorting by medium"""
 
+def full_gallery(request):
+    """
+    A view to display all artworks and sort by medium;
+    (Excluding those with status 'pending' occurs in
+    the template.)
+    """
     artworks = Artwork.objects.all()
     mediums = None
 
@@ -51,7 +55,6 @@ def full_gallery(request):
 def artwork_detail(request, artwork_id):
     """A view to display an individual
     piece of art, with full details"""
-
     artwork = get_object_or_404(Artwork, pk=artwork_id)
 
     context = {
@@ -61,8 +64,20 @@ def artwork_detail(request, artwork_id):
     return render(request, "artworks/artwork_detail.html", context)
 
 
+@login_required
 def add_artwork(request):
     """Add an artwork from the front end"""
+    if not request.user.is_superuser:
+        messages.error(
+            request,
+            (
+                "Sorry, only site owner can add artworks here."
+                " Artists may add artworks from "
+                "their artist page."
+            ),
+        )
+        return redirect(reverse("home"))
+
     if request.method == "POST":
         form = ArtworkForm(request.POST, request.FILES)
         if form.is_valid():
@@ -102,15 +117,44 @@ def add_artwork(request):
     return render(request, template, context)
 
 
+@login_required
 def update_artwork(request, artwork_id):
-    """Update an artwork"""
+    """
+    Allows superusers to update all
+    artworks.
+    """
+    if not request.user.is_superuser:
+        messages.error(
+            request,
+            (
+                'Sorry, only the site owner can '
+                'update artworks.'
+            ),
+        )
+        return redirect(reverse('home'))
+
     artwork = get_object_or_404(Artwork, pk=artwork_id)
     if request.method == 'POST':
         form = ArtworkForm(request.POST, request.FILES, instance=artwork)
         if form.is_valid:
-            artwork = form.save()
-            messages.success(request, f'{artwork.title} has been updated')
-            return redirect(reverse('artwork_detail', args=[artwork.id]))
+            if not request.FILES:
+                artwork = form.save(commit=False)
+                artwork.status = 3
+                artwork = form.save()
+                messages.success(
+                    request,
+                    (
+                        'Artwork saved with status "pending" because '
+                        "no image was attached. You can access the  "
+                        "object from artist page to update it with an image "
+                        "and change the status so it can appear publicly."
+                    )
+                )
+                return redirect(reverse('artwork_detail', args=[artwork.id]))
+            else:
+                form.save()
+                messages.success(request, f'{artwork.title} has been updated')
+                return redirect(reverse('artwork_detail', args=[artwork.id]))
         else:
             messages.error(request, (
                     'Failed to update the artwork. '
@@ -127,9 +171,23 @@ def update_artwork(request, artwork_id):
 
     return render(request, template, context)
 
-
+@login_required
 def delete_artwork(request, artwork_id):
-    """Delete an artwork from the shop and gallery"""
+    """
+    Delete an artwork from the database. Allows
+    superusers to delete anything, but artists
+    can only delete their own art and only those 
+    artworks that are still pending (not public)
+    """
+    if not request.user.is_superuser:
+        artwork = get_object_or_404(Artwork, pk=artwork_id)
+        artist = artwork.artist
+        if request.user == artist.user and artwork.status == 3:
+            artwork.delete()
+            messages.success(request, "Artwork deleted!")
+            return redirect(reverse('artworks'))
+        messages.error(request, 'Only authorized users can do this!')
+        return redirect(reverse('artworks'))
     artwork = get_object_or_404(Artwork, pk=artwork_id)
     artwork.delete()
     messages.success(request, 'Artwork deleted!')
@@ -160,8 +218,25 @@ def artist_page(request, artist_id):
 
     return render(request, template, context)
 
+
+@login_required
 def artist_add_art(request, artist_id):
-    """View to allow artists to add an artwork as artist"""
+    """View to allow artists to add an artwork,
+    but only as status pending and only as the artist
+    of that artwork
+    """
+    artist = get_object_or_404(Artist, pk=artist_id)
+    if not request.user.is_superuser:
+        if not request.user == artist.user:
+            messages.error(
+                request,
+                (
+                    "Sorry, only the site owner or authorized artist "
+                    "can add artworks."
+                ),
+            )
+            return redirect(reverse("home"))
+
     if request.method == "GET":
         artist = get_object_or_404(Artist, pk=artist_id)
         form = ArtworkForm()
