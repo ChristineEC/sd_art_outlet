@@ -49,11 +49,12 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    'home',
     'artworks',
     'cart',
     'checkout',
+    'communications',
     'crispy_forms',
+    'home',
     'profiles',
 ]
 
