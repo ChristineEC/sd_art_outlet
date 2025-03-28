@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, redirect
 from django.contrib import messages
 from .models import ContactUs
 from .forms import ContactUsForm
@@ -26,7 +26,7 @@ def contact_us(request):
                     'Wishing you a lovely day!'
                 )
             )
-            HttpResponseRedirect(reverse('home'))
+            return redirect('home')
         else:
             messages.error(
                            request,
