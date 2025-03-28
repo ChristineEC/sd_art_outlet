@@ -137,24 +137,9 @@ def update_artwork(request, artwork_id):
     if request.method == 'POST':
         form = ArtworkForm(request.POST, request.FILES, instance=artwork)
         if form.is_valid:
-            if not request.FILES:
-                artwork = form.save(commit=False)
-                artwork.status = 3
-                artwork = form.save()
-                messages.success(
-                    request,
-                    (
-                        'Artwork saved with status "pending" because '
-                        "no image was attached. You can access the  "
-                        "object from artist page to update it with an image "
-                        "and change the status so it can appear publicly."
-                    )
-                )
-                return redirect(reverse('artwork_detail', args=[artwork.id]))
-            else:
-                form.save()
-                messages.success(request, f'{artwork.title} has been updated')
-                return redirect(reverse('artwork_detail', args=[artwork.id]))
+            form.save()
+            messages.success(request, f'{artwork.title} has been updated')
+            return redirect(reverse('artwork_detail', args=[artwork.id]))
         else:
             messages.error(request, (
                     'Failed to update the artwork. '
