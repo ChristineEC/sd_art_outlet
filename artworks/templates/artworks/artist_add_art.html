@@ -19,8 +19,14 @@
             <form method="POST" id=artist-add-art-form 
                 action ="#" class="form mb-2" 
                 enctype="multipart/form-data">
-              {% csrf_token %}  
-              {{ form|crispy }}
+              {% csrf_token %}
+              {% for field in form %}
+                {% if field.name != 'image' %}
+                  {{ field | as_crispy_field }}
+                {% else %}
+                  {{ field }}
+                {% endif %}
+              {% endfor %}
                 <div class="text-center">
                     <a id="back-to-artist-page" 
                         class="back-to-artist-page btn btn-warning 

@@ -13,7 +13,11 @@ class ArtworkForm(forms.ModelForm):
         model = Artwork
         fields = '__all__'
 
-    image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
+    image = forms.ImageField(
+                             label='Image',
+                             required=False,
+                             widget=CustomClearableFileInput
+                            )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -25,4 +29,4 @@ class ArtworkForm(forms.ModelForm):
         self.fields['medium'].choices = friendly_names
         self.fields['artist'].choices = artist_names
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = "border-black"
+            field.widget.attrs['class'] = "border-black rounded-0"
