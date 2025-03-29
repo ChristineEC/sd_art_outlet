@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background: url('/media/watercolor-sky.jpg') no-repeat center fixed;
+    background: url('/static/images/watercolor-sky.jpg') no-repeat center fixed;
     background-size: cover;
     color: #000;
     font-family: "Josephin Sans", sans-serif;
