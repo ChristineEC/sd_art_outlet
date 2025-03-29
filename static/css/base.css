@@ -20,6 +20,11 @@ body {
 /* Navbar */
 .bg-blue {
     background-color: rgb(70, 12, 230);
+    margin-left: -18px;
+}
+
+.navbar-toggler-icon {
+    color: black !important;
 }
 
 /* Images */
@@ -98,6 +103,10 @@ body {
 .btn-black:focus {
     background: rgb(70, 12, 230);
     color:white;
+}
+
+.inline-link {
+    text-decoration: none;
 }
 
 .text-black {
@@ -183,7 +192,7 @@ body {
 
 @media (min-width:1200px) {
     .container {
-        max-width: 80%
+        max-width: 90%
     }
 }
 

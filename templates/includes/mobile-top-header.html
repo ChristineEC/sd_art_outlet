@@ -8,8 +8,8 @@
     aria-expanded="false"
   >
     <div class="text-center">
-      <div><i class="fas fa-user fa-lg"></i></div>
-      <p class="my-0">My Account</p>
+      <div><i class="fas fa-user fa-lg text-black"></i></div>
+      <p class="my-0 text-black">My Account</p>
     </div>
   </a>
   <div class="dropdown-menu border-0" aria-labelledby="user-options">
@@ -20,7 +20,7 @@
            Artworks Management
           </a>
       {% endif %}
-      <a href="#" class="dropdown-item text-black"
+      <a href="#" class="dropdown-item text-black inline-link"
         aria-label="link-to-profile">My Profile</a>
       <a href="{% url 'account_logout' %}" aria-label="link-to-logout"
         class="dropdown-item text-black">Logout
