@@ -4,11 +4,15 @@
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
-            <div class="col-xs-12 mx-auto text-center">
-                <h1 class="josefin-sans display-4">
+            <div class="col-xs-12 col-md-6">
+                <h1 class="josefin-sans display-6">
                     Affordable Original and Custom-Order Art
                 </h1>
-                <h2 class="josefin-sans display-4">by local San Diego Artists</h2>
+                <h2 class="josefin-sans display-6"><small>by local San Diego Artists</small></h2>
+            </div>
+            <div class="col-xs-12 col-md-6 float-right align-center my-5">
+                <a href="{% url 'artworks' %}"
+                    class="btn shop-now-button btn-large py-3">Shop Now!</a>
             </div>
         </div>
     </div>
@@ -16,29 +20,11 @@
 
 {% block content %}
     <div class="container-fluid">
-        <div class="row">
-            <div class="col d-flex justify-content-center align-center">
-                <a href="{% url 'artworks' %}"
-                    class="btn shop-now-button btn-large py-3">Shop Now!</a>
-            </div>
-        </div>
-        <div class="row my-2 px-2">
-            <div class="col-12 col-md-6 col-xl-3 my-1 d-flex justify-content-center">
-                <img class="img-fluid my-1"
-                    src="{{ MEDIA_URL }}multicolored-abstract-painting.jpg"
-                    alt="colorful abstract painting">
-            </div>
-            <div class="col-12 col-md-6 col-xl-3 my-1 d-flex justify-content-center">
-                <img class="img-fluid my-1" src="{{ MEDIA_URL }}tropical-milkyway.jpg"
-                    alt="stunning photograph of the milkyway">
-            </div>
-             <div class="col-12 col-md-6 col-xl-3 d-flex my-1 justify-content-center">
-                <img class="img-fluid my-1" src="{{ MEDIA_URL }}urban-sky.jpg"
-                    alt="artistic photo of the urban sky">
-            </div>
-            <div class="col-12 col-md-6 col-xl-3 d-flex my-1 justify-content-center">
-                <img class="img-fluid my-1" src="{{ MEDIA_URL }}abstract-orange-painting.jpg"
-                    alt="artistic photo of the urban sky">
+        <div class="row my-2 p-0">
+            <div class="col-12 p-0">
+                <img class="img-fluid w-100"
+                    src="{% static '/images/poppies.jpg' %}"
+                    alt="painted poppies watercolor">
             </div>
         </div>
         <div class="row">

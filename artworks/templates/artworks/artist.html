@@ -76,12 +76,10 @@
                                 </a>
                             {% endif %}
                         </div>
-                        <div class="card-body pb-0">
-                            <p class="mb-0 artwork-title">{{ artwork.title }}</p>
-                        </div>
                         <div class="card-footer bg-white pt-0 border-0 text-left">
                             <div class="row">
                                 <div class="col">
+                                    <p class="mb-0 mt-2 artwork-title">{{ artwork.title }}</p>
                                     {% if artwork.status == 1 %}
                                         <p class="lead mb-0 text-left font-weight-bold">
                                         ${{ artwork.price }}
@@ -89,7 +87,7 @@
                                     {% else %}
                                         <p class="lead mb-0 text-left font-weight-bold">
                                             <del>${{ artwork.price }}</del>
-                                            <span class="text-danger">SOLD</span>
+                                            <span class="text-danger">sold</span>
                                         </p>
                                     {% endif %}
                                     <small class="text-muted">
@@ -98,7 +96,7 @@
                                     </small>
                                     {% if request.user.is_superuser or request.user == artwork.artist.user %}
                                         <br>
-                                        <small class="ml-3">
+                                        <small class="mx-auto mt-3">
                                             <a href="{% url 'update_artwork' artwork.id %}">Update Artwork</a> | 
                                             <a class="text-danger" href="{% url 'delete_artwork' artwork.id %}">Delete</a>
                                         </small>
@@ -126,12 +124,10 @@
                                     </a>
                                 {% endif %}
                             </div>
-                            <div class="card-body pb-0">
-                                <p class="mb-0 artwork-title">{{ artwork.title }}</p>
-                            </div>
                             <div class="card-footer bg-white pt-0 border-0 text-left">
                                 <div class="row">
                                     <div class="col">
+                                        <p class="mb-0 mt-2 artwork-title">{{ artwork.title }}</p>
                                         <p class="lead mb-0 text-left font-weight-bold">
                                             ${{ artwork.price }}
                                         </p>
@@ -139,10 +135,10 @@
                                             <i class="fa-solid fa-hashtag"></i>
                                             {{ artwork.medium.friendly_name }}
                                         </small><br>
-                                        <p class="lead mb-0 text-left font-weight-bold">
-                                            status: PENDING
+                                        <p class="lead mb-0 text-left text-danger">
+                                            status: pending
                                             </p>
-                                        <small class="ml-3">
+                                        <small class="mx-auto mt-5">
                                             <a href="{% url 'update_artwork' artwork.id %}">Update Artwork</a> | 
                                             <a class="text-danger" href="{% url 'delete_artwork' artwork.id %}">Delete</a>
                                         </small>

@@ -3,11 +3,13 @@ html {
 }
 
 body {
-    color: rgb(35, 35, 35);
+    background: url('/media/watercolor-sky.jpg') no-repeat center fixed;
+    background-size: cover;
+    color: #000;
     font-family: "Josephin Sans", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
+    height: calc(100vh-145px);
+
 }
 
 .main-logo-link {
@@ -15,12 +17,17 @@ body {
     width: fit-content;
 }
 
-#main-nav {
+/* Navbar */
+.bg-blue {
     background-color: rgb(70, 12, 230);
-    color:#fff;
 }
 
 /* Images */
+.homepage-image-div {
+    background: url('static/images/poppies.jpg') no-repeat;
+    background-size: cover;
+    height: 100%;
+}
 
 
 /* Fonts */
