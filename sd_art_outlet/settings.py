@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 import dj_database_url
 from pathlib import Path
-
 if os.path.isfile("env.py"):
     import env
 
@@ -34,7 +33,7 @@ DEBUG = 'DEVELOPMENT' in os.environ
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    "san-diego-art-outlet-f42f26733790.herokuapp.com",
+    "san-diego-art-outlet-2960cce580c0.herokuapp.com",
 ]
 
 
