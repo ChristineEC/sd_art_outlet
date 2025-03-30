@@ -34,7 +34,7 @@ DEBUG = 'DEVELOPMENT' in os.environ
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    "san-diego-art-outlet-e1dd1ce6654c.herokuapp.com",
+    "san-diego-art-outlet-f42f26733790.herokuapp.com",
 ]
 
 
