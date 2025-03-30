@@ -1,0 +1,1 @@
+web: gunicorn sd_art_outlet.wsgi:application
