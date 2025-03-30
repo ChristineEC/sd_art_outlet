@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'checkout',
     'communications',
     'crispy_forms',
+    'crispy-bootstrap4',
     'home',
     'profiles',
 ]
@@ -71,6 +72,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "sd_art_outlet.urls"
+
+CRIPSY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
