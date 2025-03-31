@@ -30,14 +30,14 @@
         <div class="order-confirmation-wrapper p-2 border">
           <div class="row">
             <div class="col">
-              <p class="text-muted mt-1 mb-0"><small>Order Info:</small></p>
+              <p class="charcoal mt-1 mb-0"><small>Order Info:</small></p>
               <p class="mb-0">Order Number: {{ order.order_number }}</p>
               <p class="mb-0">Order Date: {{ order.date }}</p>
             </div>
           </div>
           <div class="row">
             <div class="col">
-              <p class="my-1 text-muted"><small>Order Details:</small></p>
+              <p class="my-1 charcoal"><small>Order Details:</small></p>
             </div>
           </div>
           {% for item in order.lineitems.all %}
@@ -63,7 +63,7 @@
           </div>
           <div class="row">
             <div class="col-6">
-              <small class="text-muted my-1">Delivering To:</small>
+              <small class="charcoal my-1">Delivering To:</small>
               <p class="my-0">{{ order.full_name }}</p>
               <p class="my-0"><small>{{ order.street_address1 }}</small></p>
               {% if order.street_address2 %}
@@ -78,7 +78,7 @@
               <p class="my-0"><small>Phone: {{ order.phone_number }}</small></p>
             </div>
             <div class="col-6">
-              <p class="text-muted mt-2 mb-1"><small>Billing Info:</small></p>
+              <p class="charcoal mt-2 mb-1"><small>Billing Info:</small></p>
               {% if order.discount %}
                 <p class="mb-0">Order Total: ${{ order.order_total }}</p>
                 <p class="mb-0">Discount: - ${{ order.discount }}</p>

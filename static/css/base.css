@@ -17,6 +17,10 @@ body {
     width: fit-content;
 }
 
+.charcoal {
+    color: rgb(125, 125, 124)
+}
+
 /* Navbar */
 .bg-blue {
     background-color: rgb(70, 12, 230);
