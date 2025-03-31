@@ -1,0 +1,34 @@
+[
+    {
+        "model": "artworks.medium",
+        "pk": 1,
+        "fields": {
+            "name": "oiloncanvas",
+            "friendly_name": "Oil on Canvas"
+        }
+    },
+    {
+        "model": "artworks.medium",
+        "pk": 2,
+        "fields": {
+            "name": "watercolor",
+            "friendly_name": "Watercolor"
+        }
+    },
+    {
+        "model": "artworks.medium",
+        "pk": 3,
+        "fields": {
+            "name": "photography",
+            "friendly_name": "Photography"
+        }
+    },
+    {
+        "model": "artworks.medium",
+        "pk": 4,
+        "fields": {
+            "name": "acryliconcanvas",
+            "friendly_name": "Acrylic on Canvas"
+        }
+    }
+]

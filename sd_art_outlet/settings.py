@@ -35,7 +35,8 @@ ALLOWED_HOSTS = [
     "san-diego-art-outlet-2960cce580c0.herokuapp.com",
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://8000:127.0.0.1']
+# CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000/']
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -126,26 +127,18 @@ WSGI_APPLICATION = "sd_art_outlet.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-# if "DATABASE_URL" in os.environ:
-#     DATABASES = {
-#         "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
-#     }
-# else:
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+
+if "DATABASE_URL" in os.environ:
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
-}
-
-
-# else:
-#     DATABASES = {
-#         "default": {
-#             "ENGINE": "django.db.backends.sqlite3",
-#             "NAME": BASE_DIR / "db.sqlite3",
-#         }
-#     }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 
 # Password validation

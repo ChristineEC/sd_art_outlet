@@ -1,0 +1,386 @@
+[
+    {
+        "model": "artworks.artwork",
+        "pk": 1,
+        "fields": {
+            "title": "Stormy Sea",
+            "medium": 1,
+            "artist": 1,
+            "dimensions": "36x36 in",
+            "price": "180.00",
+            "image_url": null,
+            "image": "ocean-detail-painting_450x450.jpg",
+            "status": 3,
+            "custom_made": false,
+            "image_alt": "closeup of a stormy sea surface in medium blue and white"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 2,
+        "fields": {
+            "title": "Northern Lights",
+            "medium": 3,
+            "artist": 3,
+            "dimensions": "25x35 in",
+            "price": "80.00",
+            "image_url": null,
+            "image": "northern-lights.jpg",
+            "status": 2,
+            "custom_made": false,
+            "image_alt": "bright green northern lights against dark blue sky"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 3,
+        "fields": {
+            "title": "Random Abstract",
+            "medium": 4,
+            "artist": 1,
+            "dimensions": "30x50 in",
+            "price": "153.00",
+            "image_url": null,
+            "image": "random-abstract.jpg",
+            "status": 1,
+            "custom_made": false,
+            "image_alt": "red and blue thick chaotic brushstrokes abstract"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 4,
+        "fields": {
+            "title": "Kaleidescope",
+            "medium": 4,
+            "artist": 4,
+            "dimensions": "48x48 in",
+            "price": "150.00",
+            "image_url": null,
+            "image": "kaleidescope.jpg",
+            "status": 1,
+            "custom_made": false,
+            "image_alt": "bright multicolored poured paint"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 5,
+        "fields": {
+            "title": "Flow State",
+            "medium": 4,
+            "artist": 4,
+            "dimensions": "48x48 inches",
+            "price": "195.00",
+            "image_url": null,
+            "image": "",
+            "status": 3,
+            "custom_made": false,
+            "image_alt": "trippy organic-looking poured paint mainly blue green and brown"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 6,
+        "fields": {
+            "title": "Galaxies Far",
+            "medium": 3,
+            "artist": 3,
+            "dimensions": "24x24 inches",
+            "price": "100.00",
+            "image_url": null,
+            "image": "galaxies-far.jpg",
+            "status": 1,
+            "custom_made": false,
+            "image_alt": "thousands of galaxies"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 7,
+        "fields": {
+            "title": "Poppies",
+            "medium": 2,
+            "artist": 2,
+            "dimensions": "36x48 in",
+            "price": "250.00",
+            "image_url": null,
+            "image": "painted-poppies.jpg",
+            "status": 1,
+            "custom_made": false,
+            "image_alt": "bright poppies watercolor painting"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 8,
+        "fields": {
+            "title": "Clouds",
+            "medium": 2,
+            "artist": 2,
+            "dimensions": "35x40 in",
+            "price": "100.00",
+            "image_url": null,
+            "image": "clouds.jpg",
+            "status": 1,
+            "custom_made": false,
+            "image_alt": "watercolor resembling white clouds in blue sky"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 9,
+        "fields": {
+            "title": "Ethereal Mushroom",
+            "medium": 3,
+            "artist": 3,
+            "dimensions": "24x10 in",
+            "price": "100.00",
+            "image_url": null,
+            "image": "ethereal-mushroom.jpg",
+            "status": 1,
+            "custom_made": false,
+            "image_alt": "smoke swirling up resembling a mushroom"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 10,
+        "fields": {
+            "title": "Tropical Milkyway",
+            "medium": 3,
+            "artist": 3,
+            "dimensions": "48x24 in",
+            "price": "350.00",
+            "image_url": null,
+            "image": "tropical-milkyway.jpg",
+            "status": 1,
+            "custom_made": false,
+            "image_alt": "bright milkyway with palmtrees silhouetted in foreground"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 11,
+        "fields": {
+            "title": "Urban Sky",
+            "medium": 3,
+            "artist": 3,
+            "dimensions": "52x36 inches",
+            "price": "190.00",
+            "image_url": null,
+            "image": "urban-sky.jpg",
+            "status": 1,
+            "custom_made": false,
+            "image_alt": "urban sky image"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 12,
+        "fields": {
+            "title": "Solar Eclipse",
+            "medium": 3,
+            "artist": 3,
+            "dimensions": "25x35 in",
+            "price": "150.00",
+            "image_url": null,
+            "image": "solar-eclipse.jpg",
+            "status": 1,
+            "custom_made": false,
+            "image_alt": "partial solar eclipse photo yellow against black background"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 13,
+        "fields": {
+            "title": "Coastal Milkyway",
+            "medium": 3,
+            "artist": 3,
+            "dimensions": "70x35 inches",
+            "price": "365.00",
+            "image_url": null,
+            "image": "coastal-milkyway.jpg",
+            "status": 1,
+            "custom_made": false,
+            "image_alt": "bright milkyway stretching above a beach entrance"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 14,
+        "fields": {
+            "title": "Multicolored Abstract",
+            "medium": 1,
+            "artist": 1,
+            "dimensions": "40x45 in",
+            "price": "150.00",
+            "image_url": null,
+            "image": "multicolored-abstract.jpg",
+            "status": 1,
+            "custom_made": false,
+            "image_alt": "multicolored abstract painting"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 15,
+        "fields": {
+            "title": "Pink and Blue Abstract",
+            "medium": 1,
+            "artist": 4,
+            "dimensions": "40x40 inches",
+            "price": "125.00",
+            "image_url": null,
+            "image": "pink-and-blue-abstract.jpg",
+            "status": 1,
+            "custom_made": false,
+            "image_alt": "pink and blue abstract painting"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 16,
+        "fields": {
+            "title": "Blue Abstract",
+            "medium": 1,
+            "artist": 1,
+            "dimensions": "36x48 inches",
+            "price": "175.00",
+            "image_url": null,
+            "image": "blue-abstract.jpg",
+            "status": 2,
+            "custom_made": false,
+            "image_alt": "blue abstract painting"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 54,
+        "fields": {
+            "title": "Watercolor Sky",
+            "medium": 2,
+            "artist": 2,
+            "dimensions": "10x15 in",
+            "price": "35.00",
+            "image_url": null,
+            "image": "watercolor-sky.jpg",
+            "status": 1,
+            "custom_made": false,
+            "image_alt": "light blue watercolor resembling a lightly cloudy sky"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 55,
+        "fields": {
+            "title": "Sunset Abstract",
+            "medium": 4,
+            "artist": 4,
+            "dimensions": "30x45 in",
+            "price": "125.00",
+            "image_url": null,
+            "image": "sunset-abstract.jpg",
+            "status": 1,
+            "custom_made": false,
+            "image_alt": null
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 56,
+        "fields": {
+            "title": "Beautiful Smoke",
+            "medium": 3,
+            "artist": 3,
+            "dimensions": "70x35 in",
+            "price": "275.00",
+            "image_url": null,
+            "image": "beautiful-smoke.jpg",
+            "status": 1,
+            "custom_made": false,
+            "image_alt": "backlit smoke rising against dark background"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 57,
+        "fields": {
+            "title": "Watercolor Landscape",
+            "medium": 2,
+            "artist": 2,
+            "dimensions": "30x30 in",
+            "price": "175.00",
+            "image_url": null,
+            "image": "watercolor-landscape.jpg",
+            "status": 1,
+            "custom_made": false,
+            "image_alt": "pink blue and white landscape-like watercolor"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 58,
+        "fields": {
+            "title": "Wispy Smoke",
+            "medium": 3,
+            "artist": 3,
+            "dimensions": "25x35 in",
+            "price": "150.00",
+            "image_url": null,
+            "image": "wispy-smoke.jpg",
+            "status": 1,
+            "custom_made": false,
+            "image_alt": "white smoke rising against a black background"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 59,
+        "fields": {
+            "title": "Moon Shot",
+            "medium": 3,
+            "artist": 3,
+            "dimensions": "40x50 in",
+            "price": "250.00",
+            "image_url": null,
+            "image": "moonshot.jpg",
+            "status": 1,
+            "custom_made": false,
+            "image_alt": "close up of the cratered moon"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 60,
+        "fields": {
+            "title": "Waterfalls",
+            "medium": 3,
+            "artist": 3,
+            "dimensions": "10x15 in",
+            "price": "45.00",
+            "image_url": null,
+            "image": "waterfalls.jpg",
+            "status": 1,
+            "custom_made": false,
+            "image_alt": "photo of a gorgeous waterfall"
+        }
+    },
+    {
+        "model": "artworks.artwork",
+        "pk": 61,
+        "fields": {
+            "title": "Neon Swirl",
+            "medium": 4,
+            "artist": 4,
+            "dimensions": "35x50 in",
+            "price": "210.00",
+            "image_url": null,
+            "image": "neon-swirl.jpg",
+            "status": 2,
+            "custom_made": false,
+            "image_alt": "neon blue and pink swirled painting"
+        }
+    }
+]

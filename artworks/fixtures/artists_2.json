@@ -1,0 +1,54 @@
+[
+    {
+        "model": "artworks.artist",
+        "pk": 1,
+        "fields": {
+            "name": "Kayla Bliss",
+            "user": null,
+            "mini_bio": null,
+            "bio": "",
+            "selfie_url": null,
+            "selfie": "artist-paint-hands.jpg",
+            "image_alt": "Kayla Bliss smiling and stretching out her paint-covered hands"
+        }
+    },
+    {
+        "model": "artworks.artist",
+        "pk": 2,
+        "fields": {
+            "name": "JoAnn Louise",
+            "user": null,
+            "mini_bio": null,
+            "bio": "",
+            "selfie_url": null,
+            "selfie": "watercolor-artist.jpg",
+            "image_alt": "Photo of JoAnn Louise with a watercolor set"
+        }
+    },
+    {
+        "model": "artworks.artist",
+        "pk": 3,
+        "fields": {
+            "name": "Michele Domingo",
+            "user": null,
+            "mini_bio": null,
+            "bio": "I fell in love with photography when ...",
+            "selfie_url": null,
+            "selfie": "artist-photographing_-sunset-300by300.jpg",
+            "image_alt": "Silhouette image of Michele Domingo photographing at sunset"
+        }
+    },
+    {
+        "model": "artworks.artist",
+        "pk": 4,
+        "fields": {
+            "name": "Cris Sotomayor",
+            "user": null,
+            "mini_bio": null,
+            "bio": "",
+            "selfie_url": null,
+            "selfie": "artist-painting.jpg",
+            "image_alt": "Image of Cris Sotomayor at work painting"
+        }
+    }
+]
