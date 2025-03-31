@@ -12,10 +12,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 import dj_database_url
+from pathlib import Path
 if os.path.isfile("env.py"):
     import env
 
-from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,6 +28,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
+
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -180,6 +181,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "/static/"
+
 STATICFILES_DIRS = (os.path.join(BASE_DIR / 'static'),)
 
 MEDIA_URL = '/media/'
@@ -189,16 +191,17 @@ if 'USE_AWS' in os.environ:
     AWS_STORAGE_BUCKET_NAME = 'sdartoutlet'
     AWS_S3_REGION_NAME = 'eu-north-1'
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET ACCESS_KEY")
-    AWS_S3_CUSTOM_DOMAIN = "sdartoutlet.s3.amazonaws.com"
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+    AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+
     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
     STATICFILES_LOCATION = 'static'
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
     MEDIAFILES_LOCATION = 'media'
     STATIC_URL = (
-        "https://sdartoutlet.s3.amazonaws.com/static/"
+        f"https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/"
     )
-    MEDIA_URL = "https://sdartoutlet.s3.amazonaws.com/media/"
+    MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/"
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
