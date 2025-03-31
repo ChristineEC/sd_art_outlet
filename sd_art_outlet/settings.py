@@ -12,21 +12,19 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 import dj_database_url
-from pathlib import Path
 if os.path.isfile("env.py"):
     import env
 
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
-
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
@@ -37,7 +35,7 @@ ALLOWED_HOSTS = [
     "san-diego-art-outlet-2960cce580c0.herokuapp.com",
 ]
 
-
+CSRF_TRUSTED_ORIGINS = ['http://8000:127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
@@ -81,8 +79,8 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-            os.path.join(BASE_DIR, "templates"),
-            os.path.join(BASE_DIR, "templates", "allauth"),
+            os.path.join(BASE_DIR / "templates"),
+            os.path.join(BASE_DIR / "templates", "allauth"),
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -101,6 +99,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 # Needed for GitPod users
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
@@ -184,10 +183,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR / 'static'),)
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
