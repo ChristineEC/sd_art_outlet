@@ -35,7 +35,10 @@ ALLOWED_HOSTS = [
     "san-diego-art-outlet-2960cce580c0.herokuapp.com",
 ]
 
-# CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000/']
+CSRF_TRUSTED_ORIGINS = [
+    'http://127.0.0.1:8000/',
+    'https://san-diego-art-outlet-2960cce580c0.herokuapp.com/',
+]
 
 # Application definition
 
@@ -50,14 +53,15 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    'crispy_forms',
-    'crispy_bootstrap4',
-    'artworks',
-    'cart',
-    'checkout',
-    'communications',
-    'home',
-    'profiles',
+    "artworks",
+    "cart",
+    "checkout",
+    "communications",
+    "home",
+    "profiles",
+    "crispy_forms",
+    "crispy_bootstrap4",
+    "storages",
 ]
 
 MIDDLEWARE = [
@@ -180,6 +184,20 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR / 'static'),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
+
+if 'USE_AWS' in os.environ:
+    AWS_STORAGE_BUCKET_NAME: 'sdartoutlet'
+    AWS_S3_REGION_NAME: 'eu-north-1'
+    AWS_ACCESS_KEY_ID: os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY: os.environ.get("AWS_SECRET ACCESS_KEY")
+    AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/"
+
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
