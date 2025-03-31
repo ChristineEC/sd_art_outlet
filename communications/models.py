@@ -3,6 +3,10 @@ from django.db import models
 
 class ContactUs(models.Model):
     """Stores a single entry of a contact request"""
+
+    class Meta:
+        verbose_name_plural = "Contact Us Messages"
+
     name = models.CharField(max_length=40, blank=False)
     email = models.EmailField(blank=False)
     phone = models.IntegerField(null=True, blank=True)
