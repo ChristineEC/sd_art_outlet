@@ -183,8 +183,8 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR / "static")
+# if not DEBUG:
+#     STATIC_ROOT = 'https://san-diego-art-outlet-2960cce580c0.herokuapp.com/static'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR / 'static'),)
 
@@ -200,7 +200,11 @@ if 'USE_AWS' in os.environ:
 
     # STATICFILES_STORAGE = 'custom_storages.StaticStorage'
     STATICFILES_LOCATION = 'static'
-    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    STORAGES = {
+        'default': {
+            "BACKEND": "storages.backends.s3.S3Storage",
+        }
+    }
     MEDIAFILES_LOCATION = 'media'
     STATIC_URL = (
         f"https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/"
