@@ -46,9 +46,11 @@
                         {% endif %}
                         <div class="card-body pb-0">
                             <p class="mb-0">{{ artist.name }}</p>
-                            <p class="lead mb-0 text-left font-weight-bold">
-                                {{ artist.mini_bio }}
-                            </p>
+                            {% if artist.mini_bio %}
+                                <p class="lead mb-0 text-left font-weight-bold">
+                                    {{ artist.mini_bio }}
+                                </p>
+                            {% endif %}
                         </div>
                         <div class="card-footer bg-white pt-0 border-0 text-left">
                             <div class="row">
