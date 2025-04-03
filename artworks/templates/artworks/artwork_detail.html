@@ -15,6 +15,7 @@
     <div class="product-container col-10 offset-1">
         <div class="row">
             <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-3">
+                {% if artwork.status != 3 %}
                 <div class="card text-center border-black">
                     {% if artwork.image %}
                         <img class="card-img-top img-fluid"
@@ -66,6 +67,13 @@
                         </div>
                     </div>
                 </div>
+                {% else %}
+                <p>This artwork cannot be viewed here, as it has a status of pending.</p>
+                <p>It may be accessed from the artist's page. The registered artist
+                    is {{ artwork.artist }}.
+                    
+                </p>
+                {% endif %}
             </div>
         </div>
     </div>
