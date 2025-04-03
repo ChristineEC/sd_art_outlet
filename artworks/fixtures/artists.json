@@ -8,7 +8,7 @@
             "mini_bio": null,
             "bio": "",
             "image_url": null,
-            "image": "artist-paint-hands.jpg",
+            "image": "kayla-bliss.jpg",
             "image_alt": "Kayla Bliss smiling and stretching out her paint-covered hands"
         }
     },
@@ -16,12 +16,12 @@
         "model": "artworks.artist",
         "pk": 2,
         "fields": {
-            "name": "JoAnn Louise",
+            "name": "Jo-Ann Louise",
             "user": null,
             "mini_bio": null,
             "bio": "",
             "image_url": null,
-            "image": "watercolor-artist.jpg",
+            "image": "joann-louise.jpg",
             "image_alt": "Photo of JoAnn Louise with a watercolor set"
         }
     },
@@ -34,7 +34,7 @@
             "mini_bio": null,
             "bio": "I fell in love with photography when ...",
             "image_url": null,
-            "image": "artist-photographing_-sunset-300by300.jpg",
+            "image": "michele-domingo.jpg",
             "image_alt": "Silhouette image of Michele Domingo photographing at sunset"
         }
     },
@@ -47,7 +47,7 @@
             "mini_bio": null,
             "bio": "",
             "image_url": null,
-            "image": "artist-painting.jpg",
+            "image": "cris-sotomayor.jpg",
             "image_alt": "Image of Cris Sotomayor at work painting"
         }
     }
