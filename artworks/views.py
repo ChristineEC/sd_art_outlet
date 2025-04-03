@@ -85,16 +85,16 @@ def add_artwork(request):
                 artwork = form.save(commit=False)
                 artwork.status = 3
                 artwork = form.save()
+                artist = artwork.artist
                 messages.success(
                     request,
                     (
                         'Artwork saved with status "pending" because '
-                        "no image was attached. You can access the object from "
-                        "the artist page to update it with an image and change "
-                        "the status so it can appear publicly."
+                        "no image was attached. You can access the object "
+                        "from the artist's page to update it with an image. "
                     ),
                 )
-                return redirect(reverse("artwork_detail", args=[artwork.id]))
+                return redirect(reverse("artist_page", args=[artist.id]))
             else:
                 artwork = form.save()
                 messages.success(request, "Successfully added artwork!")
@@ -137,9 +137,19 @@ def update_artwork(request, artwork_id):
     if request.method == 'POST':
         form = ArtworkForm(request.POST, request.FILES, instance=artwork)
         if form.is_valid:
-            form.save()
-            messages.success(request, f'{artwork.title} has been updated')
-            return redirect(reverse('artwork_detail', args=[artwork.id]))
+            artwork = form.save(commit=False)
+            if artwork.image:
+                form.save()
+                messages.success(request, f'{artwork.title} has been updated')
+                return redirect(reverse('artwork_detail', args=[artwork.id]))
+            else:
+                artwork.status = 3
+                form.save()
+                messages.info(
+                    request,
+                    f'{artwork.title} is updated with status of pending'
+                )
+                return redirect(reverse('artwork_detail', args=[artwork.id]))
         else:
             messages.error(request, (
                     'Failed to update the artwork. '
@@ -161,22 +171,25 @@ def delete_artwork(request, artwork_id):
     """
     Delete an artwork from the database. Allows
     superusers to delete anything, but artists
-    can only delete their own art and only those 
+    can only delete their own art and only those
     artworks that are still pending (not public)
     """
-    if not request.user.is_superuser:
-        artwork = get_object_or_404(Artwork, pk=artwork_id)
-        artist = artwork.artist
+    artwork = get_object_or_404(Artwork, pk=artwork_id)
+    artist = artwork.artist
+
+    if request.user.is_superuser:
+        artwork.delete()
+        messages.success(request, 'Artwork deleted!')
+        return redirect(reverse('artworks'))
+    else:
         if request.user == artist.user and artwork.status == 3:
             artwork.delete()
             messages.success(request, "Artwork deleted!")
+            return redirect(reverse('artist_page', args=[artist.id]))
+        else:
+            messages.error(request, 'Only authorized users can do this!')
             return redirect(reverse('artworks'))
-        messages.error(request, 'Only authorized users can do this!')
-        return redirect(reverse('artworks'))
-    artwork = get_object_or_404(Artwork, pk=artwork_id)
-    artwork.delete()
-    messages.success(request, 'Artwork deleted!')
-    return redirect(reverse('artworks'))
+
 
 
 # -------------------------------Artist section
@@ -223,11 +236,8 @@ def artist_add_art(request, artist_id):
             return redirect(reverse("home"))
 
     if request.method == "GET":
-        artist = get_object_or_404(Artist, pk=artist_id)
         form = ArtworkForm()
     if request.method == "POST":
-        print(artist_id)
-        artist = get_object_or_404(Artist, pk=artist_id)
         form = ArtworkForm(request.POST, request.FILES)
         if form.is_valid():
             artwork = form.save(commit=False)
@@ -237,11 +247,11 @@ def artist_add_art(request, artist_id):
             messages.success(
                 request,
                 (
-                    "Your artwork has been saved with a status of "
-                    "'pending' to allow you to review its online "
-                    "appearance before publishing. Once you are "
-                    "satisfied with its appearance, you can "
-                    "update the object's status from this page "
+                    "The artwork has been saved with a status of "
+                    "pending. Once satisfied with its appearance, "
+                    "please contact the site owner to change "
+                    "the status to 'for sale' or 'sold' as "
+                    "appropriate so it can appear publicly."
                 )
             )
             return redirect(reverse("artist_page", args=[artist.id]))
