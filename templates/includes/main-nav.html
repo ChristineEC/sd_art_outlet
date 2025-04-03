@@ -2,21 +2,21 @@
   <ul class="navbar-nav mx-auto">
     <li class="mx-0">
       <a class="nav-link font-weight-bold text-white px-5"
-        href="{% url 'home' %}"
+        href="{% url 'home' %}" aria-label="link to homepage"
         id="home-link">Home </a>
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle font-weight-bold text-white px-5"
         href="#"
-        id="artworks-link"
+        id="available-artworks-link"
         role="button"
-        aria-label="dropdown-link-artwork-categories-in-shop"
+        aria-label="dropdown link for available art"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false">
         Shop
       </a>
-      <div class="dropdown-menu border-0" aria-labelledby="artwork-links">
+      <div class="dropdown-menu border-0" aria-labelledby="available-artworks-link">
         <a class="dropdown-item"
           aria-label="link-to-paintings"
           href="{% url 'artworks' %}?medium=oiloncanvas,acryliconcanvas,watercolor">
@@ -68,10 +68,11 @@
           href="{% url 'full_gallery' %}?medium=acryliconcanvas">
           Acrylic on Canvas
         </a>
-        <a class="dropdown-item" href="{% url 'full_gallery' %}?medium=watercolor">
+        <a class="dropdown-item" href="{% url 'full_gallery' %}?medium=watercolor"
+          aria-label="link to watercolor paintings in gallery">
           Watercolor
         </a>
-        <a class="dropdown-item" aria-label="link-to-watercolor-paintings-in-gallery"
+        <a class="dropdown-item" aria-label="link-to-photography-in-gallery"
           href="{% url 'full_gallery' %}?medium=photography">
           Photography
         </a>
@@ -88,8 +89,8 @@
     </li>
     <li class="nav-item">
       <a class="nav-link font-weight-bold text-white px-5"
-        href="{% url 'custom_request' %}" id="custom-order-inquiry-link" aria-label="custom-order-inquiry-link"
-        role="button">Custom Order
+        href="{% url 'custom_request' %}" id="custom-order-inquiry-link"
+        aria-label="custom-order-inquiry-link" role="button">Custom Order
       </a>
     </li>
     <li class="nav-item">
