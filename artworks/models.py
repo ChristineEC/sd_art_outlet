@@ -53,6 +53,9 @@ class Artwork(models.Model):
     image = models.ImageField(null=True, blank=True)
     status = models.PositiveSmallIntegerField(choices=STATUS, default=1)
     custom_made = models.BooleanField(default=False)
+    custom_orderer = models.ForeignKey(
+        User, null=True, blank=True, on_delete=models.SET_NULL
+        )
     image_alt = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):

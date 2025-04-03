@@ -1,6 +1,6 @@
 from django import forms
 from crispy_forms.helper import FormHelper
-from .models import ContactUs
+from .models import ContactUs, CustomOrderRequest
 
 
 class ContactUsForm(forms.ModelForm):
@@ -41,4 +41,42 @@ class ContactUsForm(forms.ModelForm):
             self.fields[field].widget.attrs["placeholder"] = placeholder
         self.fields[field].widget.attrs["class"] = "contact-form-input"
         self.helper.form_show_labels = False
-        
+
+
+class CustomOrderRequestForm(forms.ModelForm):
+    """
+    A form for a logged in user to send a
+    custom order request
+    """
+    class Meta:
+        model = CustomOrderRequest
+        fields = (
+            "name",
+            "email",
+            "phone",
+            "message",
+        )
+
+    def __init__(self, *args, **kwargs):
+        """Add placeholders, remove auto-generated
+        labels, and set autofocus on the first field"""
+
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        placeholders = {
+            "name": "Person to be contacted",
+            "email": "Email",
+            "phone": "Phone Number",
+            "message": "Message",
+        }
+
+        self.fields["name"].widget.attrs["autofocus"] = True
+        for field in self.fields:
+            if self.fields[field].required:
+                placeholder = f"{placeholders[field]} *"
+            else:
+                placeholder = placeholders[field]
+            self.fields[field].widget.attrs["placeholder"] = placeholder
+        self.fields[field].widget.attrs[
+                "class"] = "custom-order-request-form-input"
+        self.helper.form_show_labels = False
