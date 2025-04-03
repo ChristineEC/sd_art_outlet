@@ -32,7 +32,8 @@
         {% for item in cart_items %}
         <div class="row">
           <div class="col-2 mb-1">
-            <a href="{% url 'artwork_detail' item.artwork.id %}">
+            <a href="{% url 'artwork_detail' item.artwork.id %}"
+              aria-label="link to artwork detail">
               {% if item.artwork.image %}
               <img
                 class="w-100"
@@ -113,9 +114,11 @@
                   checked/>
               {% else %}
                 <label class="form-check-label" for="id-save-info">
-                  <a class="text-info" href="{% url 'account_signup' %}">
+                  <a class="text-info" href="{% url 'account_signup' %}"
+                    aria-label="link to account signup">
                     Create an account</a> or 
-                  <a class="text-info" href="{% url 'account_login' %}">login</a>
+                  <a class="text-info" href="{% url 'account_login' %}"
+                    aria-label="link to login">login</a>
                   to save this information
                 </label>
               {% endif %}
@@ -131,7 +134,8 @@
             <input type="hidden" value="{{ client_secret }}" name="client_secret">
           </fieldset>
           <div class="submit-button text-right mt-5 mb-2">
-            <a href="{% url 'view_cart' %}" class="btn btn-outline-black">
+            <a href="{% url 'view_cart' %}" class="btn btn-outline-black"
+              aria-label="link to view cart">
               <span class="icon">
                 <i class="fas fa-chevron-left"></i>
               </span>

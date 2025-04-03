@@ -45,7 +45,7 @@
                         {% if request.user == artist.user %}
                             <a class="artist-add-art" href="{% url 'artist_add_art' artist.id %}"
                                 class="btn btn-primary"
-                                aria-label="add artwork">Add Artwork
+                                aria-label="link to add artwork">Add Artwork
                             </a>
                         {% endif %}
                     </div>
@@ -63,13 +63,15 @@
                     <div class="col-sm-10 offset-sm-1 col-md-6 col-lg-4 col-xl-3 mb-5">
                         <div class="card w-100 border-0">
                             {% if artwork.image %}
-                                <a href="{% url 'artwork_detail' artwork.id %}">
+                                <a href="{% url 'artwork_detail' artwork.id %}"
+                                    aria-label="link to artwork detail">
                                     <img class="card-img-top img-fluid"
                                     src="{{ artwork.image.url }}" 
                                     alt="{{ artwork.image_alt }}"> 
                                 </a>
                             {% else %}
-                                <a href="{% url 'artwork_detail' artwork.id %}">
+                                <a href="{% url 'artwork_detail' artwork.id %}"
+                                    aria-label="link to artwork detail missing image">
                                     <img class="card-img-top img-fluid"
                                     src="{{ MEDIA_URL }}noimage.png"
                                     alt="{{ artwork.image_alt }}"> 
@@ -97,8 +99,10 @@
                                     {% if request.user.is_superuser or request.user == artwork.artist.user %}
                                         <br>
                                         <small class="mx-auto mt-3">
-                                            <a href="{% url 'update_artwork' artwork.id %}">Update Artwork</a> | 
-                                            <a class="text-danger" href="{% url 'delete_artwork' artwork.id %}">Delete</a>
+                                            <a href="{% url 'update_artwork' artwork.id %}"
+                                                aria-label="link to update artwork">Update Artwork</a> | 
+                                            <a class="text-danger" href="{% url 'delete_artwork' artwork.id %}"
+                                                aria-label="link to delete artwork">Delete</a>
                                         </small>
                                     {% endif %}
                                 </div>
@@ -111,16 +115,18 @@
                         <div class="col-sm-10 offset-sm-1 col-md-6 col-lg-4 col-xl-3 mb-5">
                             <div class="card w-100 border-0">
                                 {% if artwork.image %}
-                                    <a href="{% url 'artwork_detail' artwork.id %}">
+                                    <a href="{% url 'artwork_detail' artwork.id %}"
+                                        aria-label="link to artwork detail">
                                         <img class="card-img-top img-fluid"
                                         src="{{ artwork.image.url }}" 
                                         alt="{{ artwork.image_alt }}"> 
                                     </a>
                                 {% else %}
-                                    <a href="{% url 'artwork_detail' artwork.id %}">
+                                    <a href="{% url 'artwork_detail' artwork.id %}"
+                                        aria-label="link to artwork detail missing image">
                                         <img class="card-img-top img-fluid"
                                             src="{{ MEDIA_URL }}noimage.png"
-                                            alt="{{ artwork.image_alt }}"> 
+                                            alt="missing image for {{ artwork.title }}">
                                     </a>
                                 {% endif %}
                             </div>
@@ -139,8 +145,10 @@
                                             status: pending
                                             </p>
                                         <small class="mx-auto mt-5">
-                                            <a href="{% url 'update_artwork' artwork.id %}">Update Artwork</a> | 
-                                            <a class="text-danger" href="{% url 'delete_artwork' artwork.id %}">Delete</a>
+                                            <a href="{% url 'update_artwork' artwork.id %}"
+                                                aria-label="link to update artwork">Update Artwork</a> | 
+                                            <a class="text-danger" href="{% url 'delete_artwork' artwork.id %}"
+                                                aria-label="link to delete artwork">Delete</a>
                                         </small>
                                     </div>
                                 </div>
