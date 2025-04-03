@@ -34,7 +34,7 @@
                         {% if artist.selfie %}
                         <a href="{% url 'artist_page' artist.id %}">
                            <img class="card-img-top img-fluid"
-                            src="{{ artist.selfie.url }}" 
+                            src="{{ artist.selfie.url }}"
                             alt="{{ artist.image_alt }}"> 
                         </a>
                         {% else %}

@@ -26,7 +26,7 @@ class MediumAdmin(admin.ModelAdmin):
 class ArtistAdmin(admin.ModelAdmin):
     list_display = (
         "name",
-        "selfie",
+        "image",
     )
 
 

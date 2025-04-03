@@ -24,8 +24,8 @@ class Artist(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.SET_NULL)
     mini_bio = models.CharField(max_length=250, null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
-    selfie_url = models.URLField(max_length=1024, null=True, blank=True)
-    selfie = models.ImageField(null=True, blank=True)
+    image_url = models.URLField(max_length=1024, null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
     image_alt = models.CharField(max_length=254, default="Image of the artist")
 
     def __str__(self):
