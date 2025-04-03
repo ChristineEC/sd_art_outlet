@@ -31,7 +31,7 @@
             {% for artist in artists %}
                 <div class="col-sm-10 offset-sm-1 col-md-6 col-lg-4 col-xl-3 mb-5">
                     <div class="card w-100 border-0">
-                        {% if artist.selfie %}
+                        {% if artist.image %}
                         <a href="{% url 'artist_page' artist.id %}">
                            <img class="card-img-top img-fluid"
                             src="{{ artist.image.url }}"

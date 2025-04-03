@@ -27,8 +27,8 @@
     <div class="artist-container col-10 offset-1">
         <div class="row">
             <div class="col-12 col-md-4 justify-content-center">
-                {% if artist.selfie %}
-                    <img class="img img-fluid artist-image" src="{{ artist.selfie.url }}" alt="{{ artist.image_alt }}"> 
+                {% if artist.image %}
+                    <img class="img img-fluid artist-image" src="{{ artist.image.url }}" alt="{{ artist.image_alt }}"> 
                 {% else %}
                     <img class="img img-fluid artist-image" src="{{ MEDIA_URL }}noimage.png" alt="Missing an image of the artist"> 
                 {% endif %}
