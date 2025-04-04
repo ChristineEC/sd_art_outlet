@@ -172,7 +172,7 @@ def delete_artwork(request, artwork_id):
     Delete an artwork from the database. Allows
     superusers to delete anything, but artists
     can only delete their own art and only those
-    artworks that are still pending (not public)
+    artworks that are still pending (not public).
     """
     artwork = get_object_or_404(Artwork, pk=artwork_id)
     artist = artwork.artist
@@ -191,8 +191,7 @@ def delete_artwork(request, artwork_id):
             return redirect(reverse('artworks'))
 
 
-
-# -------------------------------Artist section
+# Artist section
 def all_artists(request):
     """
     View to display all current artists"
@@ -219,9 +218,10 @@ def artist_page(request, artist_id):
 
 @login_required
 def artist_add_art(request, artist_id):
-    """View to allow artists to add an artwork,
+    """View to allow artists (or the superuser) to
+    add art from their own artist's page,
     but only as status pending and only as the artist
-    of that artwork
+    of that artwork.
     """
     artist = get_object_or_404(Artist, pk=artist_id)
     if not request.user.is_superuser:
