@@ -8,7 +8,7 @@ body {
     color: #000;
     font-family: "Josephin Sans", sans-serif;
     font-optical-sizing: auto;
-    height: calc(100vh-145px);
+    height: calc(100vh-138px);
 
 }
 
@@ -101,7 +101,11 @@ body {
 
 .shop-now-button:hover,
 .shop-now-button:active,
-.shop-now-button:focus,
+.shop-now-button:focus {
+    background: rgb(114, 68, 241);
+    color: white;
+}
+
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
@@ -126,9 +130,9 @@ body {
     border: 1px solid black !important;
 }
 
-.bg-black {
+/* .bg-black {
     background: #000 !important;
-}
+} */
 
 .text-white {
     color: white !important;
@@ -192,6 +196,28 @@ body {
     .navbar {
         z-index: 10;
     }
+}
+
+.nav-link:hover,
+.nav-link:active,
+.nav-link:focus,
+.nav-item.dropdown:hover,
+.nav-item.dropdown:active,
+.nav-item.dropdown:focus {
+    color:rgb(255, 228, 196);
+}
+
+.headline,
+.sub-headline {
+    font-size: 1.5rem;
+}
+
+.subheadline {
+    margin-top: 2px;
+}
+
+.josephine-sans-subheader {
+    font-size: .5rem;
 }
 
 @media (min-width:1200px) {

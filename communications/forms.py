@@ -64,7 +64,7 @@ class CustomOrderRequestForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper(self)
         placeholders = {
-            "name": "Person to be contacted",
+            "name": "Name",
             "email": "Email",
             "phone": "Phone Number",
             "message": "Message",
