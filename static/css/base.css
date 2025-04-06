@@ -8,8 +8,17 @@ body {
     color: #000;
     font-family: "Josephin Sans", sans-serif;
     font-optical-sizing: auto;
+    
     height: calc(100vh-138px);
+}
 
+main {
+    flex-shrink: 0 !important;
+}
+
+footer {
+    background-color: rgb(70, 12, 230);
+    color:#fff;
 }
 
 .main-logo-link {
@@ -38,7 +47,6 @@ body {
     height: 100%;
 }
 
-
 /* Fonts */
 
 .artwork-title {
@@ -57,7 +65,6 @@ body {
   font-weight: 400;
   font-style: normal;
 }
-
 
 .josephine-sans {
     font-family: "Josefin Sans", sans-serif;
