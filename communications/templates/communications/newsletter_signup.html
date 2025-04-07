@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" />
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+  <div class="row">
+    <div class="col">
+      <h1 class="josephine-sans text-center">Thanks for signing up!</h1>
+      <h2 class="josephine-sans text-center">
+        <em>We'll be in touch soon with news about upcoming events!</em>
+      </h2>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 mx-auto">
+            <form class="mt-3" action="{% url 'newsletter_signup' %}"
+                method="POST" id="newsletter-signup-form">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <button class="btn btn-primary float-right">Sign Up!</button>
+            </form>
+            <br>
+            <p class="mt-3"><strong>And here's the flyer for our next 
+              <a href="" aria-label="link to next event flyer">event</a>
+              ! We hope you'll come out and see us!</strong>
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

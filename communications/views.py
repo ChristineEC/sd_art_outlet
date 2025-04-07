@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, reverse, redirect
 from django.contrib import messages
 from .models import ContactUs
-from .forms import ContactUsForm, CustomOrderRequestForm
+from .forms import ContactUsForm, CustomOrderRequestForm, NewsletterSignupForm
 
 
 def contact_us(request):
@@ -26,7 +26,7 @@ def contact_us(request):
                     'Wishing you a lovely day!'
                 )
             )
-            return redirect('home')
+            return redirect(request.path)
         else:
             messages.error(
                            request,
@@ -68,7 +68,7 @@ def custom_order_request(request):
                     "your profile page. Wishing you a lovely day!"
                 ),
             )
-            return redirect("home")
+            return redirect(request.path)
         else:
             messages.error(
                 request,
@@ -82,5 +82,43 @@ def custom_order_request(request):
         form = CustomOrderRequestForm
 
     template = "communications/custom_request.html"
-    context = {"form": form}
+    context = {
+        "form": form,
+        }
+    return render(request, template, context)
+
+
+def newsletter_signup(request):
+    """
+    Enables a site visitor to sign up for the
+    newsletter without logging in.
+    """
+    if request.method == "POST":
+        form = NewsletterSignupForm(request.POST)
+        if form.is_valid:
+            form.save()
+            messages.success(
+                request,
+                (
+                    "You're all set up to receive our next "
+                    "newsletter. Wishing you a lovely day!"
+                ),
+            )
+            return redirect(request.path)
+        else:
+            messages.error(
+                request,
+                (
+                    "There seems to be a problem with "
+                    "your form. Please ensure you have "
+                    "filled in the required fields!"
+                ),
+            )
+    else:
+        form = NewsletterSignupForm
+
+    template = "communications/newsletter_signup.html"
+    context = {
+                "form": form,
+    }
     return render(request, template, context)

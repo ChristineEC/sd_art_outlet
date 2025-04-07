@@ -53,4 +53,4 @@ class NewsletterSignup(models.Model):
     added_to_list = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"Add {self.name} | {self.email} to newsletter email list"
+        return f"{self.name} | {self.email} | added: {self.added_to_list}"
