@@ -1,7 +1,6 @@
 from django import forms
-from crispy_forms.helper import FormHelper
 from .widgets import CustomClearableFileInput
-from .models import Artwork, Artist, Medium
+from .models import Artwork
 
 
 class ArtworkForm(forms.ModelForm):

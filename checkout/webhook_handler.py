@@ -73,8 +73,12 @@ class StripeWH_Handler:
             profile = UserProfile.objects.get(user__username=username)
             if save_info:
                 profile.default_phone_number = shipping_details.phone
-                profile.default_street_address1 = shipping_details.address.line1
-                profile.default_street_address2 = shipping_details.address.line2
+                profile.default_street_address1 = (
+                    shipping_details.address.line1
+                )
+                profile.default_street_address2 = (
+                    shipping_details.address.line2
+                )
                 profile.default_town_or_city = shipping_details.address.city
                 profile.default_state = shipping_details.address.state
                 profile.default_postcode = shipping_details.address.postal_code
@@ -138,7 +142,7 @@ class StripeWH_Handler:
                             quantity=item_data,
                         )
                         order_line_item.save()
-            except Exception as e:
+            except Exception:
                 if order:
                     order.delete()
                 return HttpResponse(

@@ -9,6 +9,7 @@ class NewsletterSignupAdmin(admin.ModelAdmin):
         "added_to_list",
     )
 
+
 admin.site.register(ContactUs)
 admin.site.register(CustomOrderRequest)
 admin.site.register(NewsletterSignup, NewsletterSignupAdmin)

@@ -2,7 +2,6 @@ import uuid
 
 from django.db import models
 from django.db.models import Sum
-from django.conf import settings
 
 from django_countries.fields import CountryField
 
@@ -48,7 +47,12 @@ class Order(models.Model):
     def update_total(self):
         """Update the grand total of the order each time
         a lineitem is added to the order"""
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
+
+        self.order_total = (
+            self.lineitems.aggregate(Sum("lineitem_total"))[
+                "lineitem_total__sum"]
+            or 0
+        )
         self.grand_total = self.order_total
         self.save()
 

@@ -1,21 +1,14 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render, reverse, redirect
+from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import ContactUs
 from .forms import ContactUsForm, CustomOrderRequestForm, NewsletterSignupForm
 
 
 def contact_us(request):
-    """
-    Enables a site visitor to send a 
-    message to the business without
-    logging in.
-    """
+    """Enables a site visitomessage to the business without
+    logging in"""
+
     if request.method == 'POST':
         form = ContactUsForm(request.POST)
-        name = form["name"]
-        email = form["email"]
-        phone = form["phone"]
         if form.is_valid:
             form.save()
             messages.success(
@@ -51,10 +44,6 @@ def custom_order_request(request):
     """
     if request.method == "POST":
         form = CustomOrderRequestForm(request.POST)
-        name = form["name"]
-        email = form["email"]
-        phone = form["phone"]
-        message = form["message"]
         if form.is_valid:
             custom_order_request = form.save(commit=False)
             custom_order_request.user = request.user

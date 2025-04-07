@@ -166,6 +166,7 @@ def update_artwork(request, artwork_id):
 
     return render(request, template, context)
 
+
 @login_required
 def delete_artwork(request, artwork_id):
     """

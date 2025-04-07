@@ -21,7 +21,8 @@ class Medium(models.Model):
 
 class Artist(models.Model):
     name = models.CharField(max_length=254)
-    user = models.OneToOneField(User, null=True, blank=True, on_delete=models.SET_NULL)
+    user = models.OneToOneField(User, null=True, blank=True,
+                                on_delete=models.SET_NULL)
     mini_bio = models.CharField(max_length=250, null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
