@@ -43,3 +43,14 @@ class CustomOrderRequest(models.Model):
 
     def __str__(self):
         return f"Message from {self.user} | {self.name} | {self.email}"
+
+
+class NewsletterSignup(models.Model):
+    """Stores a single entry of a newsletter signup"""
+
+    name = models.CharField(max_length=40, blank=False)
+    email = models.EmailField(blank=False)
+    added_to_list = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Add {self.name} | {self.email} to newsletter email list"
