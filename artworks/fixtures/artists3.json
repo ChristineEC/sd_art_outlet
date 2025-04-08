@@ -1,0 +1,54 @@
+[
+    {
+        "model": "artworks.artist",
+        "pk": 1,
+        "fields": {
+            "name": "Kayla Bliss",
+            "user": 15,
+            "mini_bio": "Kayla is an abstract painter whose work explores the relationship between color, form, and emotion.",
+            "bio": "Kayla is an abstract painter whose work explores the relationship between color, form, and emotion. With a focus on pushing boundaries and embracing spontaneity, Kayla creates dynamic, layered compositions that invite viewers to interpret each piece in their own unique way. Using a range of techniques and mediums, their art is a reflection of the fluidity of thought and the complexity of the human experience, offering an ever-evolving perspective on the abstract world around us.",
+            "image_url": null,
+            "image": "kayla-bliss.jpg",
+            "image_alt": "Kayla Bliss smiling and stretching out her paint-covered hands"
+        }
+    },
+    {
+        "model": "artworks.artist",
+        "pk": 2,
+        "fields": {
+            "name": "Jo-Ann Louise",
+            "user": null,
+            "mini_bio": "Jo-Ann is an amateur watercolor artist who finds inspiration in nature",
+            "bio": "Jo-Ann is an amateur watercolor artist with a passion for exploring the fluidity and vibrant hues of the medium. Self-taught and constantly experimenting, Jo-Ann finds inspiration in nature, everyday life, and personal experiences. Through delicate brushstrokes and layered washes, her work captures the beauty of simple moments, offering a fresh perspective on the world around her. Dedicated to honing her craft, Jo-Ann is always eager to learn and share her creative journey with others.",
+            "image_url": null,
+            "image": "joann-louise.jpg",
+            "image_alt": "Photo of JoAnn Louise with a watercolor set"
+        }
+    },
+    {
+        "model": "artworks.artist",
+        "pk": 3,
+        "fields": {
+            "name": "Michele Domingo",
+            "user": null,
+            "mini_bio": "Michele specializes in landscape and astrophotography",
+            "bio": "Michele is a native San Diegan known for capturing the vibrant beauty of our natural world, especially our vast cosmos. With a keen eye for detail, Michele specializes in landscape and astrophotography, often drawing inspiration from the diverse natural environments of Californiaùfrom coastal cliffs to urban streets. Their work has been featured in numerous publications and exhibitions, showcasing a unique blend of artistic vision and technical skill. Passionate about storytelling through imagery, Michele seeks to evoke emotion and inspire a sense of wonder about the universe through each frame.",
+            "image_url": null,
+            "image": "michele-domingo.jpg",
+            "image_alt": "Silhouette image of Michele Domingo photographing at sunset"
+        }
+    },
+    {
+        "model": "artworks.artist",
+        "pk": 4,
+        "fields": {
+            "name": "Cris Sotomayor",
+            "user": null,
+            "mini_bio": "Cris is an amateur artist with a passion for creating vibrant, poured-paint psychedelic artwork.",
+            "bio": "Cris is an amateur artist with a passion for creating vibrant, poured-paint psychedelic artwork. Drawing inspiration from the fluidity of color and the boundless nature of the subconscious, Cris's work explores intricate patterns, surreal imagery, and dreamlike landscapes. With each pour, they aim to capture the beauty of chaos and transformation, offering viewers a glimpse into a world where color and form are constantly in flux. Their art is a personal journey of exploration and expression, celebrating the unique, unpredictable nature of poured paint.",
+            "image_url": null,
+            "image": "cris-sotomayor.jpg",
+            "image_alt": "Image of Cris Sotomayor at work painting"
+        }
+    }
+]
