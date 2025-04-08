@@ -4,7 +4,7 @@
         "pk": 1,
         "fields": {
             "name": "Kayla Bliss",
-            "user": 15,
+            "user": null,
             "mini_bio": "Kayla is an abstract painter whose work explores the relationship between color, form, and emotion.",
             "bio": "Kayla is an abstract painter whose work explores the relationship between color, form, and emotion. With a focus on pushing boundaries and embracing spontaneity, Kayla creates dynamic, layered compositions that invite viewers to interpret each piece in their own unique way. Using a range of techniques and mediums, their art is a reflection of the fluidity of thought and the complexity of the human experience, offering an ever-evolving perspective on the abstract world around us.",
             "image_url": null,
