@@ -29,12 +29,11 @@
                 <div class="card text-center border-black">
                     {% if artwork.image %}
                             <img class="card-img-top img-fluid"
-                            src="{{ artwork.image.url }}"
-                                alt="{{ artwork.image_alt }}"
-                            target="_blank">
+                                src="{{ artwork.image.url }}"
+                                alt="{{ artwork.image_alt }}">
                     {% else %}
                         <img class="card-img-top img-fluid"
-                                target="_blank" src="{{ MEDIA_URL }}noimage.png">
+                            src="{{ MEDIA_URL }}noimage.png">
                     {% endif %}
                     <div class="card-body">
                         {% if artwork.image %}

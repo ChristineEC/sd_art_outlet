@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from .models import Event
 from .forms import ContactUsForm, CustomOrderRequestForm
 
 
@@ -74,4 +75,16 @@ def custom_order_request(request):
     context = {
         "form": form,
         }
+    return render(request, template, context)
+
+
+def display_events(request):
+    """Function to display publishable events
+    on the events page"""
+
+    events = Event.objects.filter(publish=True).order_by("-start_date")
+
+    template = "communications/events.html"
+    context = {"events":events}
+
     return render(request, template, context)

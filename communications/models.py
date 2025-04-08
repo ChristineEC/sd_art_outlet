@@ -43,3 +43,19 @@ class CustomOrderRequest(models.Model):
 
     def __str__(self):
         return f"Message from {self.user} | {self.name} | {self.email}"
+
+
+class Event(models.Model):
+    """Stores a single entry of an event"""
+
+    name = models.CharField(max_length=255, null=False, blank=False)
+    location = models.CharField(max_length=255, null=False, blank=False)
+    start_date = models.DateField(null=False, blank=False)
+    end_date = models.DateField(blank=False, null=False)
+    specifics = models.CharField(max_length=255, blank=True, null=True)
+    image = models.ImageField(null=True, blank=True)
+    publish = models.BooleanField(default=False)
+    free_entrance = models.BooleanField(default=False)
+
+    # def __str__(self):
+    #     return f"{self.name}, {self.start_date} to {self.start_date} | {self.image}"

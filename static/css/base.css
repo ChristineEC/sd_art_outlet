@@ -138,6 +138,10 @@ footer {
     color: black;
 }
 
+.underline {
+    text-decoration: underline;
+}
+
 .text-black {
     color: black !important;
 }

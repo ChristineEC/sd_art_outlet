@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row pb-4">
+            <div class="col-12 text-center">
+                <h1 class="josephine-sans main-headline my-2">
+                    Recent and Upcoming Events
+                </h1>
+            </div>
+            <div class="col-12 text-center pt-1">
+                <h1 class="josephine-sans">We hope you'll come out and see us!</h1>
+            </div>
+        </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row my-2 p-0">
+            {% for event in events %}
+                <div class="col-sm-12 col-md-6 col-lg-4 my-5 event-image-div">
+                    {% if event.image %}
+                        <div class="card w-100">
+                            <a href="{{ event.image.url }}" target="_blank"
+                                aria-label="link to view the full image"
+                                class="mt-0 text-center">
+                                <img src="{{ event.image.url }}"
+                                class="card-image-top img-fluid"
+                                alt="Flyer for {{event.name}}">
+                            </a>
+                            {% if event.specifics %}
+                            <div class="card-body">
+                                <p>{{ event.specifics }}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        <div class="card w-100 border-0">
+                            <img class="card-img-top"
+                                src="{{ MEDIA_URL }}noimage.png"
+                                alt="{{ event.name }}"> 
+                            <div class="card-body">
+                                <h5 class="card-title"><strong>{{ event.name }}</strong></h5>
+                                <h6 class="card-subtitle mb-1">{{ event.location }}</h6>
+                                <p class="card-text text-danger my-0">(Image coming soon!)</p>
+                                <p class="card-text my-0">{{ event.start_date }} - {{ event.end_date }}</p>
+                                {% if event.specifics %}
+                                    <p class="card-text my-0">{{ event.specifics }}</p>
+                                {% endif %}
+                                {% if event.free_entrance %}
+                                <p class="card-text my-0"><strong>Free entrance!</strong></p>
+                                {% endif %}
+                            </div>
+                        </div>  
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

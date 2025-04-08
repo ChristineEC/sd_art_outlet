@@ -46,7 +46,7 @@
                                         aria-label="link to artwork detail">
                                         <img class="card-img-top img-fluid"
                                         src="{{ artwork.image.url }}" 
-                                        alt="{{ artwork.image_alt }}"> 
+                                        alt="{{ artwork.image_alt }}">
                                     </a>
                                 {% else %}
                                     <a href="{% url 'artwork_detail' artwork.id %}"
