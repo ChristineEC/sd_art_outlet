@@ -9,42 +9,36 @@
     <div class="container header-container">
         <div class="row">
             <div class="col text-center">
-                <h1 class="display-4 josephine-sans">
+                <h1 class="display-6 josephine-sans">
                     The Artist's Page
                 </h1>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <h2 class="display-6 josephine-sans my-2">{{ artist.name }}</h2>
-            </div>
-                
         </div>
     </div>
 {% endblock %}
 
 {% block content %}
     <div class="artist-container col-10 offset-1">
-        <div class="row">
-            <div class="col-12 col-md-4 justify-content-center">
+        <div class="row mt-3">
+            <div class="col-12 col-md-6 col-lg-4 p-0 mx-auto my-auto">
                 {% if artist.image %}
-                    <img class="img img-fluid artist-image" src="{{ artist.image.url }}" alt="{{ artist.image_alt }}"> 
+                    <img class="img artist-image img-fluid" src="{{ artist.image.url }}" alt="{{ artist.image_alt }}"> 
                 {% else %}
-                    <img class="img img-fluid artist-image" src="{{ MEDIA_URL }}noimage.png" alt="Missing an image of the artist"> 
+                    <img class="img artist-image img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="Missing an image of the artist"> 
                 {% endif %}
             </div>
-            <div class="col-12 col-md-8 px-5">
+            <div class="col-12 col-md-6 col-lg-8 px-2">
                 <div class="row">
                     <div class="col">
-                        <p><strong>{{ artist.name }}</strong></p>
+                        <h2 class="display-5 josephine-sans my-2">{{ artist.name }}</h2>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <article>{{ artist.bio }}</article>
-                        {% if request.user == artist.user %}
-                            <a class="artist-add-art" href="{% url 'artist_add_art' artist.id %}"
-                                class="btn btn-primary"
+                        {% if request.user == artist.user or request.user.is_superuser %}
+                            <br>
+                            <a class="artist-add-art btn btn-primary" href="{% url 'artist_add_art' artist.id %}"
                                 aria-label="link to add artwork">Add Artwork
                             </a>
                         {% endif %}
@@ -53,7 +47,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col my-5">
                 <hr>
             </div>
         </div>
