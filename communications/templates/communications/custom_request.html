@@ -5,15 +5,15 @@
 {% block page_header %}
 <div class="container header-container">
   <div class="row">
-    <div class="col">
+    <div class="col-12 col-md-6 mx-auto">
       <h1 class="josephine-sans text-center">Custom Order Request</h1>
-    <p class="josephine-sans text-center">
+    <p class=" lead josephine-sans text-center">
         Please note that only logged in users can create a custom order
         request. If you do not wish to create an account by logging in,
-        you can still send us a message through the 
+        you are welcome to send us a message through the 
         <a href="{% url 'contact_us' %}" 
             aria-label="link to contact form for non-logged in users">
-            contact us
+            contact
         </a> form.
     </p>
     </div>
@@ -31,7 +31,7 @@
                 {% for field in form %}
                   {{ field | as_crispy_field }}
                 {% endfor %}
-                <button class="btn btn-success float-right">Send Request!</button>
+                <button class="btn shop-now-button float-right">Send Request</button>
             </form>
         </div>
     </div>

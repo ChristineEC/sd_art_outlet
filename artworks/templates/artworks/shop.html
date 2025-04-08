@@ -22,8 +22,14 @@
                     We're adding new art &ndash; and new artists &ndash; all the time!
                 </h3>
                 <h5 class="josephine-sans sub-headline">
-                     For more inspiration, check out our full gallery or our individual artist's pages,
-                      which include sold works as well!
+                    For more inspiration, check out our full 
+                        <a href="{% url 'full_gallery' %}"
+                            aria-label="link to full gallery"
+                            class="inline-link">gallery</a>
+                             or our <a href="{% url 'all_artists' %}"
+                            aria-label="link to artists page"
+                            class="inline-link">artists'</a>
+                            pages, which include sold works as well!
                 </h5>
                 <hr class="w-50 mb-1">
             </div>
@@ -34,7 +40,7 @@
                 <div class="row">
                     {% for artwork in artworks %}
                         <div class="col-sm-10 offset-sm-1 col-md-6 col-lg-4 col-xl-3 mb-5">
-                            <div class="card w-100 border-0">
+                            <div class="card w-100">
                                 {% if artwork.image %}
                                     <a href="{% url 'artwork_detail' artwork.id %}"
                                         aria-label="link to artwork detail">

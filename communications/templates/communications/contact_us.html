@@ -3,7 +3,6 @@
 {% load crispy_forms_utils %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" />
 {% endblock %}
 
 {% block page_header %}
@@ -14,9 +13,9 @@
       <h2 class="josephine-sans text-center">
         We'd love to hear from you!
       </h2>
-        <p class="original-surfer-regular text-center">
+        <h5 class="original-surfer-regular text-center">
             <em>We'll be in touch soon!</em>
-        </p>
+        </h5>
     </div>
   </div>
 </div>
@@ -32,7 +31,7 @@
                 {% for field in form %}
                   {{ field | as_crispy_field }}
                 {% endfor %}
-                <button class="btn btn-success float-right">Send Message!</button>
+                <button class="btn shop-now-button float-right">Send Message</button>
             </form>
         </div>
     </div>

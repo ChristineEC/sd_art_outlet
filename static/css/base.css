@@ -6,9 +6,8 @@ body {
     background: url('/static/images/watercolor-sky.jpg') no-repeat center fixed;
     background-size: cover;
     color: #000;
-    font-family: "Josephin Sans", sans-serif;
+    font-family: "Josephine Sans", sans-serif;
     font-optical-sizing: auto;
-    
     height: calc(100vh-138px);
 }
 
@@ -27,7 +26,7 @@ footer {
 }
 
 .charcoal {
-    color: rgb(125, 125, 124)
+    color: rgb(64, 64, 64)
 }
 
 /* Navbar */
@@ -86,7 +85,7 @@ footer {
     background-color: #fff;
     false;
     clear:left;
-    font:14px Josefin Sans,Arial,sans-serif;
+    font:14px Original Surfer,Arial,sans-serif;
     width: 300px;
 }
 
@@ -106,6 +105,10 @@ footer {
 .remove-from-cart,
 .cart-to-wishlist {
     cursor: pointer;
+}
+
+.card:hover {
+    border: 3px solid  rgb(70, 12, 230);
 }
 
 .shop-now-button {
@@ -132,6 +135,7 @@ footer {
 
 .inline-link {
     text-decoration: none;
+    color: black;
 }
 
 .text-black {
@@ -146,10 +150,6 @@ footer {
 .border-black {
     border: 1px solid black !important;
 }
-
-/* .bg-black {
-    background: #000 !important;
-} */
 
 .text-white {
     color: white !important;
@@ -205,6 +205,7 @@ footer {
 }
 
 /* --Media Queries-- */
+
 @media (max-width: 992px) {
     .header-container {
         padding-top: 80px;
@@ -222,11 +223,6 @@ footer {
 .nav-item.dropdown:active,
 .nav-item.dropdown:focus {
     color:rgb(255, 228, 196);
-}
-
-.headline,
-.sub-headline {
-    font-size: 1.5rem;
 }
 
 .subheadline {
