@@ -80,6 +80,16 @@ footer {
     font-style: normal;
 }
 
+
+/* Mailchimp */
+#mc_embed_signup{
+    background-color: #fff;
+    false;
+    clear:left;
+    font:14px Josefin Sans,Arial,sans-serif;
+    width: 300px;
+}
+
 /* from Bulma */
 .icon {
     align-items: center;
