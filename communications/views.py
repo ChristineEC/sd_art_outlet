@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import ContactUsForm, CustomOrderRequestForm, NewsletterSignupForm
+from .forms import ContactUsForm, CustomOrderRequestForm
 
 
 def contact_us(request):
@@ -74,40 +74,4 @@ def custom_order_request(request):
     context = {
         "form": form,
         }
-    return render(request, template, context)
-
-
-def newsletter_signup(request):
-    """
-    Enables a site visitor to sign up for the
-    newsletter without logging in.
-    """
-    if request.method == "POST":
-        form = NewsletterSignupForm(request.POST)
-        if form.is_valid:
-            form.save()
-            messages.success(
-                request,
-                (
-                    "You're all set up to receive our next "
-                    "newsletter. Wishing you a lovely day!"
-                ),
-            )
-            return redirect(request.path)
-        else:
-            messages.error(
-                request,
-                (
-                    "There seems to be a problem with "
-                    "your form. Please ensure you have "
-                    "filled in the required fields!"
-                ),
-            )
-    else:
-        form = NewsletterSignupForm
-
-    template = "communications/newsletter_signup.html"
-    context = {
-                "form": form,
-    }
     return render(request, template, context)

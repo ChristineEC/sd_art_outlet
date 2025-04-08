@@ -1,6 +1,6 @@
 from django import forms
 from crispy_forms.helper import FormHelper
-from .models import ContactUs, CustomOrderRequest, NewsletterSignup
+from .models import ContactUs, CustomOrderRequest
 
 
 class ContactUsForm(forms.ModelForm):
@@ -80,16 +80,3 @@ class CustomOrderRequestForm(forms.ModelForm):
         self.fields[field].widget.attrs[
                 "class"] = "custom-order-request-form-input"
         self.helper.form_show_labels = False
-
-
-class NewsletterSignupForm(forms.ModelForm):
-    """
-    A form for site visitors to sign up
-    for the newsletter
-    """
-    class Meta:
-        model = NewsletterSignup
-        fields = (
-            "name",
-            "email",
-        )
