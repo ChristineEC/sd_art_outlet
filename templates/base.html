@@ -183,17 +183,11 @@
       {% endblock %}
     </main>
     <footer class="footer page-footer mt-auto py-3">
-      <div class="container">
+      <div class="container mx-1">
         <div class="row">
-          <div class="col-sm-12 col-md-4">
-            
-          </div>
-          <div class="col-sm-12 col-md-4">
-            <p class="text-left">&copy;2025 San Diego Art Outlet</p>
-          </div>
-          <div class="col-sm-12 col-md-4">
+          <div class="col-sm-12 col-md-6 col-lg-4">
             <div id="mc_embed_shell">
-              <div id="mc_embed_signup" class="float-right">
+              <div id="mc_embed_signup">
                 <form 
                   action="https://herokuapp.us3.list-manage.com/subscribe/post?u=855613d2da78dbe7d599fd3c5&amp;id=9770090fa3&amp;f_id=003b4de2f0"
                   method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
@@ -221,9 +215,44 @@
               </div>
           </div>
           </div>
-        </div>
-        <div class="row">
-          
+          <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="row">
+              <div class="col">
+                <p class="mt-3">
+                  <a href="#" aria-label="link to privacy policy"
+                    class="text-white">Privacy Policy</a>
+                  <br>
+                  <a href="{% url 'contact_us' %}"
+                    aria-label="link to contact form" class="text-white">Contact Us</a>
+                  <br>
+                  <a href="{% url 'custom_request' %}" aria-label="link to custom order inquiry" class="text-white">Custom Orders</a>
+                  <br>
+                  <a href="{% url 'events' %}" aria-label="link to events" class="text-white">Events</a>
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="my-2">On Social Media
+                  <span class="px-4"><a href="https://www.facebook.com/" target="_blank"
+                    aria-label="facebook link"><i class="fa-brands fa-facebook-f text-white"></i></a>
+                  <span>
+                  <span class="px-4"><a href="https://www.instagram.com/" target="_blank"
+                    aria-label="instagram link"><i class="fa-brands fa-instagram text-white"></i></a>
+                  </span>
+                </p>
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-4 mt-3 mb-0">
+            <p class="my-0">San Diego Art Outlet</p>
+            <p class="my-0">An Independent Artists' Collective</p>
+            <p class="my-0">(619) 555-5555 (texts ok!)</p>
+            <p class="my-0">sandiegoartoutlet@gmail.com</p>
+            <br>
+            <p class="mb-0"><small>&copy;2025 San Diego Art Outlet</small></p>
+          </div>
         </div>
       </div>
     </footer>
