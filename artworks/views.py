@@ -142,6 +142,9 @@ def update_artwork(request, artwork_id):
                 form.save()
                 messages.success(request, f'{artwork.title} has been updated')
                 return redirect(reverse('artwork_detail', args=[artwork.id]))
+            # sets status to pending so no artwork appears publicly
+            # without an image. Pending works appear on artist's page
+            # for logged in artist or superuser only
             else:
                 artwork.status = 3
                 form.save()
@@ -149,6 +152,11 @@ def update_artwork(request, artwork_id):
                     request,
                     f'{artwork.title} is updated with status of pending'
                 )
+                # sends user to artwork_detail page where, fiven the 
+                # template logic, they receive a message that the 
+                # artwork cannot be viewed there because its status
+                # is pending, the name of the artist and
+                # link to that artist's page are displayed.
                 return redirect(reverse('artwork_detail', args=[artwork.id]))
         else:
             messages.error(request, (
@@ -171,7 +179,7 @@ def update_artwork(request, artwork_id):
 def delete_artwork(request, artwork_id):
     """
     Delete an artwork from the database. Allows
-    superusers to delete anything, but artists
+    superusers to delete anything, but authorized artists
     can only delete their own art and only those
     artworks that are still pending (not public).
     """
@@ -242,7 +250,11 @@ def artist_add_art(request, artist_id):
         form = ArtworkForm(request.POST, request.FILES)
         if form.is_valid():
             artwork = form.save(commit=False)
+            # sets the artwork's artist to the artist 
+            # making the request, even if they
+            # try to set the artist to someone else
             artwork.artist = artist
+            # sets artwork status to pending
             artwork.status = 3
             artwork = form.save()
             messages.success(
