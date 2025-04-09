@@ -1,6 +1,6 @@
-html {
+/* html {
     height: 100%;
-}
+} */
 
 body {
     background: url('/static/images/watercolor-sky.jpg') no-repeat center fixed;
@@ -8,11 +8,17 @@ body {
     color: #000;
     font-family: "Josephine Sans", sans-serif;
     font-optical-sizing: auto;
-    height: calc(100vh-138px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+/* .header-container {
+    padding-top: 150px;
+} */
+
 main {
-    flex-shrink: 0 !important;
+    flex: 1 0 auto;
 }
 
 footer {
@@ -212,7 +218,7 @@ footer {
 
 @media (max-width: 992px) {
     .header-container {
-        padding-top: 80px;
+        padding-top: 100px;
     }
 
     .navbar {
@@ -245,14 +251,14 @@ footer {
 
 /* Fixed top navbar on medium and up */
 @media (min-width: 992px) {
-    .fixed-top-desktop-only {
+    /* .fixed-top-desktop-only {
         position: fixed;
         background-color: #fff;
         top: 0;
         right: 0;
         left: 0;
         z-index: 9;
-    }
+    } */
     .header-container {
         padding-top: 145px;
     }

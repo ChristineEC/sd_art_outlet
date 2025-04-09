@@ -1,5 +1,5 @@
 """
-Django settings for sd_art_outlet project.thanks
+Django settings for sd_art_outlet project.
 """
 
 import os
