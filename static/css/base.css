@@ -6,7 +6,7 @@ body {
     background: url('/static/images/watercolor-sky.jpg') no-repeat center fixed;
     background-size: cover;
     color: #000;
-    font-family: "Josephine Sans", sans-serif;
+    font-family: "Lato", sans-serif;
     font-optical-sizing: auto;
     min-height: 100vh;
     display: flex;
