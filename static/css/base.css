@@ -13,10 +13,6 @@ body {
     flex-direction: column;
 }
 
-/* .header-container {
-    padding-top: 150px;
-} */
-
 main {
     flex: 1 0 auto;
 }
