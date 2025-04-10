@@ -56,6 +56,3 @@ class Event(models.Model):
     image = models.ImageField(null=True, blank=True)
     publish = models.BooleanField(default=False)
     free_entrance = models.BooleanField(default=False)
-
-    # def __str__(self):
-    #     return f"{self.name}, {self.start_date} to {self.start_date} | {self.image}"

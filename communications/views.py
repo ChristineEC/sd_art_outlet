@@ -85,6 +85,6 @@ def display_events(request):
     events = Event.objects.filter(publish=True).order_by("-start_date")
 
     template = "communications/events.html"
-    context = {"events":events}
+    context = {"events": events}
 
     return render(request, template, context)

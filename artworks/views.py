@@ -152,8 +152,8 @@ def update_artwork(request, artwork_id):
                     request,
                     f'{artwork.title} is updated with status of pending'
                 )
-                # sends user to artwork_detail page where, fiven the 
-                # template logic, they receive a message that the 
+                # sends user to artwork_detail page where, fiven the
+                # template logic, they receive a message that the
                 # artwork cannot be viewed there because its status
                 # is pending, the name of the artist and
                 # link to that artist's page are displayed.
@@ -250,7 +250,7 @@ def artist_add_art(request, artist_id):
         form = ArtworkForm(request.POST, request.FILES)
         if form.is_valid():
             artwork = form.save(commit=False)
-            # sets the artwork's artist to the artist 
+            # sets the artwork's artist to the artist
             # making the request, even if they
             # try to set the artist to someone else
             artwork.artist = artist

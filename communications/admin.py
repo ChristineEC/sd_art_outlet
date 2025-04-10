@@ -16,6 +16,7 @@ class EventAdmin(admin.ModelAdmin):
     )
     ordering = ("-start_date", "end_date",)
 
+
 admin.site.register(ContactUs)
 admin.site.register(CustomOrderRequest)
 admin.site.register(Event)

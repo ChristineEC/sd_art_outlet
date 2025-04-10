@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /cart/
+Sitemap: https://san-diego-art-outlet-2960cce580c0.herokuapp.com/sitemap.xml
