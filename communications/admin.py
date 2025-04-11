@@ -17,6 +17,23 @@ class EventAdmin(admin.ModelAdmin):
     ordering = ("-start_date", "end_date",)
 
 
+class CustomOrderRequestAdmin(admin.ModelAdmin):
+    """
+    Displays relevant model fields in admin
+    """
+    list_display = (
+        "user",
+        "name",
+        "email",
+        "created_at",
+        "updated_on",
+        "have_read",
+        "replied_to_on",
+        "artwork_ordered",
+        "artwork",
+    )
+
+
 admin.site.register(ContactUs)
-admin.site.register(CustomOrderRequest)
+admin.site.register(CustomOrderRequest, CustomOrderRequestAdmin)
 admin.site.register(Event)

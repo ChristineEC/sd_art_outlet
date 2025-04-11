@@ -42,7 +42,7 @@ class CustomOrderRequest(models.Model):
     )
 
     def __str__(self):
-        return f"Message from {self.user} | {self.name} | {self.email}"
+        return self.user.username
 
 
 class Event(models.Model):
