@@ -36,4 +36,4 @@ class CustomOrderRequestAdmin(admin.ModelAdmin):
 
 admin.site.register(ContactUs)
 admin.site.register(CustomOrderRequest, CustomOrderRequestAdmin)
-admin.site.register(Event)
+admin.site.register(Event, EventAdmin)
