@@ -50,52 +50,48 @@
         <div class="col justify-content-center mt-3">
         <hr>
             {% if cart_items %}
-            <div class="table-responsive">
+            <div class="d-block d-md-none">
+                {% for item in cart_items %}
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            {% include "cart/artwork_image.html" %}
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            {% include "cart/artwork_info.html" %}
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            {% include "cart/delete_from_cart.html" %}
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            {% include "cart/artwork_price.html" %}
+                        </div>
+                    </div>
+                    <div class="row"><div class="col"><hr></div></div>
+                {% endfor %}
+            </div>
+            <div class="table-responsive d-none d-md-block">
                 <table class="table table-sm table-borderless">
                     <thead>
                         <tr>
                             <th scope="col">Artwork</th>
                             <th scope="col">Details</th>
-                            <th scope="col"><i class="fa-solid fa-pencil"></i></th>
+                            <th scope="col">Change</th>
                             <th scope="col">Price</th>
                         </tr>
                     </thead>
                     {% for item in cart_items %}
                         <tr>
                             <td class="py-3 w-25">
-                                {% if item.artwork.image %}
-                                    <img class="img-thumbnail img-fluid border-0"
-                                        src="{{ item.artwork.image.url }}"
-                                        alt="{{ item.artwork.image_alt }}">
-                                {% else %}
-                                    <img class="img-thumbnail img-fluid border-0"
-                                        src="{{ MEDIA_URL }}noimage.png"
-                                        alt="{{ artwork.title }}">
-                                {% endif %}
+                                {% include "cart/artwork_image.html" %}
                             </td>
                             <td class="py-3">
-                                <p class="my-3 pl-2"><strong><em>
-                                    {{ item.artwork.title }}</em></strong></p>
-                                <p class="my-0 pl-2"><small>
-                                    {{ item.artwork.artist }}</small></p>
-                                <p class="my-0 pl-2"><small class='my-0 charcoal'>
-                                    {{ item.artwork.medium.friendly_name }}</small></p>
-                                <p class="my-0 pl-2"><small class='my-0 charcoal'>
-                                    {{ item.artwork.dimensions }}</small></p>
+                                {% include "cart/artwork_info.html" %}
                             </td>
                             <td class="py-3">
-                                {% csrf_token %}
-                                <br>
-                                <a class="text-danger remove-from-cart" 
-                                    id="remove-from-cart_{{ item.item_id }}">
-                                    <i class="icon fa-solid fa-trash-can">
-                                    </i> Remove from cart
-                                </a>
+                                {% include "cart/delete_from_cart.html" %}
                             </td> 
                             <td class="py-3">
-                                <p class="my-3">
-                                    <strong>${{ item.artwork.price }}</strong>
-                                </p>
+                                {% include "cart/artwork_price.html" %}
                             </td>
                         </tr>
                     {% endfor %}

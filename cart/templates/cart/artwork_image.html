@@ -1,0 +1,9 @@
+{% if item.artwork.image %}
+<img class="img-thumbnail img-fluid border-0"
+    src="{{ item.artwork.image.url }}"
+    alt="{{ item.artwork.image_alt }}">
+{% else %}
+<img class="img-thumbnail img-fluid border-0"
+    src="{{ MEDIA_URL }}noimage.png"
+    alt="{{ artwork.title }}">
+{% endif %}

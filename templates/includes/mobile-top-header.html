@@ -1,4 +1,4 @@
-<ul class="p-0">
+<ul class="my-1">
   <li class="list-inline-item dropdown">
     <a
       class="nav-link d-block d-lg-none"
@@ -47,7 +47,7 @@
         <div><i class="fas fa-cart-shopping fa-lg"></i></div>
         <p class="my-0">
           {% if grand_total %}
-            {{ grand_total|floatformat:2 }}
+            ${{ grand_total|floatformat:2 }}
           {% else %}
             $0.00
           {% endif %}
