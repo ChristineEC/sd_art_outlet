@@ -11,7 +11,7 @@ class ContactUs(models.Model):
 
     name = models.CharField(max_length=40, blank=False)
     email = models.EmailField(blank=False)
-    phone = models.IntegerField(null=True, blank=True)
+    phone = models.CharField(max_length=20, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     subject = models.CharField(max_length=255, blank=True, null=True)
     message = models.TextField(blank=False)
