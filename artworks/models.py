@@ -43,7 +43,7 @@ class Artwork(models.Model):
     artist = models.ForeignKey(
         "Artist",
         null=True,
-        blank=True,
+        blank=False,
         on_delete=models.SET_NULL,
         related_name="art",
     )
