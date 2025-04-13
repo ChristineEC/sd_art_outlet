@@ -130,6 +130,11 @@ footer {
     color:white;
 }
 
+.zoom-in:hover {
+    transform: scale(2);
+}
+
+
 .inline-link {
     text-decoration: none;
     color: black;
