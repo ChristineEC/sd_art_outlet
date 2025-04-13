@@ -45,7 +45,6 @@ footer {
 }
 
 /* Fonts */
-
 .artwork-title {
     font-style: italic;
 }
@@ -83,7 +82,7 @@ footer {
     background-color: #fff;
     false;
     clear:left;
-    font:14px Original Surfer,Arial,sans-serif;
+    font:14px Lato,sans-serif;
     width: 300px;
 }
 
