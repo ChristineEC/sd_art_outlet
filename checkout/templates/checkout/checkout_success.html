@@ -76,6 +76,7 @@
               {% endif %}
               <p class="my-0"><small>{{ order.postcode }} {{ order.country }}</small></p>
               <p class="my-0"><small>Phone: {{ order.phone_number }}</small></p>
+              <p class="my-0"><small>Email: {{ order.email }}</small></p>
             </div>
             <div class="col-6">
               <p class="charcoal mt-2 mb-1"><small>Billing Info:</small></p>
@@ -100,13 +101,11 @@
           </div>
           {% else %}
           <div class="col text-center my-3 mx-auto">
-            <!-- <p><strong>Now, check out our upcoming events!</strong></p> -->
-            <a href="{% url 'home' %}" class="btn btn-primary my-2"
+            <a href="{% url 'events' %}" class="btn btn-primary my-2"
               aria-label="link to homepage">
               <span class="icon">
                 <i class="fa-solid fa-calendar-days"></i>
               </span>
-              <!-- Revise depending on whether the events model is used -->
               <span>Check out our upcoming events!</span>
             </a>
           </div>
