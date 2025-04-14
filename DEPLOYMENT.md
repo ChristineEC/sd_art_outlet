@@ -122,6 +122,9 @@ Navigate to the Deploy menu in your Heroku app. Connect it to your GitHub reposi
 
 At this point, the website will not have picked up any of the project's static files, due to the DISABLE_COLLECTSTATIC having been set to 1. This has been done so that you can now set up an AWS S3 bucket to serve the project's static files. 
 
+
+SET UP SERVING STATIC FILES FROM AMAZON WEB SERVICES
+
 To serve the static files from Amazon Web Services, a cloud-based storage service, requires a little work. (If I had known, I may have used Cloudinary instead!)  Here are the steps you need to take:
 
 1. Go to AWS and create an account if you don't already have one. Create a personal account. Enter your credit card number (though the service is free up to certain limits.)
@@ -176,7 +179,9 @@ Your permissions will then be this:
 
 Go back to the Services menu, or just type in the topmost searchbar to find IAM, which is AWS's Identity and Access Management. Click on IAM. From there, look to the left side mentu and click on User Groups. Enter a group name like manage-sdart-bucket or whatever you want, then scroll to bottom and click Create User Group.
 
-**Create a policy:** Click Policies in the left-side menu. Referring to the image below, click on the JSON tab.
+**Create a policy:** 
+
+Click Policies in the left-side menu. Referring to the image below, click on the JSON tab.
 
 ![create group policy](documentation/screenshots/aws/create-group-policy.png)
 
@@ -193,11 +198,37 @@ You will need to paste in your ARN twice now for resources, in the Policy Editor
 
 ![arn](documentation/screenshots/aws/arn.png)
 
-(Thanks Code Institute for the image snippet!)
+(Thanks Code Institute for the image snippet! And for much of this material, though I have added my own (and a few shortcuts!)
 
 Scroll to bottom and click Next. Enter a policy name and description, scroll down and click Create Policy.
 
-In Heroku, the following configuration variables are required:
+**Add the policy to your User Group**
+
+Click 'user groups' in the menu to the left, go to the permissions tab and from the 'add permissions' dropdown, click 'attach policies'. Search for your policy by name and select it, then click the button in the lower right of the box Attach Policies.
+
+**Create a User**
+
+Click 'users' in the lefthand side menu. Create a user with a username and click Next.
+
+Select the User Group you created previously, click Next. Scroll down and click 'Create User.'
+
+**Create an access key**
+
+Click on your new user and click 'security credentials'.
+
+Scroll down to access keys and click "create access key".
+
+Select "application running outside of AWS and click Next.
+
+Click 'create access key'. Then click download .csv file and Done. The CSV file will contain your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY. 
+
+Place these in your Heroku config vars.
+
+Also place USE_AWS as a config var in Heroku and set it to True.
+
+So, in Heroku, the following configuration variables are required (More on the Email_host_pass and user below):
+
+Only enter the config vars that you have values for so far, but this is the complete list you will need by the end.
 
 - AWS_ACCESS_KEY_ID
 - AWS_SECRET_KEY_ID
@@ -210,4 +241,27 @@ In Heroku, the following configuration variables are required:
 - STRIPE_WH_SECRET
 - USE_AWS (Set equal to 1)
  
+In settings.py you now need to go set the AWS_STORAGE_BUCKET_NAME to your storage bucket name, as it will contain the name from the San Diego Art Outlet project. You do this in the first line under 
+`if 'USE_AWS' in os.environ` in settings.py.
 
+Remove the DISABLE_COLLECTSTATIC variable from Heroku config vars now.
+
+By pushing all of these changes to GitHub now, Heroku will run collectstatic and will collect the static and media folders in the django project and create the two directories in your AWS bucket, like this:
+
+![aws folders](documentation/screenshots/aws/aws-folders.png)
+
+The last step is to set up sending real emails with Django. Since this has already been prepared in most of the settings, all you have to do is use or create your own gmail, set it to two-step verfification in the gmail account settings, then create a new app-specific password.
+
+To get the password you'll need, search in the top search bar of google account settings for "App passwords" and choose that option. Click create to create a new app specific password (giving it a name). A generated app password will pop up. Copy and click done.
+
+The password is a 16 digit code. It needs to be pasted into your Heroku config variable for EMAIL_HOST_PASS. For EMAIL_HOST_USER, use the gmail account for which you just set up the app specific password, and of course you need to use that email in settings.py instead of the sdartoutlet email wherever that appears.
+
+The final step is to go to your Stripe Dashboard and add your app's URL as a webhook endpoint. Click Developers then Webhooks, and in the top right of your screen, click Add Destination and just endter your app's url followed by "/webhooks/wh/" without the quotes.
+
+For "Select Events" you can just Select all Events, then click Add, and at the bottom of the page click Add endpoint.
+
+Click Reveal to access the Signing Secret for your endpoint, and last, add that signing secret (that starts with whsec) as the value for your Heroku config var STRIPE_WH_SECRET. (By the way, config vars cannot be entered without values, so this should be the first time you enter the config var STRIPE_WH_SECRET, now that you have its value.)
+
+To test your webhooks and your app's purchase functionality, use the credit card 4242 4242 4242 4242 with any real address, any 3-digit verification code and zip code.
+
+Good luck!
