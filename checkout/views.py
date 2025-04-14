@@ -18,6 +18,9 @@ import json
 
 @require_POST
 def cache_checkout_data(request):
+    """Caches the checkout data in case something
+    goes wrong during checkout so the order is made
+    even if user interrupts the process"""
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -105,7 +108,7 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-
+        """prefills the profile info it it exists"""
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)

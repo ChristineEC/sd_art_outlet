@@ -1,4 +1,4 @@
-# Search Engine Optimization and Web Marketing
+# SEO and Web Marketing
 
 ## Keywords Research
 Initial brainstorming included the following words and phrases for short-tail and long-tail keywords:

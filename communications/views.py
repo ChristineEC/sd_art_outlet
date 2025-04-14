@@ -6,7 +6,7 @@ from .forms import ContactUsForm, CustomOrderRequestForm
 
 
 def contact_us(request):
-    """Enables a site visitomessage to the business without
+    """Enables a site visitor to message the business without
     logging in"""
 
     if request.method == 'POST':

@@ -84,7 +84,7 @@ class StripeWH_Handler:
                 profile.default_postcode = shipping_details.address.postal_code
                 profile.default_country = shipping_details.address.country
                 profile.save()
-
+        """checks if the order is in the database, and creates if if not"""
         order_exists = False
         attempt = 1
         while attempt <= 5:

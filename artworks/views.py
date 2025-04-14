@@ -54,7 +54,9 @@ def full_gallery(request):
 
 def artwork_detail(request, artwork_id):
     """A view to display an individual
-    piece of art, with full details"""
+    piece of art, with full details (Exclusion)
+    of pending artworks occurs in the template)
+    """
     artwork = get_object_or_404(Artwork, pk=artwork_id)
 
     context = {
@@ -81,6 +83,8 @@ def add_artwork(request):
     if request.method == "POST":
         form = ArtworkForm(request.POST, request.FILES)
         if form.is_valid():
+            """Artwork added without an image is
+            saved as status pending"""
             if not request.FILES:
                 artwork = form.save(commit=False)
                 artwork.status = 3
@@ -142,9 +146,9 @@ def update_artwork(request, artwork_id):
                 form.save()
                 messages.success(request, f'{artwork.title} has been updated')
                 return redirect(reverse('artwork_detail', args=[artwork.id]))
-            # sets status to pending so no artwork appears publicly
-            # without an image. Pending works appear on artist's page
-            # for logged in artist or superuser only
+            """sets status to pending so no artwork appears publicly
+            without an image. Pending works appear on artist's page
+            for logged in artist or superuser only"""
             else:
                 artwork.status = 3
                 form.save()
@@ -152,11 +156,11 @@ def update_artwork(request, artwork_id):
                     request,
                     f'{artwork.title} is updated with status of pending'
                 )
-                # sends user to artwork_detail page where, fiven the
-                # template logic, they receive a message that the
-                # artwork cannot be viewed there because its status
-                # is pending, the name of the artist and
-                # link to that artist's page are displayed.
+                """sends user to artwork_detail page where, given the
+                template logic, they receive a message that the
+                artwork cannot be viewed there because its status
+                is pending or lacks an image; the name of the artist and
+                link to that artist's page are displayed"""
                 return redirect(reverse('artwork_detail', args=[artwork.id]))
         else:
             messages.error(request, (
@@ -215,6 +219,8 @@ def all_artists(request):
 def artist_page(request, artist_id):
     """
     A view to display an individual artist's page
+    (Role-based display of artwork by status
+    occurs in the template.)
     """
     artist = get_object_or_404(Artist, pk=artist_id)
     artworks = Artwork.objects.filter(artist=artist)
@@ -250,11 +256,12 @@ def artist_add_art(request, artist_id):
         form = ArtworkForm(request.POST, request.FILES)
         if form.is_valid():
             artwork = form.save(commit=False)
-            # sets the artwork's artist to the artist
-            # making the request, even if they
-            # try to set the artist to someone else
+            """sets the artwork's artist to the artist
+            making the request (or whose page the superuser)
+            is accessing the form from), even if they
+            try to set the artist to someone else"""
             artwork.artist = artist
-            # sets artwork status to pending
+            """sets artwork status to pending"""
             artwork.status = 3
             artwork = form.save()
             messages.success(

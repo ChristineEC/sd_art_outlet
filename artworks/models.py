@@ -36,6 +36,12 @@ class Artist(models.Model):
 
 
 class Artwork(models.Model):
+    """null equals true and blank equals false forces 
+    user to choose an artist as the artist when creating or
+    updating the artwork but allows field to be set to null
+    in case artist is removed from system, preserving data
+    integrity for the artwork"""
+
     title = models.CharField(max_length=254)
     medium = models.ForeignKey(
         "Medium", null=True, blank=True, on_delete=models.SET_NULL
