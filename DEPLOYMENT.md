@@ -264,4 +264,8 @@ Click Reveal to access the Signing Secret for your endpoint, and last, add that 
 
 To test your webhooks and your app's purchase functionality, use the credit card 4242 4242 4242 4242 with any real address, any 3-digit verification code and zip code.
 
+The site should now be fully deployed.
+
+One last issue: check the media folder in your S3 bucket. If it does not contain the images from your app (from your media folder), click the Upload button and you can upload the image files manually **with the exact same names** as those in your local image folder. I had to do this for my project.
+
 Good luck!
