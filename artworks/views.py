@@ -146,9 +146,9 @@ def update_artwork(request, artwork_id):
                 form.save()
                 messages.success(request, f'{artwork.title} has been updated')
                 return redirect(reverse('artwork_detail', args=[artwork.id]))
-            """sets status to pending so no artwork appears publicly
-            without an image. Pending works appear on artist's page
-            for logged in artist or superuser only"""
+                """sets status to pending so no artwork appears publicly
+                without an image. Pending works appear on artist's page
+                for logged in artist or superuser only"""
             else:
                 artwork.status = 3
                 form.save()

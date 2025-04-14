@@ -14,10 +14,15 @@
 
 
 ## Validation
+
 ### Python
+
 ### CSS
+
 ### JavaScript
+
 ### HTML
+
 
 ## User Stories
 
