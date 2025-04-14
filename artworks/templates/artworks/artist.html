@@ -53,7 +53,7 @@
         </div>
         <div class="row">
             {% for artwork in artworks %}
-                {% if artwork.status != 3 %}
+                {% if artwork.status != 3 and artwork.image %}
                     <div class="col-sm-10 offset-sm-1 col-md-6 col-lg-4 col-xl-3 mb-5">
                         <div class="card w-100 border-0">
                             {% if artwork.image %}
@@ -105,7 +105,7 @@
                     </div>
                 {% endif %}
                 {% if request.user.is_superuser or request.user == artwork.artist.user %}
-                    {% if artwork.status == 3 %}
+                    {% if artwork.status == 3 or not artwork.image %}
                         <div class="col-sm-10 offset-sm-1 col-md-6 col-lg-4 col-xl-3 mb-5">
                             <div class="card w-100 border-0">
                                 {% if artwork.image %}
@@ -136,7 +136,7 @@
                                             {{ artwork.medium.friendly_name }}
                                         </small><br>
                                         <p class="lead mb-0 text-left text-danger">
-                                            status: pending
+                                            status pending or no image
                                             </p>
                                         <small class="mx-auto mt-5">
                                             <a href="{% url 'update_artwork' artwork.id %}"
