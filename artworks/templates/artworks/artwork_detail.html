@@ -13,10 +13,11 @@
 
 {% block content %}
     <div class="product-container col-10 offset-1">
-        {% if artwork.status == 3 %}
+        {% if artwork.status == 3 or not artwork.image %}
         <div class="row">
             <div class="col-sm-12 col-md-6 offset-md-3">
-                <p class="text-center">This artwork cannot be viewed here, as it has a status of pending.</p>
+                <p class="text-center">This artwork cannot be viewed here because it has a status of pending</p>
+                <p class="text-center">or because it is not associated with an image.</p>
                 <p class="text-center">It may be accessed by the artist or authorized user from the 
                     <a href="{% url 'artist_page' artwork.artist.id %}"
                         aria-label="link to artist's page">artist's page</a>.</p>
@@ -27,14 +28,9 @@
         <div class="row">
             <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-3">
                 <div class="card text-center border-black">
-                    {% if artwork.image %}
-                            <img class="card-img-top img-fluid"
-                                src="{{ artwork.image.url }}"
-                                alt="{{ artwork.image_alt }}">
-                    {% else %}
-                        <img class="card-img-top img-fluid"
-                            src="{{ MEDIA_URL }}noimage.png">
-                    {% endif %}
+                    <img class="card-img-top img-fluid"
+                        src="{{ artwork.image.url }}"
+                        alt="{{ artwork.image_alt }}">
                     <div class="card-body">
                         {% if artwork.image %}
                         <a href="{{ artwork.image.url }}" target="_blank"
