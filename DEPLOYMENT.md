@@ -266,6 +266,4 @@ To test your webhooks and your app's purchase functionality, use the credit card
 
 The site should now be fully deployed.
 
-One last issue: check the media folder in your S3 bucket. If it does not contain the images from your app (from your media folder), click the Upload button and you can upload the image files manually **with the exact same names** as those in your local image folder. I had to do this for my project.
-
-Good luck!
+One last remark: check the media folder in your S3 bucket. If it does not contain the images from your app (from your media folder), click the Upload button and you can upload the image files manually **with the exact same names** as those in your local image folder. I had to do this for my project. From there, when you add new objects--for example, when you add an artwork with an image--in the deployed version, the image will be added to the S3 bucket and served from there to your website just fine.
