@@ -78,8 +78,47 @@ On small tablet:
 On large tablet:
 
 ![Large tablet](documentation/screenshots/large-tablet-screenshot.png)
-## Lighthouse
+## Lighthouse Results
 
+- Homepage
+![homepage](documentation/screenshots/lighthouse/homepage.png)
+
+- Shop
+![shop](documentation/screenshots/lighthouse/artworks.png)
+
+    - acrylic paintings only in Shop
+![acrylic only in shop](documentation/screenshots/lighthouse/acrylic.png)
+
+- Gallery
+![gallery](documentation/screenshots/lighthouse/gallery.png)
+
+- Artists page
+![artists](documentation/screenshots/lighthouse/artists.png)
+
+- Artist's page
+![an artist's page](documentation/screenshots/lighthouse/artist2.png)
+
+- Contact Us page
+![contact us page](documentation/screenshots/lighthouse/contact.png)
+
+- Custom Order Request page
+![custom-order page](documentation/screenshots/lighthouse/custom.png)
+
+Some of the details from the above results:
+
+![lighthouse result detail1](documentation/screenshots/lighthouse/avoid-enormous-network-payloads.png)
+
+![lighthouse performance detail](documentation/screenshots/lighthouse/performance-detail.png)
+
+![cookies](documentation/screenshots/lighthouse/cookies.png)
+
+It seems clear from the results of the gallery page that better image handling is necessary. This page has the most artworks and contains a lot of photography as well. One lighthouse suggestion is to delay rendering of off-screen images, and it would be a good idea to implement pages here, rather than infinite scroll, especially for the gallery but even for the shop.
+
+The best practices score is consistent throughout and is mainly due to the implementation of Stripe.
+
+Serving images in next-gen formats is also something I would look into. I believe Cloudinary may have been a better choice for this app, as it seems more user friendly, and I know there are easy ways to work with the images to serve them dynamically at the sizes required while they are being served.
+
+One issue that deserves attention is shown in the second-to-last image here and concers security. In the project's present iteration, this is not serious, as no real purchases are being made, but if one wanted to go live with the project (in terms of Stripe--not just in test mode), this would be an issue to understand and address in advance.
 
 Features and User Stories
 ## Features and User Stories
@@ -321,14 +360,6 @@ The form is prefilled with the object's current data:
 Successful update brings the user to the artwork detail page for that artwork.
 
 ![superuser update success](documentation/screenshots/superuser-update-artwork.png)
-
-
-
-
-
-
-
-
 
 
 ### Custom Order Request
