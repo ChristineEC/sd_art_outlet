@@ -2,15 +2,18 @@
 
 # Table of Contents
 1. [Validation](#validation)
-    [Python](#python)
-    [CSS](#css)
-    [JavaScript](#javascript)
-    [HTML](#html)
+    - [Python](#python)
+    - [CSS](#css)
+    - [JavaScript](#javascript)
+    - [HTML](#html)
 2. [User Stories](#user-stories)
 
 3. [Other Interactive Elements](#other-interactive-elements)
 
-4. 
+4. [Browser Compatibility](#browser-compatibility)
+
+5. [Responsiveness](#responsiveness)
+
 
 
 ## Validation
@@ -38,12 +41,43 @@ All passed with no errors or warnings.
 
 ### JavaScript
 All of the JavaScript files of the project were run through JSHint.
- - artists.js with no errors or warnings
- - stripe_elements.js with one unrecognized variable, Stripe, which was expected and is needed for Stripe functionality in the project
- - countryfields.js with one warning of an unnecessary colon (which I didn't trust because it also doesn't recognize the symbol $ being used)
+
+| file | results | comment |
+|------|---------|---------|
+| artists.js | no errors or warnings | |
+| stripe_elements.js | unrecognized variable Stripe | This was expected and is needed for Stripe functionality in the project |
+| countryfields.js | warning of unnecessary semicolon | ignored because the linter also didn't recognize the $ symbol being used in the code, and the semicolon was in the correct place and necessary |
+
 
 
 ### HTML
+
+| file | results | comment |
+|------|---------|---------|
+| base.html |  |  |
+| index.html |  |  |
+| artworks.html |  |  |
+| add_artwork.html |  |  |
+| artist_add_art.html |  |  |
+| artist.html |  |  |
+| artists.html |  |  |
+| artwork_detail.html |  |  |
+| gallery.html |  |  |
+| shop.html |  |  |
+| update_artwork.html |  |  |
+| artwork_image.html |  |  |
+| artwork_info.html |  |  |
+| artwork_price.html |  |  |
+| cart.html |  |  |
+| delete_from_cart.html |  |  |
+| checkout_success.html |  |  |
+| checkout.html |  |  |
+| contact_us.html |  |  |
+| custom-request.html |  |  |
+| events.html |  |  |
+| profile.html |  |  |
+
+
 
 
 ## User Stories
