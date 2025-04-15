@@ -26,13 +26,22 @@ Thus there are no python files that need fixing.
 ### CSS
 The following CSS files were validated using the [WC3 CSS Validator](https://jigsaw.w3.org/css-validator/):
 
-artworks.css
-checkout.css
-base.css
-profile.css
+- artworks.css
 
+- checkout.css
+
+- base.css
+
+- profile.css
+
+All passed with no errors or warnings.
 
 ### JavaScript
+All of the JavaScript files of the project were run through JSHint.
+ - artists.js with no errors or warnings
+ - stripe_elements.js with one unrecognized variable, Stripe, which was expected and is needed for Stripe functionality in the project
+ - countryfields.js with one warning of an unnecessary colon (which I didn't trust because it also doesn't recognize the symbol $ being used)
+
 
 ### HTML
 
