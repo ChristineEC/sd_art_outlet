@@ -1,10 +1,18 @@
-Deployment
+# Deployment
 
-San Diego Art Outlet is deployed on [Heroku](https://san-diego-art-outlet-2960cce580c0.herokuapp.com/).
+- San Diego Art Outlet is deployed on [Heroku](https://san-diego-art-outlet-2960cce580c0.herokuapp.com/).
+- The code is publicly available on [GitHub](#https://github.com/ChristineEC/sd_art_outlet/).
 
-To use the code available publicly on GitHub for local deployment:
+## Local Deployment
 
-(Some of these instruction assume you are using VSCode and have already installed Python 3.12.8 and Python extension for VS Code in your computer, and that you have set up a new repository in GitHub to push your local code to and a virtual environment in VSCode.)
+- Instructions for local deployment:
+
+These instruction assume that you:
+- are using VS Code, 
+- have Python 3.12.8 installed on your computer
+- have installed Python extension for VS Code on your computer, and that 
+- you have set up a new repository in GitHub to push your local code to and 
+- have set up a virtual environment in VSCode.
 
 1. Open VS Code and select File > Open Folder
 
@@ -20,7 +28,7 @@ Connect it to a GitHub repository of your own so you can push to GitHub for vers
 
 Once you have done this, the code is available to you locally. Ensure that you have python 3.12.8 running in your virtual environment.
 
-To do this, still in VS Code click the gear icon in the lower left of your screen to open the Command Palette. There click on create e and select Python: Create Environment.
+To do this, still in VS Code click the gear icon in the lower left of your screen to open the Command Palette. There click on Create and select Python: Create Environment.
 
 Choose Venv from the dropdown list and then choose the python version you have installed on your computer. This project uses Python 3.12.8, so that is recommended. Click OK. Check to see if you now have a .venv folder in your files pane in VS Code.
 
@@ -38,7 +46,7 @@ Create a .gitignore file in the root directory if there isn't already one, and e
 
 `__pycache__`
 
-Create an env.py file, and in it, place the following, to start (you will add more later):
+Create an env.py file, and in it, place the following, to start with (you will add more later):
 
 1. `import os`
 2.
@@ -55,9 +63,9 @@ Now you need to install the project's dependencies, that are located in requirem
 Now attempt to run the local server by typing in 
 - python manage.py runserver (or possibly python3 manage.py runserver), depending on your system. I have needed to use the former.
 
-Use the link that will appear in your terminal to open the server, and if you get an error message saying "Disallowed host at /", copy what it says you need to add there to ALLOWED_HOSTS in your settings.py file (currently around line 19 in that file). It will look something like '127.0.0'. While you are there, you should also add 'localhost' to the list of allowed hosts, as you will need this later for the Stripe webhooks. Refresh the page and you should now see the website.
+Use the link that will appear in your terminal to open the server, and if you get an error message saying "Disallowed host at /", copy what it says there that you need to add there to ALLOWED_HOSTS in your settings.py file (currently around line 19 in that file). It will look something like '127.0.0'. While you are there, you should also add 'localhost' to the list of allowed hosts, as you will need this later for the Stripe webhooks. Refresh the page and you should now see the website.
 
-CREATE A STRIPE ACCOUNT
+### CREATE A STRIPE ACCOUNT
 
 Go to Stripe.com and create an account. Then go to the developers menu at the bottom left and select API Reference (or otherwise access your developers dashboard, as the procedure may change), to access your Publishable key (which starts with pk_test) and your Secret key (which starts with sk_test).
 
@@ -85,14 +93,14 @@ So now everything should be up and running.
 
 This is a good time to push everything to your remote repository.
 
-DEPLOYING TO HEROKU
+## Deploying to Heroku
 
-To deploy to Heroku, you will need to switch to another database such as Postgres, as SQLite is not supported by Heroku. I will assume use of a Postgres database. Create your database, either independently or in Heroku (a paid service, not covered here). Be ready to copy the database url into your code in the step after this next one.
+To deploy to Heroku, you will need to switch to another database such as Postgres, as SQLite is not supported by Heroku. I will assume use of a Postgres database. Create your database, either independently somehow or in Heroku (a paid service, not covered here). Be ready to copy the database url into your code in the step after this next one.
 
-First, go to Heroku and create an account if you don't already have one. Log in, then click on the button at the top right of your screen that says New, and choose Create New App. Give your app a name such as sdartoutlet, for example, and choose the region where you are located. Then click Create App. That will bring you to your app's dashboard, where you need to navigate to Settings from the menue towards the top left. Scroll down and choose a deployment method. These instruction are for deploying from a GitHub repository. Choose Connect to GitHub.
+First, go to Heroku and create an account if you don't already have one. Log in, then click on the button at the top right of your screen that says New, and choose Create New App. Give your app a name such as artoutlet, for example, and choose the region where you are located. Then click Create App. That will bring you to your app's dashboard, where you need to navigate to Settings from the menu towards the top left. Scroll down and choose a deployment method. These instruction are for deploying from a GitHub repository. Choose Connect to GitHub.
 Scroll down to find the section on Config vars and click on the Reveal Config Vars button.
 
-Now you need to connect your local database to your Postgres database using VS Code. 
+### Connect your local database to your Postgres database
 
 Go to your settings.py, code out what is there for DATABASES, and replace it with this:
 `DATABASES = {'default': dj_database_url.parse("your database url here")}`
@@ -106,11 +114,11 @@ If you want to include the data from San Diego Art Outlet that is provided in th
 
 Do not push to GitHub while your database url is showing in settings.py!
 
-After the migration (and possible uploading of fixtures), you can code back in DATABASES like it was before and delete the line above containing your database url. The Postgres database url will be entered in config vars in Heroku.
+After the migration (and possible uploading of fixtures), you can code back in DATABASES like it was before and delete the line above containing your database url. The Postgres database url will be entered in config vars in Heroku and should not appear in your local code and especially not pushed to GitHub!
 
-Go to your Heroku app, and get the app's URL. Copy it into ALLOWED_HOSTS in your settings.py, removing the "https://" from the start and the "/" from the end.
+Go to your Heroku app, and get your app's URL. Copy it into ALLOWED_HOSTS in your settings.py, removing the "https://" from the start and the "/" from the end.
 
-Gunicorn should be already installed as part of your dependencies. But double check, as deployment will fail without it.
+Gunicorn should be already installed as part of your dependencies, but double check, as deployment will fail without it.
 
 Now push everything to GitHub.
 
@@ -123,17 +131,19 @@ Navigate to the Deploy menu in your Heroku app. Connect it to your GitHub reposi
 At this point, the website will not have picked up any of the project's static files, due to the DISABLE_COLLECTSTATIC having been set to 1. This has been done so that you can now set up an AWS S3 bucket to serve the project's static files. 
 
 
-SET UP SERVING STATIC FILES FROM AMAZON WEB SERVICES
+### SET UP SERVING STATIC FILES FROM AMAZON WEB SERVICES
 
 To serve the static files from Amazon Web Services, a cloud-based storage service, requires a little work. (If I had known, I may have used Cloudinary instead!)  Here are the steps you need to take:
 
 1. Go to AWS and create an account if you don't already have one. Create a personal account. Enter your credit card number (though the service is free up to certain limits.)
 
-2. With your account created, go to aws.amazon.com and log in at the upper right to access the management console. At the top of the screen, search for "S3" in the searchbar and then click on S3 under Services. From there, click on the button Create Bucket.
+#### Create an S3 Bucket
 
-3. Enter a bucket name (such as artoutlet), select 'ACLs enabled', select 'Bucket owner preferred', and **deselect** 'Block all public acess', checking the box to verify you know about the risk of public access. Then click "create bucket".
+With your account created, go to aws.amazon.com and log in at the upper right to access the management console. At the top of the screen, search for "S3" in the searchbar and then click on S3 under Services. From there, click on the button Create Bucket.
 
-4. With the bucket created, click on the bucket name to view details.
+Enter a bucket name (such as artoutlet), select 'ACLs enabled', select 'Bucket owner preferred', and **deselect** 'Block all public acess', checking the box to verify you know about the risk of public access. Then click "create bucket".
+
+With the bucket created, click on the bucket name to view details.
 
 ![aws-buckets](documentation/screenshots/aws/aws-buckets.png)
 
@@ -169,7 +179,7 @@ Something like this will pop up:
 
 Copy it, go back to the policy editor, and paste it in. Make sure that you add "/*" (without the quotes) at the end of the Resource value in the code you just pasted. Scroll down and click Save Changes.
 
-Now your need to edit the Access Control List (ACL): Still under the Permissions tab, scroll down to the Access Control List (ACL) section and click Edit. Then on that page click 'List' for Everyone (public access). Click checkbox that you agree. Click Save Changes.
+Now you need to edit the Access Control List (ACL): Still under the Permissions tab, scroll down to the Access Control List (ACL) section and click Edit. Then on that page click 'List' for Everyone (public access). Click checkbox that you agree. Click Save Changes.
 
 Your permissions will then be this:
 
@@ -228,7 +238,7 @@ Also place USE_AWS as a config var in Heroku and set it to True.
 
 So, in Heroku, the following configuration variables are required (More on the Email_host_pass and user below):
 
-Only enter the config vars that you have values for so far, but this is the complete list you will need by the end.
+Only enter the config vars that you have values for so far, but this is the complete list you will need by the end:
 
 - AWS_ACCESS_KEY_ID
 - AWS_SECRET_KEY_ID
@@ -250,6 +260,7 @@ By pushing all of these changes to GitHub now, Heroku will run collectstatic and
 
 ![aws folders](documentation/screenshots/aws/aws-folders.png)
 
+#### Sending real emails with Django
 The last step is to set up sending real emails with Django. Since this has already been prepared in most of the settings, all you have to do is use or create your own gmail, set it to two-step verfification in the gmail account settings, then create a new app-specific password.
 
 To get the password you'll need, search in the top search bar of google account settings for "App passwords" and choose that option. Click create to create a new app specific password (giving it a name). A generated app password will pop up. Copy and click done.

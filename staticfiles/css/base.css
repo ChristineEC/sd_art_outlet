@@ -1,15 +1,19 @@
-html {
-    height: 100%;
-}
-
 body {
-    background: url('/static/images/watercolor-sky.jpg') no-repeat center fixed;
     background-size: cover;
     color: #000;
-    font-family: "Josephin Sans", sans-serif;
-    font-optical-sizing: auto;
-    height: calc(100vh-145px);
+    font-family: "Lato", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 
+main {
+    flex: 1 0 auto;
+}
+
+footer {
+    background-color: rgb(70, 12, 230);
+    color:#fff;
 }
 
 .main-logo-link {
@@ -18,7 +22,7 @@ body {
 }
 
 .charcoal {
-    color: rgb(125, 125, 124)
+    color: rgb(64, 64, 64)
 }
 
 /* Navbar */
@@ -38,9 +42,7 @@ body {
     height: 100%;
 }
 
-
 /* Fonts */
-
 .artwork-title {
     font-style: italic;
 }
@@ -58,19 +60,25 @@ body {
   font-style: normal;
 }
 
-
 .josephine-sans {
     font-family: "Josefin Sans", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
 }
 
 .josephine-sans-bold {
     font-family: "Josefin Sans", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 800;
     font-style: normal;
+}
+
+
+/* Mailchimp */
+#mc_embed_signup{
+    background-color: #fff;
+    clear:left;
+    font:14px Lato,sans-serif;
+    width: 300px;
 }
 
 /* from Bulma */
@@ -91,6 +99,10 @@ body {
     cursor: pointer;
 }
 
+.card:hover {
+    border: 3px solid  rgb(70, 12, 230);
+}
+
 .shop-now-button {
     background: rgb(70, 12, 230);
     color: white;
@@ -101,7 +113,11 @@ body {
 
 .shop-now-button:hover,
 .shop-now-button:active,
-.shop-now-button:focus,
+.shop-now-button:focus {
+    background: rgb(114, 68, 241);
+    color: white;
+}
+
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
@@ -109,8 +125,18 @@ body {
     color:white;
 }
 
+.zoom-in:hover {
+    transform: scale(2);
+}
+
+
 .inline-link {
     text-decoration: none;
+    color: black;
+}
+
+.underline {
+    text-decoration: underline;
 }
 
 .text-black {
@@ -124,10 +150,6 @@ body {
 
 .border-black {
     border: 1px solid black !important;
-}
-
-.bg-black {
-    background: #000 !important;
 }
 
 .text-white {
@@ -184,14 +206,32 @@ body {
 }
 
 /* --Media Queries-- */
+
 @media (max-width: 992px) {
     .header-container {
-        padding-top: 80px;
+        padding-top: 100px;
     }
 
     .navbar {
         z-index: 10;
     }
+}
+
+.nav-link:hover,
+.nav-link:active,
+.nav-link:focus,
+.nav-item.dropdown:hover,
+.nav-item.dropdown:active,
+.nav-item.dropdown:focus {
+    color:rgb(255, 228, 196);
+}
+
+.subheadline {
+    margin-top: 2px;
+}
+
+.josephine-sans-subheader {
+    font-size: .5rem;
 }
 
 @media (min-width:1200px) {
@@ -202,14 +242,14 @@ body {
 
 /* Fixed top navbar on medium and up */
 @media (min-width: 992px) {
-    .fixed-top-desktop-only {
+    /* .fixed-top-desktop-only {
         position: fixed;
         background-color: #fff;
         top: 0;
         right: 0;
         left: 0;
         z-index: 9;
-    }
+    } */
     .header-container {
         padding-top: 145px;
     }

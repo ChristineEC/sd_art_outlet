@@ -1,6 +1,6 @@
 from django import forms
 from .widgets import ClearableFileInput
-from .models import Artwork, Medium, Artist
+from .models import Artwork, Medium
 
 
 class ArtworkForm(forms.ModelForm):
@@ -28,7 +28,6 @@ class ArtworkForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         mediums = Medium.objects.all()
-        artists = Artist.objects.all()
         friendly_names = [(m.id, m.get_friendly_name()) for m in mediums]
 
         self.fields["medium"].choices = friendly_names

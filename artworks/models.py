@@ -36,7 +36,7 @@ class Artist(models.Model):
 
 
 class Artwork(models.Model):
-    """null equals true and blank equals false forces 
+    """null equals true and blank equals false forces
     user to choose an artist as the artist when creating or
     updating the artwork but allows field to be set to null
     in case artist is removed from system, preserving data

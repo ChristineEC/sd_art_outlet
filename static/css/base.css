@@ -2,7 +2,6 @@ body {
     background-size: cover;
     color: #000;
     font-family: "Lato", sans-serif;
-    font-optical-sizing: auto;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -63,14 +62,12 @@ footer {
 
 .josephine-sans {
     font-family: "Josefin Sans", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
 }
 
 .josephine-sans-bold {
     font-family: "Josefin Sans", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 800;
     font-style: normal;
 }
@@ -79,7 +76,6 @@ footer {
 /* Mailchimp */
 #mc_embed_signup{
     background-color: #fff;
-    false;
     clear:left;
     font:14px Lato,sans-serif;
     width: 300px;
