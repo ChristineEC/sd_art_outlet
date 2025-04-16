@@ -48,9 +48,11 @@ All of the JavaScript files of the project were run through JSHint.
 | stripe_elements.js | unrecognized variable Stripe | This was expected and is needed for Stripe functionality in the project |
 | countryfields.js | warning of unnecessary semicolon | ignored because the linter also didn't recognize the $ symbol being used in the code, and the semicolon was in the correct place and necessary |
 ### HTML
+HTML validation was carried out through direct input of rendered html using [W3C Vaidation Service](https://validator.w3.org/). Results are as follows, with no remaining issues to be fixed.
+
 | file | results | comment |
 |------|---------|---------|
-| base.html |  | indirectly checked as part of other pages |
+| base.html | no errrors or warnings | indirectly checked as part of other pages |
 | index.html | no errors or warnings |  |
 | shop.html | no errors or warnings  |  |
 | add_artwork.html | no errors or warnings |  |
@@ -65,15 +67,13 @@ All of the JavaScript files of the project were run through JSHint.
 | artwork_price.html |  | included in cart.html |
 | cart.html | no errors or warnings |  |
 | delete_from_cart.html |  | included in cart.html |
-| checkout_success.html |  |  |
+| checkout_success.html | no errors or warnings |  |
 | checkout.html | warning: empty heading | This refers to an h1 that contains the spinner icon that is activated after the user clicks "complete order", so the h1 is not actually empty; its content is simply not displayed until and unless necessary. |
 | contact_us.html | no errors or warnings |  |
 | custom-request.html | no warnings or errors |  |
 | events.html | no errors or warnings |  |
-| profile.html |  |  |
-
-
-
+| profile.html | no errors or warnings |  |
+| Login, Logout, Register, amd Reset Password pages (inheriting from allauth/account/base.html) | no errors or warnings |  |
 
 ## User Stories
 
