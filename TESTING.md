@@ -12,6 +12,10 @@
 5. [Manual Testing](#manual-testing)
     - [Table 1. User Stories](#table-1-user-stories)
     - [Table 2. Actions, Expected Results, and Outcomes](#table-2-actions-expected-results-and-outcomes)
+        - [First-time visitor or user who has never registered for an account](#first-time-visitor-or-user-who-has-never-registered-for-an-account)
+        - [Logged in Users](#logged-in-users)
+        - [The Superuser](#the-superuser)
+        - [An artist who has a (normal) user account and who has been added to their Artist object (Artist.user) as the "user" on the backend by the superuser](#an-artist-who-has-a-normal-user-account-and-who-has-been-added-to-their-artist-object-artistuser-as-the-user-on-the-backend-by-the-superuser)
 ## Validation
 ### Python
 Python files were tested using flake8 in VS Code. The results are as follows, with 6 lines raising issues:
@@ -165,6 +169,19 @@ Serving images in next-gen formats is also something I would look into. I believ
 
 One issue that deserves attention is shown in the second-to-last image here and concerns security. In the project's present iteration, this is not serious, as no real purchases are being made, but if one wanted to go live with the project (in terms of Stripe--not just in test mode), this would be an issue to understand and address in advance.
 ## Browser Compatibility
+The website was tested in the following browsers, with no known compatibility issues:
+| Browser | Compatible |
+|---------|------------|
+| Chrome | &#9989; |
+| Mozilla Firefox | &#9989; |
+| Opera | &#9989; |
+| Safari | Unable to access the webpage |
+| Edge | &#9989; |
+| IOS (on an iPhone in Chrome browser) | &#9989; |
+| Android phones | &#9989; |
+
+There are known issues with Heroku and Safari, but at this stage I have not addressed them, so the website is not accessible in Safari at the moment. No errors are raised--I just can't get the page to load at all.
+
 ## Manual Testing
 Extensive manual testing of user stories and all interactive functionality has been completed, with no remaining bugs or errors and all required user stories fulfilled.
 
@@ -196,9 +213,7 @@ User stories and the outcome of various user interactions with regard to them ar
 | #41 | As a site owner, I can handle webhooks from Stripe to ensure that payment and order processes are fully handled | Checkout App | &#9989; |
 | #44 | As a business owner, I want to be able to receive messages from customers or collaborators so I can respond as required by my business | Communications App, Contact Us nav and form, Admin | &#9989; |
 | #45 | As a visitor to the site I can sign up for a newsletter so I can be aware of upcoming shows or other news | Newsletter signup in footer through MailChimp | &#9989; |
-
 ### Table 2: Actions, Expected Results, and Outcomes
-
 #### First-time visitor or user who has never registered for an account
 - Please note that "as expected" in the Outcome column in the table below means that the description of the outcome is exactly the same as the description of the expected result. Only outcomes that need further description contain additional text, and additional text, rather than "as expected", should not be construed as meaning that the outcome was not as expected. The pass mark means that the expected result was achieved.
 
@@ -252,15 +267,15 @@ User stories and the outcome of various user interactions with regard to them ar
 | User fills in invalid data in checkout form | Built-in form validation tells user what error(s) need to be fixed | as expected | &#9989; |
 | User fills in valid data in checkout form | <ol><li>User is redirected to the checkout success page, where they see a summary of their order, with full details, and a success message containing their order number and the email address where they will receive a confirmation email</li><li>A confirmation email is sent to the email address the user entered in the form</li><li>An order is created in the database</li><li>Stripe webhooks are received for payment-intent-created and payment-intent-succeeded</li><li>Stripe creates the charge so the funds are received</li></ol> | <ol><li>as expected</li><li>as expected</li><li>as expected</li><li>as expected</li><li>as expected</li></ol> | <ol><li>&#9989;</li><li>&#9989;</li><li>&#9989;</li><li>&#9989;</li><li>&#9989;</li></ol> |
 | A user hits the back button or makes another error during checkout while payment is being processed | User is redirected back to the checkout page **or**, if Stripe has succeeded in creating the charge, the order is created in the database no matter what. This was tested by (a) hitting the back button quickly after clicking "confirm order", in which case it resulted in the user being directed back to the Shopping Cart to start checkout again; and (b) temporarily coding out "create order" in the normal place in the code to test whether the order would be created using the webhook handler, in which case the order was indeed successfully created by the webhook. | as expected |  &#9989; |
-
 #### Logged in users:
 | Action | Expected Result | Outcome | Pass |
 |--------|-----------------|---------|------|
 | User who has an account visits the website | User sees Register and Login under My Account options | as expected |  &#9989; |
 | User logs in | User sees success message that they are logged in | as expected |  &#9989; |
-| User completes a purchase | In addition to the functionality for a non-logged in user: The user's order is added to their order-history list on their Profile page |  as expected |  &#9989; |
-| User visits their profile page | Profile page displays with: (a) a form for updating default address, (b) an order history list, and (c) a list of any custom order inquiries they may have made. |  as expected |  &#9989; |
-User clicks on an order number in their order history list | User brought to the checkout success page showing the order info and receives a success message in a toast telling them they are looking at a past order for which an email confirmation was sent on the order date | as expected | &#9989; |
+| User completes a purchase | In addition to the functionality for a non-logged in user: The user's order is added to their order-history list on their Profile page | as expected |  &#9989; |
+| User checks the box on the checkout page for saving their default shipping address | User's information is saved to their profile | as expected |  &#9989; |
+| User visits their profile page | Profile page displays with: (a) a form for updating default address, (b) an order history list, and (c) a list of any custom order inquiries they may have made. | as expected |  &#9989; |
+User clicks on an order number in their order history list | User brought to the checkout success page showing the order info and receives a success message in a toast telling them they are looking at a past order for which an email confirmation was sent on the order date | as expected |  &#9989; |
 | User clicks on Custom Order in the navbar | User is directed to the Custom Order Request page and presented with the custom-order-inquiry form |  as expected |  &#9989; |
 | User submits a custom order request with valid data | <ol><li>User receives a success message informing them they can see their message on their profile page and that the business will be in touch with them soon</li><li>The custom order request is received in the admin panel</li><li>The user's profile page displays their message under Custom Order Inquiries on their profile page</li></ol> | <ol><li>as expected</li><li>as expected</li><li>as expected</li></ol> | &#9989; |
 | User tries to submit a form with a too-long phone number or message or invalid data| Automatic form validation prevents form submission until user fixes the problem or the form simply won't allow input of too many characters |  as expected |  &#9989; |
