@@ -54,15 +54,16 @@ All of the JavaScript files of the project were run through JSHint.
 
 | file | results | comment |
 |------|---------|---------|
+| base.html |  | indirectly checked as part of other pages |
 | index.html | no errors or warnings |  |
 | shop.html | no errors or warnings  |  |
-| add_artwork.html |  |  |
-| artist_add_art.html |  |  |
-| artist.html |  |  |
-| artists.html |  |  |
+| add_artwork.html | no errors or warnings |  |
+| artist_add_art.html | no errors or warnings |  |
+| artist.html | no errors or warnings |  |
+| artists.html | no errors or warnings |  |
 | artwork_detail.html | no errors or warnings |  |
 | gallery.html |  |  |
-| update_artwork.html |  |  |
+| update_artwork.html | no errors or warnings |  |
 | artwork_image.html |  |  |
 | artwork_info.html |  |  |
 | artwork_price.html |  |  |
@@ -70,9 +71,9 @@ All of the JavaScript files of the project were run through JSHint.
 | delete_from_cart.html |  |  |
 | checkout_success.html |  |  |
 | checkout.html |  |  |
-| contact_us.html |  |  |
+| contact_us.html | no errors or warnings |  |
 | custom-request.html | no warnings or errors |  |
-| events.html |  |  |
+| events.html | no errors or warnings |  |
 | profile.html |  |  |
 
 
