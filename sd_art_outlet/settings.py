@@ -160,7 +160,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
 if 'USE_AWS' in os.environ:
     AWS_S3_OBJECT_PARAMETERS = {
         'Expires': 'Thu, 31 Dec 2099, 20:00:00 GMT',
-        'Cache-Control': 'max-age=94608000',
+        'CacheControl': 'max-age=94608000',
     }
     AWS_STORAGE_BUCKET_NAME = 'sdartoutlet'
     AWS_S3_REGION_NAME = 'eu-north-1'
