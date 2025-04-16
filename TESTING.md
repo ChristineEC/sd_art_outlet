@@ -55,19 +55,18 @@ All of the JavaScript files of the project were run through JSHint.
 | file | results | comment |
 |------|---------|---------|
 | index.html | no errors or warnings |  |
-| artworks.html |   |  |
+| shop.html | no errors or warnings  |  |
 | add_artwork.html |  |  |
 | artist_add_art.html |  |  |
 | artist.html |  |  |
 | artists.html |  |  |
-| artwork_detail.html |  |  |
+| artwork_detail.html | no errors or warnings |  |
 | gallery.html |  |  |
-| shop.html |  |  |
 | update_artwork.html |  |  |
 | artwork_image.html |  |  |
 | artwork_info.html |  |  |
 | artwork_price.html |  |  |
-| cart.html |  |  |
+| cart.html |  |  | ***fix remove-from-cart-obj# issue***
 | delete_from_cart.html |  |  |
 | checkout_success.html |  |  |
 | checkout.html |  |  |
