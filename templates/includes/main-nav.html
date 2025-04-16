@@ -1,4 +1,6 @@
-<div class="collapse navbar-collapse navbar-dark bg-blue p-0 justify-content-center" id="main-nav">
+<div class="collapse navbar-collapse navbar-dark bg-blue
+  p-0 justify-content-center"
+  id="main-nav">
   <ul class="navbar-nav mx-0">
     <li class="mx-0">
       <a class="nav-link font-weight-bold text-white px-5"
@@ -16,7 +18,8 @@
         aria-expanded="false">
         Shop
       </a>
-      <div class="dropdown-menu border-0" aria-labelledby="available-artworks-link">
+      <div class="dropdown-menu border-0" 
+        aria-labelledby="available-artworks-link">
         <a class="dropdown-item"
           aria-label="link-to-paintings"
           href="{% url 'artworks' %}?medium=oiloncanvas,acryliconcanvas,watercolor">
@@ -47,7 +50,7 @@
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle font-weight-bold text-white px-5"
         href="#"
-        id="artworks-link"
+        id="full-gallery-link"
         role="button"
         aria-label="link-to-art-and-categories-in-full-gallery"
         data-toggle="dropdown"
@@ -55,7 +58,8 @@
         aria-expanded="false">
         Full Gallery
       </a>
-      <div class="dropdown-menu border-0 border-black" aria-labelledby="artwork-links">
+      <div class="dropdown-menu border-0 border-black" 
+        aria-labelledby="full-gallery-link">
         <a class="dropdown-item" aria-label="link-to-paintings-in-gallery"
           href="{% url 'full_gallery' %}?medium=oiloncanvas,acryliconcanvas,watercolor">
           Paintings

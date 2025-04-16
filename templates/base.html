@@ -5,7 +5,7 @@
   <head>
     {% block meta %}
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta charset="utf-8"/>
+    <meta charset="utf-8">
     <meta name='language' content='EN'>
     <meta name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -77,8 +77,7 @@
               <img
                 src="{{ MEDIA_URL }}sd_art_logo.png"
                 alt="san_diego_art_outlet_logo"
-                class="inline-block"
-              />
+                class="inline-block">
               <strong>San Diego Art Outlet</strong>
             </h1>
           </a>
@@ -198,24 +197,40 @@
               <div id="mc_embed_signup">
                 <form 
                   action="https://herokuapp.us3.list-manage.com/subscribe/post?u=855613d2da78dbe7d599fd3c5&amp;id=9770090fa3&amp;f_id=003b4de2f0"
-                  method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                  method="post" id="mc-embedded-subscribe-form"
+                  name="mc-embedded-subscribe-form" class="validate"
+                  target="_blank">
                     <div id="mc_embed_signup_scroll">
-                      <h2 class="text-black"><small>Subscribe to Our Newsletter!</small></h2>
+                      <h2 class="text-black">
+                        <small>Subscribe to Our Newsletter!</small>
+                      </h2>
                       <div class="mc-field-group text-black">
-                        <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
-                        <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value="">
+                        <label for="mce-EMAIL">
+                          Email Address <span class="asterisk">*</span>
+                        </label>
+                        <input type="email" name="EMAIL"
+                          class="required email" id="mce-EMAIL"
+                          required="" value="">
                       </div>
                       <div id="mce-responses" class="clear foot">
-                          <div class="response" id="mce-error-response" style="display: none;"></div>
-                          <div class="response" id="mce-success-response" style="display: none;"></div>
+                          <div class="response" id="mce-error-response"
+                            style="display: none;"></div>
+                          <div class="response" id="mce-success-response"
+                            style="display: none;"></div>
                       </div>
-                      <div aria-hidden="true" style="position: absolute; left: -5000px;">
-                          /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
-                          <input type="text" name="b_855613d2da78dbe7d599fd3c5_9770090fa3" tabindex="-1" value="">
+                      <div aria-hidden="true" 
+                        style="position: absolute; left: -5000px;">
+                          /* real people should not fill this in and expect 
+                          good things - do not remove this or risk form bot signups */
+                          <input type="text" 
+                            name="b_855613d2da78dbe7d599fd3c5_9770090fa3"
+                            tabindex="-1" value="">
                       </div>
                       <div class="optionalParent">
                           <div class="clear foot">
-                              <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
+                              <input type="submit" name="subscribe"
+                                id="mc-embedded-subscribe" class="button"
+                                value="Subscribe">
                           </div>
                       </div>
                     </div>
@@ -232,25 +247,35 @@
                     class="text-white">Privacy Policy</a>
                   <br>
                   <a href="{% url 'contact_us' %}"
-                    aria-label="link to contact form" class="text-white">Contact Us</a>
+                    aria-label="link to contact form"
+                    class="text-white">Contact Us</a>
                   <br>
-                  <a href="{% url 'custom_request' %}" aria-label="link to custom order inquiry" class="text-white">Custom Orders</a>
+                  <a href="{% url 'custom_request' %}"
+                    aria-label="link to custom order inquiry"
+                    class="text-white">Custom Orders</a>
                   <br>
-                  <a href="{% url 'events' %}" aria-label="link to events" class="text-white">Events</a>
+                  <a href="{% url 'events' %}" 
+                    aria-label="link to events"
+                    class="text-white">Events</a>
                 </p>
               </div>
             </div>
             <div class="row">
               <div class="col">
                 <p class="my-2">On Social Media
-                  <span class="px-4"><a href="https://www.facebook.com/" target="_blank"
-                    aria-label="facebook link" rel="nofollow"><i class="fa-brands fa-facebook-f text-white zoom-in"></i></a>
+                  <span class="px-4">
+                    <a href="https://www.facebook.com/" target="_blank"
+                      aria-label="facebook link" rel="nofollow">
+                      <i class="fa-brands fa-facebook-f text-white zoom-in"></i>
+                    </a>
                   </span>
-                  <span class="px-4"><a href="https://www.instagram.com/" target="_blank"
-                    aria-label="instagram link" rel="nofollow"><i class="fa-brands fa-instagram text-white zoom-in"></i></a>
+                  <span class="px-4">
+                    <a href="https://www.instagram.com/" target="_blank"
+                      aria-label="instagram link" rel="nofollow">
+                      <i class="fa-brands fa-instagram text-white zoom-in"></i>
+                    </a>
                   </span>
                 </p>
-                
               </div>
             </div>
           </div>
@@ -267,13 +292,13 @@
     </footer>
 
     {% block postload_js %}
-    <script type="text/javascript">
+    <script>
       $(".toast").toast("show");
     </script>
-    <script type="text/javascript"
+    <script 
       src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js">
     </script>
-    <script type="text/javascript">
+    <script>
       (function($) {
         window.fnames = new Array();
         window.ftypes = new Array();
