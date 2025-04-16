@@ -141,10 +141,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
-
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
@@ -152,10 +148,6 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "/static/"
 
@@ -168,7 +160,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR / 'media')
 if 'USE_AWS' in os.environ:
     AWS_S3_OBJECT_PARAMETERS = {
         'Expires': 'Thu, 31 Dec 2099, 20:00:00 GMT',
-        'CacheControl': 'max-age=94608000'
+        'CacheControl': 'max-age=94608000',
     }
     AWS_STORAGE_BUCKET_NAME = 'sdartoutlet'
     AWS_S3_REGION_NAME = 'eu-north-1'
