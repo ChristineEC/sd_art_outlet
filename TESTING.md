@@ -47,11 +47,7 @@ All of the JavaScript files of the project were run through JSHint.
 | artists.js | no errors or warnings | |
 | stripe_elements.js | unrecognized variable Stripe | This was expected and is needed for Stripe functionality in the project |
 | countryfields.js | warning of unnecessary semicolon | ignored because the linter also didn't recognize the $ symbol being used in the code, and the semicolon was in the correct place and necessary |
-
-
-
 ### HTML
-
 | file | results | comment |
 |------|---------|---------|
 | base.html |  | indirectly checked as part of other pages |
@@ -59,18 +55,18 @@ All of the JavaScript files of the project were run through JSHint.
 | shop.html | no errors or warnings  |  |
 | add_artwork.html | no errors or warnings |  |
 | artist_add_art.html | no errors or warnings |  |
-| artist.html | no errors or warnings |  |
+| artist.html | one warning: Article lacks heading | This warning will be ignored for layout purposes. One article tag now wraps an h2 and a second article element--the one that raises this warning. The inner article element will be preserved so that a future change of the artist bio field in the model from textfield to summernote field will not raise errors, as it would if I used a paragraph element here instead of the inner acticle element. Summernote fields are rendered as paragraphs, so an article (or other) tag is needed to contain them. |
 | artists.html | no errors or warnings |  |
 | artwork_detail.html | no errors or warnings |  |
-| gallery.html |  |  |
+| gallery.html | no errors or warnings |  |
 | update_artwork.html | no errors or warnings |  |
-| artwork_image.html |  |  |
-| artwork_info.html |  |  |
-| artwork_price.html |  |  |
-| cart.html |  |  |
-| delete_from_cart.html |  |  |
+| artwork_image.html |  | This cannot be tested directly but is tested in the fully rendered cart.html page, of which it is an included html |
+| artwork_info.html |  | included in cart.html |
+| artwork_price.html |  | included in cart.html |
+| cart.html | no errors or warnings |  |
+| delete_from_cart.html |  | included in cart.html |
 | checkout_success.html |  |  |
-| checkout.html |  |  |
+| checkout.html | warning: empty heading | This refers to an h1 that contains the spinner icon that is activated after the user clicks "complete order", so the h1 is not actually empty; its content is simply not displayed until and unless necessary. |
 | contact_us.html | no errors or warnings |  |
 | custom-request.html | no warnings or errors |  |
 | events.html | no errors or warnings |  |

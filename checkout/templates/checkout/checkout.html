@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" />
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
 {% block page_header %}
@@ -38,14 +38,12 @@
               <img
                 class="w-100"
                 src="{{ item.artwork.image.url }}"
-                alt="{{ item.artwork.image_alt }}"
-              />
+                alt="{{ item.artwork.image_alt }}">
               {% else %}
               <img
                 class="w-100"
                 src="{{ MEDIA_URL }}noimage.png"
-                alt="{{ artwork.title }}"
-              />
+                alt="{{ artwork.title }}">
               {% endif %}
             </a>
           </div>
@@ -111,7 +109,7 @@
                   type="checkbox"
                   id="id-save-info"
                   name="save-info"
-                  checked/>
+                  checked>
               {% else %}
                 <label class="form-check-label" for="id-save-info">
                   <a class="text-info" href="{% url 'account_signup' %}"
