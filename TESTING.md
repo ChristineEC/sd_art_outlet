@@ -6,16 +6,12 @@
     - [CSS](#css)
     - [JavaScript](#javascript)
     - [HTML](#html)
-2. [User Stories](#user-stories)
-
-3. [Other Interactive Elements](#other-interactive-elements)
-
+2. [Responsiveness](#responsiveness)
+3. [Lighthouse Results](#lighthouse-results)
 4. [Browser Compatibility](#browser-compatibility)
-
-5. [Responsiveness](#responsiveness)
-
-
-
+5. [Manual Testing](#manual-testing)
+    - [Table 1. User Stories](#table-1-user-stories)
+    - [Table 2. Actions, Expected Results, and Outcomes](#table-2-actions-expected-results-and-outcomes)
 ## Validation
 ### Python
 Python files were tested using flake8 in VS Code. The results are as follows, with 6 lines raising issues:
@@ -75,13 +71,6 @@ HTML validation was carried out through direct input of rendered html using [W3C
 | events.html | no errors or warnings |  |
 | profile.html | no errors or warnings |  |
 | Login, Logout, Register, amd Reset Password pages (inheriting from allauth/account/base.html) | no errors or warnings |  |
-## Manual Testing
-Extensive manual testing of user stories and all interactive functionality has been completed, with no remaining bugs or errors and all required user stories fulfilled.
-
-User stories and the outcome of various user interactions with regard to them are discussed extensively in the [README.md](README.md) file in the section under Features and User Stories. Therefore, they will be summarized in a table here along with 
-
-## Browser Compatibility
-
 ## Responsiveness
 The website is fully responsive on all viewports, from mobile through desktop size.
 
@@ -109,24 +98,33 @@ On large tablet:
 
 ![Large tablet](documentation/screenshots/large-tablet-screenshot.png)
 ## Lighthouse Results
-
 - Homepage
 
 ![homepage](documentation/screenshots/lighthouse/homepage.png)
 
 - Shop
 
+Before fixing cache policy in settings.py:
+
 ![shop](documentation/screenshots/lighthouse/artworks.png)
 
+After fixing cache policy:
+
+![new shop score](documentation/screenshots/lighthouse/new-shop-score.png)
 
     - Shop sorted by acrylic paintings
 
 ![acrylic only in shop](documentation/screenshots/lighthouse/acrylic.png)
 
-
 - Gallery
 
+The initial gallery score was unacceptably low for performance:
+
 ![gallery](documentation/screenshots/lighthouse/gallery.png)
+
+One of the messages had to do with the caching policy. I went and checked my settings.py, as I knew I had set a caching policy there for objects in my AWS S3 bucket, and discovered I had left off a needed comma in the code. After fixing that, the performance score doubled. Other issues are discussed at the end of this section.
+
+![new gallery lighthouse score](new-gallery-lighthouse-score.png)
 
 - Artists page
 
@@ -134,7 +132,13 @@ On large tablet:
 
 - Artist's page
 
+Before fixing the cache-policy setting (as mentioned above), the score was the artist's page was also low for performance.
+
 ![an artist's page](documentation/screenshots/lighthouse/artist2.png)
+
+The fixed cache policy resulted in a higher performance score:
+
+![new artist's score](documentation/screenshots/lighthouse/new-artist-score.png)
 
 - Contact Us page
 
@@ -160,40 +164,40 @@ The best practices score is consistent throughout and is mainly due to the imple
 Serving images in next-gen formats is also something I would look into. I believe Cloudinary may have been a better choice for this app, as it seems more user friendly, and I know there are easy ways to work with the images to serve them dynamically at the sizes required while they are being served.
 
 One issue that deserves attention is shown in the second-to-last image here and concerns security. In the project's present iteration, this is not serious, as no real purchases are being made, but if one wanted to go live with the project (in terms of Stripe--not just in test mode), this would be an issue to understand and address in advance.
+## Browser Compatibility
+## Manual Testing
+Extensive manual testing of user stories and all interactive functionality has been completed, with no remaining bugs or errors and all required user stories fulfilled.
 
-Features and User Stories
-## Features and User Stories
-### User Stories Table
+User stories and the outcome of various user interactions with regard to them are discussed extensively in the [README.md](README.md) file in the section under Features and User Stories. Therefore, they will be summarized here in a table, followed by a table showing action, expected results, and outcomes.
+### Table 1. User Stories
+| User Story | User Story Title | Fulfilling app or feature | Pass |
+|------------|------------------|---------------------------|------------------|
+| #1 | As a site visitor I can view a list of available art to see if there is something I want to purchase | Artworks app, Shop page | &#9989; |
+| #3 | As a user I can easily access full product details, including price, artist, size, medium, etc., so that I can make an informed decision about whether to buy the item | Artwork detail page | &#9989; |
+| #4 | A first time visitor can quickly determine the purpose and offerings of the site so they can decide if they want to explore further | Home app, Homepage | &#9989; |
+| #5 | As a site visitor, I can sort the available art by medium so I can quickly find what I am looking for | Artworks app, Shop and Gallery pages, navbar | &#9989; |
+| #7 | As a user, I can submit a custom order inquiry without submitting an order so that an artist can contact me later about my requirements | Communications App, Custom Order page and form, Admin | &#9989; |
+| #9 | As a user I want to be able to add items to a shopping cart so that I can create a running list of things I want to buy before I proceed to checkout | Cart App | &#9989; |
+| #12 | As a shopper I want to review the order information on the checkout page so I can ensure it is correct before making my purchase | Checkout App, checkout page | &#9989; |
+| #13 | As a shopper I can review my shopping cart so that I can see which items I have added and what the current grand total is so I don't overspend | Cart App | &#9989; |
+| #14 | As a shopper, I want to be able to delete items from my cart so that I can revise my order before purchasing | Cart App | &#9989; |
+| #21 | As a site owner or artist, I can add, update and delete items for sale from the front end so that the inventory shown to users is accurate | Product Management Function, Artist's Page | &#9989; |
+| #23 | As a site owner I can display information about the artists of the works for sale to drive user engagement and promote the artists | Artists page, Artists' pages | &#9989; |
+| #24 | As a site owner, I can display a custom 404 message so that my website maintains a professional look | Custom 404 page | &#9989; |
+| #27 | (Future Feature) As a contributing artist I can update and delete my artist information on the front end so that I can optimize my artist page | Future Feature in Artworks App and Artist's page | &#9989; |
+| #28 | As a user, I want to be able to see my current total at all times so I can stay within my budget or just easily keep track of my spending | Cart App, Navbar | &#9989; |
+| #31 | As a new user, I can create an account using my email and password so I can enjoy full site functionality | Login form (and real emails) | &#9989; |
+| #32 | As a user I want to know that my account is secure and has been created so I can be sure that only I have access using my credentials | User Registration and real emails | &#9989; |
+| #34 | As a logged-in user, I can save the information I enter during checkout to my account profile so that I don't have to re-enter my information each time I make a purchase | Profile App, checkbox on checkout page | &#9989; |
+| #35 | As a user, I can update my account information so that it remains accurate | Profile App | &#9989; |
+| #36 | As a user, I can enter my shipping and payment information so that I can complete my order | Checkout App | &#9989; |
+| #37 | As a user I can receive an email confirmation of my completed order so I have a record of my purchase and order information | E-mail confirmations | &#9989; |
+| #38 | As an artist or site owner, I can create a custom order based on an online inquiry and make the product available only to a specific user for purchase online | Custom Order Inquiry, Artworks, and User models suitably related to provide future functionality  | Future Enhancement |
+| #41 | As a site owner, I can handle webhooks from Stripe to ensure that payment and order processes are fully handled | Checkout App | &#9989; |
+| #44 | As a business owner, I want to be able to receive messages from customers or collaborators so I can respond as required by my business | Communications App, Contact Us nav and form, Admin | &#9989; |
+| #45 | As a visitor to the site I can sign up for a newsletter so I can be aware of upcoming shows or other news | Newsletter signup in footer through MailChimp | &#9989; |
 
-| User Story | User Story Title | Fulfilling app or feature |
-|------------|------------------|---------------------------|
-| #1 | As a site visitor I can view a list of available art to see if there is something I want to purchase | Artworks app, Artworks page (Shop) |
-| #3 | As a user I can easily access full product details, including price, artist, size, medium, etc., so that I can make an informed decision about whether to buy the item | Artwork detail page |
-| #4 | A first time visitor can quickly determine the purpose and offerings of the site so they can decide if they want to explore further | Home app, Homepage |
-| #5 | As a site visitor, I can sort the available art by medium so I can quickly find what I am looking for | Artworks app, Shop and Gallery pages, navbar |
-| #7 | As a user, I can submit a custom order inquiry without submitting an order so that an artist can contact me later about my requirements | Communications App, Custom Order page and form, Admin |
-| #9 | As a user I want to be able to add items to a shopping cart so that I can create a running list of things I want to buy before I proceed to checkout | Cart App |
-| #12 | As a shopper I want to review the order information on the checkout page so I can ensure it is correct before making my purchase | Checkout App, checkout page |
-| #13 | As a shopper I can review my shopping cart so that I can see which items I have added and what the current grand total is so I don't overspend | Cart App |
-| #14 | As a shopper, I want to be able to delete items from my cart so that I can revise my order before purchasing | Cart App |
-| #21 | As a site owner or artist, I can add, update and delete items for sale from the front end so that the inventory shown to users is accurate | Product Management Function, Artist's Page |
-| #23 | As a site owner I can display information about the artists of the works for sale to drive user engagement and promote the artists | Artists page, Artists' pages |
-| #24 | As a site owner, I can display a custom 404 message so that my website maintains a professional look | Custom 404 page |
-| #27 | (Future Feature) As a contributing artist I can update and delete my artist information on the front end so that I can optimize my artist page | Future Feature in Artworks App and Artist's page |
-| #28 | As a user, I want to be able to see my current total at all times so I can stay within my budget or just easily keep track of my spending | Cart App, Navbar |
-| #31 | As a new user, I can create an account using my email and password so I can enjoy full site functionality | Login form (and real emails) |
-| #32 | As a user I want to know that my account is secure and has been created so I can be sure that only I have access using my credentials | User Registration and real emails |
-| #34 | As a logged-in user, I can save the information I enter during checkout to my account profile so that I don't have to re-enter my information each time I make a purchase | Profile App, checkbox on checkout page |
-| #35 | As a user, I can update my account information so that it remains accurate | Profile App |
-| #36 | As a user, I can enter my shipping and payment information so that I can complete my order | Checkout App |
-| #37 | As a user I can receive an email confirmation of my completed order so I have a record of my purchase and order information | E-mail confirmations |
-| #38 | (Future Enhancement) As an artist or site owner, I can create a custom order based on an online inquiry and make the product available only to a specific user for purchase online | Custom Order Inquiry, Artworks, and User models suitably related to provide future functionality (with probable addition of a CustomOrder model) |
-| #41 | As a site owner, I can handle webhooks from Stripe to ensure that payment and order processes are fully handled | Checkout App |
-| #44 | As a business owner, I want to be able to receive messages from customers or collaborators so I can respond as required by my business | Communications App, Contact Us nav and form, Admin |
-| #45 | As a visitor to the site I can sign up for a newsletter so I can be aware of upcoming shows or other news | Newsletter signup in footer through MailChimp | 
-
-
-### Homepage, Navigation and Footer
+### Table 2: Actions, Expected Results, and Outcomes
 **User story 4: A first time visitor can quickly determine the purpose and offerings of the site so they can decide if they want to explore further**
 
 
