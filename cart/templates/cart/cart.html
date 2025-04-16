@@ -118,7 +118,7 @@
   {% block postload_js %}
   {{ block.super }}
 
-  <script type="text/javascript">
+  <script>
     $('.remove-from-cart').click(function(e) {
         var csrfToken = "{{csrf_token }}";
         var itemId = $(this).attr('class').split('remove-from-cart_')[1];

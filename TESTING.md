@@ -66,12 +66,12 @@ All of the JavaScript files of the project were run through JSHint.
 | artwork_image.html |  |  |
 | artwork_info.html |  |  |
 | artwork_price.html |  |  |
-| cart.html |  |  | ***fix remove-from-cart-obj# issue***
+| cart.html |  |  |
 | delete_from_cart.html |  |  |
 | checkout_success.html |  |  |
 | checkout.html |  |  |
 | contact_us.html |  |  |
-| custom-request.html |  |  |
+| custom-request.html | no warnings or errors |  |
 | events.html |  |  |
 | profile.html |  |  |
 
