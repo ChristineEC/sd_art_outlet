@@ -198,277 +198,56 @@ User stories and the outcome of various user interactions with regard to them ar
 | #45 | As a visitor to the site I can sign up for a newsletter so I can be aware of upcoming shows or other news | Newsletter signup in footer through MailChimp | &#9989; |
 
 ### Table 2: Actions, Expected Results, and Outcomes
-**User story 4: A first time visitor can quickly determine the purpose and offerings of the site so they can decide if they want to explore further**
 
+#### First-time visitor or user who has never registered for an account
+- Please note that "as expected" in the Outcome column in the table below means that the description of the outcome is exactly the same as the description of the expected result. Only outcomes that need further description contain additional text, and additional text, rather than "as expected", should not be construed as meaning that the outcome was not as expected. The pass mark means that the expected result was achieved.
+
+| Action | Expected Result | Outcome | Pass |
+|--------|-----------------|---------|------|
+| Navigate to site | Homepage (index.html) displays | as expected | &#9989; |
+| Click on Available Artworks button | User sent to Shop | as expected |  &#9989; |
+| Click on Shop in the navbar | User sent to Shop | as expected |  &#9989; |
+| Click on Full Gallery button | User sent to Gallery | as expected |  &#9989; |
+| Click on Full Gallery in the navbar | User sent to Gallery | as expected |  &#9989; |
+| Click on Artists in the navbar | User sent to artists page displaying all artists | as expected |  &#9989; |
+| Click on Custom Order page | User sees message that they need to be logged in to send a custom order but that they can send a message through the contact us form. The custom-request-form is not rendered in the html. See links to contact form and to login. | as expected | &#9989; |
+| Click on Contact Us in the navbar | User sent to contact_us page displaying the contact form | as expected |  &#9989; |
+| User enters information in contact form with correct data | Form is sent to back end and user receives a success message | as expected | &#9989; |
+| User enters information in contact form with invalid data, such as an invalid email address | User receives messages onscreen to correct data before the form can be submitted. Note, this was fixed during testing. Phone number field changed to charfield to prevent 500 errors, as user was able to end a too-long number that caused an error. A charfield is preferred here so users can enter even extension numbers with their telephone numbers, which many people have at their offices, for example. | as expected | &#9989; |
+| Click on Events in navbar | User is directed to events page | as expected | &#9989; |
+| User clicks on MyAccount in the navbar | User is presented with two options: Register or Login | as expected | &#9989; |
+| User clicks on Login | User brought to Sign In page and presented with Sign-in form and a link to Sign Up first | as expected | &#9989; |
+| User with no account fills in Login form | User receives message that the username and password are not correct and is given the option (and a link) to sign up if they don't have an account yet | as expected | &#9989; |
+| User clicks on Register | User sent to Sign Up form page | as expected | &#9989; |
+| User fills in Sign Up form with invalid data | Built-in form validation prevents submitting the form and tells the user what needs to be fixed before the form can be validated | as expected | &#9989; |
+| User fills in Sign Up form with valid data | User receives an email at the address they entered and a success message onscreen that a confirmation email has been sent in order for them to validate their account | as expected | &#9989; |
+| User clicks on the email they receive to validate their signup | User is brought to the Confirm Email Address page to confirm their email address | as expected | &#9989; |
+| User clicks Confirm on the Confirm Email Address page | <ol><li>User account is confirmed on the backend, with email address for the user registered and validated</li><li>User receives an onscreen success message that they have confirmed their email and they are directed back to the Sign In page and presented with the Sign In form</li><li>A user profile is created and is accessible on the back end</li></ol> | <ol><li>as expected</li><li>as expected</li><li>as expected</li></ol> | <ol><li>&#9989;</li><li>&#9989;</li><li>&#9989;</li></ol> |
+| User fills in the newsletter signup form in the footer | <ol><li>User receives a sucess message onscreen that they are signed up</li><li>MailChimp records the email in the list of registered emails</li></ol> | <ol><li>as expected</li><li>as expected</li></ol> | <ol><li>&#9989;</li><li>&#9989;</li></ol> |
+| User fills in newsletter signup form with an invalid email | Built-in validation informs the user of the error and allows them to fix it so they can submit | as expected |  &#9989; |
+| User clicks on Privacy Policy (in footer) | Privacy policy is displayed in a new tab | as expected | &#9989; |
+| User clicks on Facebook icon (in footer) | Facebook opens in a new tab | as expected | &#9989; |
+| User clicks on Instagram icon (in footer) | Instagram opens in a new tab | as expected | &#9989; |
+| User clicks on Contact Us link in the footer | User directed to Contact form | as expected | &#9989; |
+| User clicks on Events link in the footer | User directed to Events page | as expected | &#9989; |
+| On events page, user clicks on an event with an image (flyer) | A new tab is opened in the browser displaying the image (flyer) | as expected | &#9989; |
+| On events page, user clicks on an event with no image (flyer) | No action | as expected | &#9989; |
+| User clicks on Events link on the homepage | User directed to Events page | as expected | &#9989; |
+| User clicks on the Shop dropdown menu in the main nav | All dropdown menu choices are shown (i.e., sorting art by medium) | as expected | &#9989; |
+| User clicks on any of the Shop dropdown menu items | User is directed to Shop, where only the artworks of the appropriate medium or shown | as expected | &#9989; |
+| User visits the Shop | User sees all (and only those) artworks that have the status of *for sale* **and have images** | as expected | &#9989; |
+| User visits the Gallery | User sees all (and only those) artworks that have a status of *for sale* or *sold* **and have images** | as expected | &#9989; |
+| User visits the artists page | User sees all artists, with a short bio, photo and link to the artists' pages | as expected | &#9989; |
+| User visits an artist's page | User sees all (and only those) artworks by that artist that have a status of *for sale* or *sold* **and have images** |as expected | &#9989; |
+| User clicks on an artwork in the Shop | User directed to artwork detail page, where the artwork is displayed with three buttons: Back to Shop, Back to Gallery, and Add to Cart | as expected | | &#9989; |
+| User clicks on "Back to Shop" from the artwork detail page | User directed back to Shop | as expected | | &#9989; |
+| User clicks on "Back to Gallery" from the artwork detail page | User directed to Gallery | as expected | | &#9989; |
+| User clicks on "View full image" link on the artwork detail page | Image opens in a new tab and displays in full size | as expected | &#9989; |
+| User clicks on "Add to Cart" from the artwork detail page | <ol><li>The artwork is added to the user's cart</li><li>The user receives a success message toast with a preview of their cart containing a button to Go to Secure Checkout</li><li>Below the cart icon in the header, the new subtotal for the cart is displayed under the cart icon</li></ol> | as expected | &#9989; |
+| User clicks on cart icon in the header before they have added anything to the cart | User directed to the Shopping Cart page and presented with a message that their shopping cart is empty, and a button to go back to the Shop | as expected | &#9989; |
+| User clicks on cart icon in the header when they do have something in the cart | User directed to the Shopping Cart page where they see a detailed list of items they have placed in their cart and two buttons: one to Keep Shopping and one for Secure Checkout | as expected | &#9989; |
+| User clicks on Secure Checkout button from either the Shopping Cart page or from the Cart preview inside the success message after adding something to their cart (both tested) | User brought to checkout page where they can add their information | as expected | &#9989; |
+| User fills in invalid data in checkout form | Built-in form validation tells user what error(s) need to be fixed | as expected | &#9989; |
+| User fills in valid data in checkout form | <ol><li>User is redirected to the checkout success page, where they see a summary of their order, with full details, and a success message containing their order number and the email address where they will receive a confirmation email</li><li>A confirmation email is sent to the email address the user entered in the form</li><li>An order is created in the database</li><li>Stripe webhooks are received for payment-intent-created and payment-intent-succeeded</li><li>Stripe creates the charge so the funds are received</li></ol> | <ol><li>as expected</li><li>as expected</li><li>as expected</li><li>as expected</li><li>as expected</li></ol> | <ol><li>&#9989;</li><li>&#9989;</li><li>&#9989;</li><li>&#9989;</li><li>&#9989;</li></ol> |
+| A user hits the back button or makes another error during checkout while payment is being processed | User is redirected back to the checkout page **or**, if Stripe has succeeded in creating the charge, the order is created in the database no matter what. This was tested by (a) temporarily coding out "create order" in the normal place in the code to test whether the order would be created using the webhook handler and (b) hitting the back button quickly after clicking "confirm order". In the first place, the order was created by the webhook; in the second place, the user was directed back to the Shopping Cart to start checkout again | as expected |  &#9989; |
 
-The homepage is shown below. Prominent buttons for the shop and gallery, a shopping cart, a pretty piece of art, and the single headline and the clear nav items show the user at glance exactly what the site is for, with the subheading further emphasizing the site's possibilities. The nav elements that are expandable have small arrows to indicate that those menus are expandable. Without leaving the homepage, just by toggling the shop or gallery nav elements, the user can see what types of art are available.
-
-![homepage on laptop](documentation/screenshots/homepage-laptop-screenshot.png)
-
-
-Mobile Navigation dropdown from hamburger menu:
-
-![Mobile Nav](documentation/screenshots/mobil-nav.png)
-
-
-Mobile dropdown navigation:
-
-![mobile dropdown navigation](documentation/screenshots/mobil-dropdown.png)
-
-
-Nav elements are different for logged in or non-logged-in users, and for superusers, as follows:
-
-Not logged in: The My Account dropdown menu shows the options to register or login
-
-![not logged in](documentation/screenshots/not-logged-in.png)
-
-
-Logged in user: The My Account dropdown menu shows the options **My Profile** and **Logout** (as in the image for the superuser, except without the Product Management option).
-
-Superuser: In addition to the logged in user, the superuser sees **Product Management** in the dropdown menu under My Account.
-
-![superuser navigation](documentation/screenshots/superuser-nav.png)
-
-
-
-**User story 45: As a visitor to the site I can sign up for a newsletter so I can be aware of the upcoming shows or other news**
-
-The footer includes a MailChimp sign-up form for the newsletter, displayed prominently, as well as other links to actions the user might take, such as contacting the business or sending a custom-order request. The privacy policy and social media links are there as well, all three of which open in new tabs.
-
-![the footer](documentation/screenshots/footer1.png)
-
- 
-### Shop and Gallery
-**User story 1: As a site visitor I can view a list of available art to see if there is something I want to purchase** 
-
-The user who visits the shop page finds a list of all available artworks.
-
-![User view of shop](documentation/screenshots/shop.png)
-
-
-**User Story 5: As a site visitor, I can sort the available art by medium so I can quickly find what I am looking for**
-The user can sort artworks even before they get to the shop or gallery or from inside the shop and gallery, as the navbar is visible all the same.
-When the user chooses a medium, only artworks of that medium show in the shop until they choose a different medium, all artworks, or navigate away.
-
-![Sorting by medium](documentation/screenshots/sorting-by-medium.png)
-
-
-The gallery is nearly identical to the shop, except that users can also see works that have already been sold. This is designed to help them come up with ideas for custom orders.
-
-![Gallery](documentation/screenshots/gallery.png)
-
-
-### Artwork detail page
-**User story 3: As a user I can easily access full product details, including price, artist, size, medium, etc., so that I can make an informed decision about whether to buy the item**
-
-In the shop or gallery, when a user hovers over a piece of artwork, that card gets a thick border (and jumps a bit) to indicate it is clickable. On the artwork detail page, users can see all relevant information about an artwork. 
-
-No hover:
-
-![no hover on artpiece](documentation/screenshots/no-hover.png)
-
-
-Hovered:
-
-![hovered artwork](documentation/screenshots/hover-art.png)
-
-On the artwork detail page, the individual artwork that is *for sale* appears with a button to add it to the shopping cart and buttons to return to the shop or the gallery.
-
-![alt text](documentation/screenshots/for-sale-detail.png)
-
-
-An artwork that is already *sold*, however, appears only with a button to return to the gallery (as the user will have come from there unless they came from the artist's page, but in any case, they won't have come from the shop, as no sold artworks appear in the shop).
-
-![sold artwork detail](documentation/screenshots/sold-artwork-detail.png)
-
-
-Clicking on "view full image" opens the image in another tab so the user can get a good look at the piece.
-
-### The Shopping Cart
-**User story 7: As a user I want to be able to add items to a shopping cart so that I can create a running list of things I want to buy before I proceed to checkout**
-
-The user is able to add an artwork to the shopping cart by clicking the Add to Cart button on the artwork detail page. When the user does this, they receive a pop up success message near the shopping cart icon containing the contents of their cart.
-
-![add to cart](documentation/screenshots/add-to-cart.png)
-
-
-
-**User story 13: As a shopper I can review my shopping cart so that I can see which items I have added and what the current grand total is so I don't overspend**
-
-The user can click the shopping cart icon from any page to review the contents of their cart.
-
-![shopping cart](documentation/screenshots/shopping-cart.png)
-
-
-
-**User story 14: As a shopper, I want to be able to delete items from my cart so that I can revise my order before purchasing**
-
-The image above shows the delete link for items in a shopping cart. When a user clicks the link, the item is deleted from their cart, and they receive a success message and stay on the cart page to see what remains, if anything, with a button to return to the shop or go to secure checkout.
-
-![after deletion](documentation/screenshots/after-deletion-from-cart.png)
-
-
-### Artists page
-** User story 23: As a site owner I can display information about the artists of the works for sale to drive user engagement and promote the artists**
-
-The artists page displays all artists with artworks on the site, with a photo of them, a short bio, and a link to their individual artist's page. Full bios appear on the individual **artists' pages**, described in the next subsection. The content for these pages is not yet fully developed but would be one of the first elements to enhance, both for SEO and user engagement. Each artist would be expected to provide a colorful, interesting bio to attract customers, as well as more photos of their past works, not to mention photos of their works hanging in actual homes.
-
-![Artists page](documentation/screenshots/artists-page.png)
-
-
-### Artists' pages
-*User story 23, as above*
-**User story 21: As a site owner or artist I can add, update and delete items for sale from the front end so that the inventory shown to users is accurate**
-
-This user story is fulfilled in two ways: 1. for the artist, and 2. for the superuser. See also the [Product Management](#product-management-front-end) section below for more about superuser functionality.
-
-Seen by the regular user, the artist's page simply displays the artist's works that have the status *for sale* or *sold*, as opposed to *pending*.
-
-![artist's page seen by site visitor](documentation/screenshots/artist-page.png)
-
-
-The artist's individual pages have the following functionality: 
-
-An artist who has been *linked to a user account manually on the back end*, thus at the site owner's discretion, will see a link just under their bio for **adding** their artworks. The superuser sees the same. From the artist's page, no matter how they fill in the form (i.e., if they mistakenly choose another artist as artist), any artwork they add is added with the artist whose page it is as the *artist* of the artwork and as status *pending*, so that it won't appear immdediately on the site. This is so that the site owner has a chance to review the image and content and approve it before publication. On the same page, the site owner can simply update the artwork to change its status to *for sale* if they wish. (If the owner does not want to go through this extra step, they can use the Manage Artworks functionality that only they have access to, available in the dropdown menu under My Account. See the [Product Management](#product-management-front-end) section below for more on this.)
-
-![Artist Kayla's page](documentation/screenshots/kaylas-page.png)
-
-
-![add by artist success](documentation/screenshots/add-success.png)
-
-
-Clicking on the pending artwork to view its details brings the artist or superuser to the artwork detail page, where, instead of seeing the usual card containing the artwork details and buttons for adding to cart or returning to gallery or shop, they see the following message, designed to allow the artist or superuse to find the art they just added, even if they mistakenly entered the wrong artist (or simply forgot which artist it was). The link brings them to the artist's page where the artwork can be found.
-
-![pending artwork detail](documentation/screenshots/pending-art1.png)
-
-
-The artist who tries to **update** an image receives an error message and is redirected back to the homepage. Future enhancement would involve sending the artist back to their own page.
-
-![update error message](documentation/screenshots/update-error1.png)
-
-
-An (authorized) artist can delete their own artwork from their artist page, but *only if that artwork's status is still pending*. Trying to delete an artwork with status *sold* or *for sale* results in an error message. This is to prevent artists from deleting objects related to already processed orders or users' shopping carts.
-
-![delete error for artist](documentation/screenshots/delete-error1.png)
-
-
-#### Customer View
-The customer does not see any update or delete links and has no access to the product management menu.
-
-#### Artist's view
-
-The artist sees what the superuser sees on their own page only. They have no access to the product management menu.
-
-
-### Product Management: Full CRUD
-**User story 21: As a site owner** (or artist, see above section for artist functionality) **I can add, update and delete items for sale from the front end so that the inventory shown to users is accurate**
-
-The superuser can create, read, update and delete artworks from the Product Management link, for adding a new artwork, or through links below each artwork image, anywhere it appears on the site.
-
-![Product management link](documentation/screenshots/superuser-nav.png)
-
-Accessing the form from the menu:
-
-![accessing the form from the menu](documentation/screenshots/manage_artwork-form.png)
-
-Accessing the form by clicking on "update artwork" under an artwork image, where the form is pre-filled and the user receives a toast message informing them of the artwork being updated:
-
-![Update artwork](documentation/screenshots/manage-artwork.png)
-
-
-![Superusr view of artwork](documentation/screenshots/superuser-view-of-artwork.png)
-
-![Superuser update artwork](documentation/screenshots/superuser-update-artwork.png)
-
-When the superuser adds an artwork without an image, it is saved as pending, and they are redirected to the artist's page for easy access, as that is the only place it is accessible on the front end.
-
-![superuser saves art as pending](documentation/screenshots/superuser-saved-pending.png)
-
-If the superuser saves an artwork with an image and a status of *for sale*, it is saved and the superuser is redirected to the artwork detail page and presented with a success message.
-
-![add artwork success](documentation/screenshots/add-artwork-success.png)
-
-Attempting to add an artwork without an image results in the artwork being saved as "pending" so that it does not show up on the public site, even if the person adding it forgot to change the default status from "for sale" to "pending". Below is the message received by the superuser who has done so, having been redirected at the same time to the artist's page so they can continue working with the object.
-
-![superuser saved pending](documentation/screenshots/superuser-saved-pending.png)
-
-The object can still be managed from the artist's page, and as soon as they include an image, the status can be easily changed from "pending" to "for sale" or "sold". Even if someone accidentally changes the status of an object with no image to "for sale" or "sold" on the back end, there is no way for a customer to add the object to their cart because no object without an image appears to a regular user anywhere on the site. (This final feature was added during testing. More on this under [Fixed bugs](#fixed-bugs)!).
-
-Artwork can only be updated by the superuser by clicking the update artwork link whereever an artwork is displayed to the superuser.
-
-![superuser view of artwork](documentation/screenshots/superuser-view-of-artwork.png)
-
-The form is prefilled with the object's current data:
-
-![Manage artwork update](documentation/screenshots/manage-artwork.png)
-
-Successful update brings the user to the artwork detail page for that artwork.
-
-![superuser update success](documentation/screenshots/superuser-update-artwork.png)
-
-
-### Custom Order Request
-**User story 7: As a user, I can submit a custom order inquiry without submitting an order so that an artist can contact me later about my requirements**
-
-To send a custom order inquiry, the user has only to click on Custom Order in the navbar or in the footer. It was decided that only logged in users should be able to submit custom orders for several reasons: to prevent casual requests from users who are merely curious but not likely to follow through, and more importantly, to prevent the user typing in a wrong email and the business losing an opportunity. The user can still enter a different name and email, but on the back end the site owner can see which user sent the form, just in case. (Some users might prefer to use a different email in any case, such as when "asking for a friend".) It was also decided that the user, whether logged in or not, should be directed to a page containing the form (although the form is hidden for non-logged in users). This is so that more content can be added at a later date and to present the non-logged in user with the option to either log in or send a message through the contact form, which does not require logging in.
-
-![custom request page for non-logged-in user](documentation/screenshots/not-li-custom-req.png)
-
-A user who is not logged in receives the following message, with an invitation to log in or send a message through the contact form (which does not require login):
-
-![custom request form](documentation/screenshots/custom-req-li.png)
-
-
-
-
-
-### Events page
-### Newsletter signup
-### Register, Login and Logout
-**User story 31: As a new user I can create an account using my email and password so I can enjoy full site functionality**
-
-**User story 32: As a user I want to know that my account is secure and has been created so I can be sure that only I have access using my credentials**
-
-Clicking on register in the nav menu brings the user to the signup form:
-
-![sign-up form](documentation/screenshots/sign-up-form.png)
-
-Filling in the form with valid data results in a message as follows:
-
-![sign-up confirmation message](documentation/screenshots/sign-up-confirmation-msg.png)
-
-After the user submits the sign-up form, they receive an email asking them to confirm that they signed up:
-
-![signup confirmation email](<documentation/screenshots/sign-in confirmation-email.png>)
-
-Clicking on the link brings them to this page on the website:
-
-![confirm email](documentation/screenshots/confirm-email.png)
-
-And clicking on that brings them to the sign-in form with a success message that their account was verified, at which point they can sign in.:
-
-![sign-up confirmed](sign-up-confirmation-msg.png)
-
-![Success new user](documentation/screenshots/success-newuser.png)
-
-A user can log out by clicking on logout in the My Account menu, where they are brought to this page asking for confirmation:
-
-![verify signout](documentation/screenshots/verify-signout.png)
-
-![signout success](documentation/screenshots/signout-success.png)
-
-A user can also reset their password if they have forgotten it. Clicking on the forgot password link sends an email to the user which, when clicked on, brings them to a page to reset their password.
-
-![password reset email](documentation/screenshots/password-reset-email.png)
-
-![password reset form](documentation/screenshots/password-reset-form.png)
-
-![password reset success](documentation/screenshots/password-reset-success.png)
-
-### Customer Profile page
-**User story 35: As a user, I can update my account information so that it remains accurate**
-#### Update profile form
-
-
-
-### Webhooks
